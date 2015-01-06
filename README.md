@@ -71,8 +71,12 @@ E pra finalizar é só adicionar o mListHeader e mSparseCounter ao adapter <br>
         mNavigationAdapter = new NavigationAdapter(this, 
         NavigationList.getNavigationAdapter(this, mListHeader, mSparseCounter));
         mList.setAdapter(mNavigationAdapter);
-
 <br>
+
+Username, email, user photo and background can be changed in mountListHeader method of class NavigationMain. <br>
+
+Nome de usuário, e-mail, foto do usuário e plano de fundo pode ser alterado no método mountListHeader da class NavigationMain. <br>
+
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png"> 
 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_02.png"> 
