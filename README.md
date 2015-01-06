@@ -32,7 +32,7 @@ O código abaixo informa que o item "R.string.more_markers" que tem a posição 
 
 E caso eu queria que um item tenha um contador é só fazer o seguinte: <br>
 
-"R.string.inbox"- posição 
+"R.string.inbox"- posição = 0
 
         SparseIntArray  mCounter = new SparseIntArray();
         mCounter.put(Constant.INBOX, 7);
