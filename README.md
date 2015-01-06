@@ -32,12 +32,12 @@ O código abaixo informa que o item "R.string.more_markers" que tem a posição 
 
 E caso eu queria que um item tenha um contador é só fazer o seguinte: <br>
 
-"R.string.inbox"- posição = 0
+"R.string.inbox"- posição = 0 - valor do contador = 7
+"R.string.spam"- posição = 6 - valor do contador = 10
 
         SparseIntArray  mCounter = new SparseIntArray();
-        mCounter.put(Constant.INBOX, 7);
-        mCounter.put(Constant.SPAM, 10);
-
+        mCounter.put(0, 7);
+        mCounter.put(6, 10);
 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png"> 
 
