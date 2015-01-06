@@ -49,7 +49,7 @@ Quando precisar atualizar é só usar o método setInboxCounter que se encontrar
 		notifyDataSetChanged();
 	}
 
-Você pode criar esse método para todos os outros item com contadores.<br>	
+Você pode criar esse método para todos os outros itens com contadores.<br>	
 E pra finalizar é só adicionar o mListHeader e mCounter ao adapter <br>
 
         mNavigationAdapter = new NavigationAdapter(this, 
