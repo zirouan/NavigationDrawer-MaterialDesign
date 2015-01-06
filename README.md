@@ -18,11 +18,9 @@ Class "Utils" - package: br.liveo.util <br>
 <br>
 
 <b>*The string "R.string.more markers" refers to a subheader, then how icon will put 0 since it does not have icon (position 4 of the array)</b> <br>
+<b>If you want a normal item no icon is only inform 0 in place of an icon. </b> <br>
 
 <b>A string "R.string.more markers" é referente a uma subHeader, então como ícone iremos colocar 0 já que o mesmo não possui ícone (posição 4 do array) </b> <br>
-
-<b>*If you want a normal item no icon is only inform 0 in place of an icon. </b> <br>
-
 <b>Caso queira um item normal sem ícone é só informar 0 no lugar de um ícone. </b> <br>
 
 	public static int[] iconNavigation = new int[] {
@@ -31,16 +29,13 @@ Class "Utils" - package: br.liveo.util <br>
             R.drawable.ic_report_black_24dp}; <br>
 
 <b>*Once you have created your "nameNavigation" and "iconNavigation" it is time to say what is subheader and which items teram a counter.</b>
+<b>As we can see in the method "mountListNavigation" the NavigationMain class, to report that an item is a subheader is only to build the following: </b> <br>
+<b>The following code tells you that the item "R.string.more markers" which has the position 4 in the "nameNavigation" will be a subheader. </b> <br>
 
 <b>Depois de ter criado o seu "nameNavigation" e "iconNavigation" chegou a hora de dizer o que é subHeader e quais os itens que teram um contador.</b>
-
-<b>*As we can see in the method "mountListNavigation" the NavigationMain class, to report that an item is a subheader is only to build the following: </b> <br>
-
 <b>Como podemos ver no método "mountListNavigation" da classe NavigationMain, para informar que um item é um subHeader é só criarmos o seguinte: </b> <br>
-
-<b>*The following code tells you that the item "R.string.more markers" which has the position 4 in the "nameNavigation" will be a subheader. </b> <br>
-
 <b>O código abaixo informa que o item "R.string.more_markers" que tem a posição 4 no "nameNavigation" será um subHeader. </b> <br>
+
         List<Integer> mListHeader = new ArrayList<>();
         mListHeader.add(4); 
 
@@ -64,9 +59,9 @@ Class "Utils" - package: br.liveo.util <br>
 	}
 
 <b>*I made the example of the inbox but you can create this method for all other items with counters. </b> <br>
-<b>Fiz o exemplo do inbox mas você pode criar este método para todos os outros itens com contadores. </b> <br>
+<b>And to finish just add the mListHeader and mSparseCounter the adapter </b> <br>
 
-<b>*And to finish just add the mListHeader and mSparseCounter the adapter </b> <br>
+<b>Fiz o exemplo do inbox mas você pode criar este método para todos os outros itens com contadores. </b> <br>
 <b>E pra finalizar é só adicionar o mListHeader e mSparseCounter ao adapter </b> <br>
 
         mNavigationAdapter = new NavigationAdapter(this, 
