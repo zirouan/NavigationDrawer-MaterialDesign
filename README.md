@@ -15,6 +15,8 @@ Altere o "nameNavigation" e "iconNavigation" pois ambos são itens importantes p
 <br>
 A string "R.string.more_markers" é referente a uma subHeader, então todos os subHeader receberam 0 como podemos ver na posição 4; <br>
 
+Caso queria um item que não seja um subHeader sem ícone é só informar 0 no lugar de um ícone. <br>
+
 	public static int[] iconNavigation = new int[] {
             R.drawable.ic_inbox_black_24dp, R.drawable.ic_star_black_24dp, R.drawable.ic_send_black_24dp,
             R.drawable.ic_drafts_black_24dp, 0, R.drawable.ic_delete_black_24dp, 
@@ -32,7 +34,7 @@ O código abaixo informa que o item "R.string.more_markers" que tem a posição 
 
 E caso eu queria que um item tenha um contador é só fazer o seguinte: <br>
 
-"R.string.inbox"- posição = 0 - valor do contador = 7
+"R.string.inbox"- posição = 0 - valor do contador = 7 <br>
 "R.string.spam"- posição = 6 - valor do contador = 10
 
         SparseIntArray  mCounter = new SparseIntArray();
