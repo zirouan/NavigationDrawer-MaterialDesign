@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CepLiveoTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/blue_dark</item>
+        <item name="colorPrimaryDark">@color/blue_light</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+
+    </style>
+
+</resources>

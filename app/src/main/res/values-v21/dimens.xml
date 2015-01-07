@@ -1,0 +1,31 @@
+<resources>
+
+
+    <!-- navigation_main.xml -->
+    <dimen name="statusBar_layout_height">25dp</dimen>
+
+    <!-- navigation_drawer.xml -->
+    <dimen name="userBackground_layout_height">189dp</dimen>
+
+    <dimen name="userPhoto_layout_width">64dp</dimen>
+    <dimen name="userPhoto_layout_height">64dp</dimen>
+    <dimen name="userPhoto_layout_marginTop">41dp</dimen>
+    <dimen name="userPhoto_layout_marginLeft">16dp</dimen>
+
+    <dimen name="userPhotoTwo_layout_width">40dp</dimen>
+    <dimen name="userPhotoTwo_layout_height">40dp</dimen>
+    <dimen name="userPhotoTwo_layout_marginRight">16dp</dimen>
+
+    <dimen name="userPhotoTree_layout_width">40dp</dimen>
+    <dimen name="userPhotoTree_layout_height">40dp</dimen>
+    <dimen name="userPhotoTree_layout_marginRight">16dp</dimen>
+
+    <dimen name="userData_layout_height">56dp</dimen>
+    <dimen name="userData_layout_marginBottom">8dp</dimen>
+
+    <dimen name="userName_textSize">14sp</dimen>
+    <dimen name="userName_layout_marginLeft">16dp</dimen>
+
+    <dimen name="userEmail_textSize">14sp</dimen>
+    <dimen name="userEmail_layout_marginLeft">16dp</dimen>
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listItem"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="15dp"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/icon"
+            android:alpha="0.54"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="72dp"
+            android:textSize="@dimen/default_textSize"
+            android:textColor="#000000"
+            android:alpha="0.87"
+            android:layout_toLeftOf="@+id/counter"
+            android:layout_toStartOf="@+id/counter"
+            android:layout_marginRight="8dp"
+            fontPath="fonts/Roboto-Medium.ttf"/>
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/counter"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:lines="1"
+            android:maxLength="3"
+            android:textSize="@dimen/default_textSize"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:gravity="center_horizontal"/>
+    </RelativeLayout>
+</LinearLayout>
