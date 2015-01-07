@@ -31,7 +31,14 @@
             android:id="@+id/frame_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"/>
+            android:layout_below="@+id/toolbar">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@drawable/toolbar_shadow_black" />
+        </FrameLayout>
+
     </RelativeLayout>
 
     <include layout="@layout/navigation_list_drawer" />
