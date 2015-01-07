@@ -79,6 +79,11 @@ Class "Utils" - package: br.liveo.util <br>
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_02.png"> 
 
 <br>
+<b>Duvida ou sugestões (Questions or suggestions)</b> <br>
+Nome: Rudson Lima <br>
+E-mail: rudsonlive@gmail.com<br>
+Assunto: Navigation Drawer - Material Design
+<br>
 
 When using the design please remove all images and strings referring to Live-O. Thank you: D <br>
 =================================================================================================
