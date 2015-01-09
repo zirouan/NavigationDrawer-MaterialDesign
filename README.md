@@ -3,7 +3,7 @@ Navigation drawer (it is not library)
 
 <b>Example material design</b>
 
-<b>app:</b> https://play.google.com/store/apps/details?id=br.liveo.navigationliveo
+<b>app:</b> <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">NavigationDrawer Live-O</a>
 
 How to use? Very simple! : D
 
