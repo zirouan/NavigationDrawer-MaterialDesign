@@ -12,7 +12,7 @@
 		<color name="navigation_items">#303030</color>		
 		<color name="gray_navegation">#ffffff</color>		
 
-	<color name="blue_light">#1E88E5</color>
-	<color name="blue_dark">#2196f3</color>
+	<color name="blue_light">#2196f3</color>
+	<color name="blue_dark">#1E88E5</color>
 
 </resources>

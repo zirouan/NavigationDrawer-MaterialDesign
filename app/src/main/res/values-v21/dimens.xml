@@ -2,7 +2,7 @@
 
 
     <!-- navigation_main.xml -->
-    <dimen name="statusBar_layout_height">25dp</dimen>
+    <dimen name="statusBar_layout_height">24dp</dimen>
 
     <!-- navigation_drawer.xml -->
     <dimen name="userBackground_layout_height">189dp</dimen>
