@@ -5,11 +5,11 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "br.liveo.navigationliveo"
-        minSdkVersion 14
+        applicationId "br.liveo.ndrawer"
+        minSdkVersion 8
         targetSdkVersion 21
         versionCode 1
-        versionName "v0.1L"
+        versionName "1.0"
     }
     buildTypes {
         release {
@@ -20,6 +20,6 @@ android {
 }
 
 dependencies {
+    compile project(':nLiveoDrawer')
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:21.0.3'
 }

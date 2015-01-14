@@ -3,7 +3,7 @@ Navigation drawer (it is not library)
 
 <b>Example material design</b>
 
-<b>app:</b> https://play.google.com/store/apps/details?id=br.liveo.navigationliveo
+<b>app:</b> <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">NavigationDrawer Live-O</a>
 
 How to use? Very simple! : D
 
@@ -91,4 +91,5 @@ When using the design please remove all images and strings referring to Live-O. 
 Quando for utilizar o projeto por favor, retire todas as imagens e strings referente a Live-O. Obrigado :D
 ==========================================================================================================
 <br>
-source: http://www.google.com/design/spec/patterns/navigation-drawer.html
+source:<br> 
+<a href="http://www.google.com/design/spec/patterns/navigation-drawer.html" target="_blank">NavigationDrawer</a>

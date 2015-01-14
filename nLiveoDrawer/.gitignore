@@ -24,6 +24,7 @@ local.properties
 
 # Gradle
 .gradle/
+*/gradle.properties
 gradle.properties
 
 # Eclipse project files

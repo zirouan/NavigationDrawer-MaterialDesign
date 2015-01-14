@@ -1,12 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CepLiveoTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/blue_light</item>
-        <item name="colorPrimaryDark">@color/blue_dark</item>
-
-        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-
+    <style name="MyTheme" parent="nLiveo.Theme.Light">
+        <!-- Customize your theme here. -->
     </style>
 </resources>

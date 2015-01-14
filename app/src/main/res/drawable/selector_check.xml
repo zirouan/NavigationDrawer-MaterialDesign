@@ -1,0 +1,8 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@color/nliveo_transparent" />
+    <item android:state_pressed="true"
+        android:drawable="@color/nliveo_transparent" />
+    <item android:state_selected="false"
+        android:drawable="@color/nliveo_brown_colorPrimary"/>
+</selector>
