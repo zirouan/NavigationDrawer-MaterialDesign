@@ -286,7 +286,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     }
 
     /*{ Position in the last clicked item list }*/
-    public void setCurrentPosition(int position){
+    private void setCurrentPosition(int position){
         this.mCurrentPosition = position;
     }
 
@@ -380,6 +380,11 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     /*{ get toolbar }*/
     public Toolbar getToolbar() {
         return this.mToolbar;
+    }
+
+    /*{ get toolbar }*/
+    public DrawerLayout getDrawerLayout() {
+        return this.mDrawerLayout;
     }
 
     @Override
