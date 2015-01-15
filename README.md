@@ -33,6 +33,8 @@ dependencies {<br>
         <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
     </style>
 
+<b>Also there is nLiveo.Theme.Light theme<b><br>
+
 <a href="https://gist.github.com/rudsonlive/5f4001ac00fcd4dfc1a4" target="_blank">Available colors</a>
 
 note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with alpha eg # 80RRGGBB - The "# 80" will ensure the transparency of statusBar.
