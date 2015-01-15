@@ -121,7 +121,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
 <br>In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment</b>
 
-    @Override
+    @Override //The "layoutContainerId" should be used in "beginTransaction (). Replace"
     public void onItemClickNavigation(int position, int layoutContainerId) {
 
         FragmentManager mFragmentManager = getSupportFragmentManager();
@@ -129,6 +129,25 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
         if (mFragment != null){
             mFragmentManager.beginTransaction().replace(layoutContainerId, mFragment).commit();
+        }
+    }
+
+It has the same functionality as public boolean onPrepareOptionsMenu(Menu menu) and the example was used to hide the fragment menus. <br>
+
+    @Override
+    public void onPrepareOptionsMenuNavigation(Menu menu, int position, boolean visible) {
+
+        //hide the menu when the navigation is opens
+        switch (position) {
+            case 0:
+                menu.findItem(R.id.menu_add).setVisible(!visible);
+                menu.findItem(R.id.menu_search).setVisible(!visible);
+                break;
+
+            case 1:
+                menu.findItem(R.id.menu_add).setVisible(!visible);
+                menu.findItem(R.id.menu_search).setVisible(!visible);
+                break;
         }
     }
 
