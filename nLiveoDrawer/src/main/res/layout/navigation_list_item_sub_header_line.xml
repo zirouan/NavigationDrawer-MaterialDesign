@@ -10,7 +10,7 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/nliveo_grey" />
+        android:background="@color/nliveo_gray" />
 
     <TextView
         android:layout_width="match_parent"

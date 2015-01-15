@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="nliveo_white">#ffffff</color>
-	<color name="nliveo_grey">#e0e0e0</color>
+	<color name="nliveo_gray">#e0e0e0</color>
 	<color name="nliveo_black">#000000</color>
 	<color name="nliveo_transparent">#00000000</color>
 
@@ -41,7 +41,7 @@
     <color name="nliveo_teal_colorPrimaryDark">#00796B</color>
     <color name="nliveo_teal_alpha_colorPrimaryDark">#8000796B</color>
 
-    <color name="nliveo_blue_grey_colorPrimary">#607D8B</color>
-    <color name="nliveo_blue_grey_colorPrimaryDark">#80455A64</color>
-    <color name="nliveo_blue_grey_alpha_colorPrimaryDark">#80455A64</color>
+    <color name="nliveo_blue_gray_colorPrimary">#607D8B</color>
+    <color name="nliveo_blue_gray_colorPrimaryDark">#80455A64</color>
+    <color name="nliveo_blue_gray_alpha_colorPrimaryDark">#80455A64</color>
 </resources>
