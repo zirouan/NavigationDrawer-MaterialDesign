@@ -9,17 +9,13 @@ How to use? Very simple! : D
 
 #How to add to your project
 
-Add this to your build.gradle:
+<b>Add this to your build.gradle:</b>
 
-repositories {
-    mavenCentral()
+dependencies {<br>
+        compile 'br.com.liveo:navigationdrawer-material:1.0.0'<br>
 }
 
-dependencies {
-    compile 'br.com.liveo:navigationdrawer-material:1.0.0'
-}
-
-In your styles.xml choose your version:
+<b>In your styles.xml choose your version:</b>
 
     <!--Customize here the subject of your application-->
     <style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -41,7 +37,7 @@ In your styles.xml choose your version:
 
 note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with alpha eg # 80RRGGBB - The "# 80" will ensure the transparency of statusBar.
 
-Remember to set your theme in your AndroidManifest.xml:
+<b>Remember to set your theme in your AndroidManifest.xml:</b>
 
     <application
         android:allowBackup="true"
@@ -61,11 +57,11 @@ Remember to set your theme in your AndroidManifest.xml:
 
 #In your Activity...
 
-Create a class and it extends the NavigationLiveo and implement the NavigationLiveoListener.
+<b>Create a class and it extends the NavigationLiveo and implement the NavigationLiveoListener.</b>
 
 Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveoListener {
 
-In the method "onUserInformation" report user data logged
+<b>In the method "onUserInformation" report user data logged</b>
 
     @Override
     public void onUserInformation() {
@@ -76,7 +72,9 @@ In the method "onUserInformation" report user data logged
         this.mUserBackground.setImageResource(R.drawable.ic_user_background);
     }
 
-In the method "onInt" inform the items on your list
+#Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
+
+<b>In the method "onInt" inform the items on your list</b>
 
 @Override
     public void onInt(Bundle savedInstanceState) {
@@ -120,7 +118,11 @@ In the method "onInt" inform the items on your list
         this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
     }
 
-In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment
+<b>More methods</b><br>
+<a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">Other methods</a> <br>
+
+
+<br>In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment</b>
 
     @Override
     public void onItemClickNavigation(int position, int layoutContainerId) {
@@ -133,16 +135,15 @@ In the method "onItemClickNavigation" you can get the position of the clicked it
         }
     }
 
-User photo onClick
-    @Override
-    public void onClickUserPhotoNavigation(View v) {
-    }
+User photo onClick <br>
 
-Footer onClick
     @Override
-    public void onClickFooterItemNavigation(View v) {
-        startActivity(new Intent(this, SettingsActivity.class));
-    }
+    public void onClickUserPhotoNavigation(View v) {}
+
+Footer onClick <br>
+
+    @Override
+    public void onClickFooterItemNavigation(View v) {}
 
 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png"> 
@@ -156,10 +157,11 @@ E-mail: rudsonlive@gmail.com<br>
 Assunto: Navigation Drawer - Material Design
 <br>
 
-When using the design please remove all images and strings referring to Live-O. Thank you: D <br>
+<b>When using the design please remove all images and strings referring to Live-O. Thank you: D <br></b>
+
 
 /*
- * Copyright 2015 Rudson Lima
+ * Copyright 2015 Rudson Lima<br>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
