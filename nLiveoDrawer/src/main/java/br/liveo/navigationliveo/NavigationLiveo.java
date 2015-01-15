@@ -105,7 +105,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
             mountListNavigation(savedInstanceState);
 		}
 
-		if (savedInstanceState != null) { 			
+		if (savedInstanceState != null) {
 			setCurrentPosition(savedInstanceState.getInt(CURRENT_POSITION));
 	    }else{
             mNavigationListener.onItemClickNavigation(mCurrentPosition, R.id.container);
@@ -125,6 +125,8 @@ public abstract class NavigationLiveo extends ActionBarActivity {
             } catch (Exception e) {
                 e.getMessage();
             }
+
+            this.getToolbar().setElevation(10);
         }
 	}
 
@@ -174,12 +176,12 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
 		@Override
 		public void onDrawerClosed(View view) {			
-			supportInvalidateOptionsMenu();				
+			supportInvalidateOptionsMenu();
 		}
 
 		@Override
 		public void onDrawerOpened(View drawerView) {
-			supportInvalidateOptionsMenu();			
+			supportInvalidateOptionsMenu();
 		}		
 	}
 		  
