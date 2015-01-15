@@ -6,32 +6,42 @@
 	<color name="nliveo_transparent">#00000000</color>
 
     <color name="nliveo_blue_colorPrimary">#2196F3</color>
-    <color name="nliveo_blue_colorPrimaryDark">#801976D2</color>
+    <color name="nliveo_blue_colorPrimaryDark">#1976D2</color>
+    <color name="nliveo_blue_alpha_colorPrimaryDark">#801976D2</color>
 
     <color name="nliveo_green_colorPrimary">#4CAF50</color>
-    <color name="nliveo_green_colorPrimaryDark">#80388E3C</color>
+    <color name="nliveo_green_colorPrimaryDark">#388E3C</color>
+    <color name="nliveo_green_alpha_colorPrimaryDark">#80388E3C</color>
 
     <color name="nliveo_red_colorPrimary">#F44336</color>
-    <color name="nliveo_red_colorPrimaryDark">#80D32F2F</color>
+    <color name="nliveo_red_colorPrimaryDark">#D32F2F</color>
+    <color name="nliveo_red_alpha_colorPrimaryDark">#80D32F2F</color>
 
     <color name="nliveo_indigo_colorPrimary">#3F51B5</color>
-    <color name="nliveo_indigo_colorPrimaryDark">#8030379F</color>
+    <color name="nliveo_indigo_colorPrimaryDark">#30379F</color>
+    <color name="nliveo_indigo_alpha_colorPrimaryDark">#8030379F</color>
 
     <color name="nliveo_orange_colorPrimary">#FF9800</color>
-    <color name="nliveo_orange_colorPrimaryDark">#80F57C00</color>
+    <color name="nliveo_orange_colorPrimaryDark">#F57C00</color>
+    <color name="nliveo_orange_alpha_colorPrimaryDark">#80F57C00</color>
 
     <color name="nliveo_lime_colorPrimary">#CDDC39</color>
-    <color name="nliveo_lime_colorPrimaryDark">#80AFB42B</color>
+    <color name="nliveo_lime_colorPrimaryDark">#AFB42B</color>
+    <color name="nliveo_lime_alpha_colorPrimaryDark">#80AFB42B</color>
 
     <color name="nliveo_cyan_colorPrimary">#00BCD4</color>
-    <color name="nliveo_cyan_colorPrimaryDark">#800097A7</color>
+    <color name="nliveo_cyan_colorPrimaryDark">#0097A7</color>
+    <color name="nliveo_cyan_alpha_colorPrimaryDark">#800097A7</color>
 
     <color name="nliveo_brown_colorPrimary">#795548</color>
-    <color name="nliveo_brown_colorPrimaryDark">#805D4037</color>
+    <color name="nliveo_brown_colorPrimaryDark">#5D4037</color>
+    <color name="nliveo_brown_alpha_colorPrimaryDark">#805D4037</color>
 
     <color name="nliveo_teal_colorPrimary">#009688</color>
-    <color name="nliveo_teal_colorPrimaryDark">#8000796B</color>
+    <color name="nliveo_teal_colorPrimaryDark">#00796B</color>
+    <color name="nliveo_teal_alpha_colorPrimaryDark">#8000796B</color>
 
     <color name="nliveo_blue_grey_colorPrimary">#607D8B</color>
     <color name="nliveo_blue_grey_colorPrimaryDark">#80455A64</color>
+    <color name="nliveo_blue_grey_alpha_colorPrimaryDark">#80455A64</color>
 </resources>

@@ -1,4 +1,5 @@
 package br.liveo.ndrawer;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +20,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
     @Override
     public void onUserInformation() {
+        //User information here
         this.mUserName.setText("Rudson Lima");
         this.mUserEmail.setText("rudsonlive@gmail.com");
         this.mUserPhoto.setImageResource(R.drawable.ic_rudsonlive);
@@ -27,9 +29,12 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
     @Override
     public void onInt(Bundle savedInstanceState) {
+        //Creation of the list items is here
 
+        // set listener {required}
         this.setNavigationListener(this);
 
+        // name of the list items
         mListNameItem = new ArrayList<>();
         mListNameItem.add(0, getString(R.string.inbox));
         mListNameItem.add(1, getString(R.string.starred));
@@ -37,25 +42,23 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         mListNameItem.add(3, getString(R.string.drafts));
         mListNameItem.add(4, getString(R.string.more_markers)); //This item will be a subHeader
         mListNameItem.add(5, getString(R.string.trash));
-        mListNameItem.add(6, null); //Subheader only line
-        mListNameItem.add(7, getString(R.string.spam));
+        mListNameItem.add(6, getString(R.string.spam));
 
+        // icons list items
         List<Integer> mListIconItem = new ArrayList<>();
         mListIconItem.add(0, R.drawable.ic_inbox_black_24dp);
-        mListIconItem.add(1, R.drawable.ic_star_black_24dp);
-        mListIconItem.add(2, 0); //Item no icon
+        mListIconItem.add(1, 0); //Item no icon set 0
+        mListIconItem.add(2, 0); //Item no icon set 0
         mListIconItem.add(3, R.drawable.ic_drafts_black_24dp);
         mListIconItem.add(4, 0); //When the item is a subHeader the value of the icon 0
         mListIconItem.add(5, R.drawable.ic_delete_black_24dp);
-        mListIconItem.add(6, 0); //When the item is a subHeader the value of the icon 0
-        mListIconItem.add(7, R.drawable.ic_report_black_24dp);
+        mListIconItem.add(6, R.drawable.ic_report_black_24dp);
 
-        //{optional}
-        List<Integer> mListHeaderItem = new ArrayList<>(); //indicate who the items is a subheader
+        //{optional} - Among the names there is some subheader, you must indicate it here
+        List<Integer> mListHeaderItem = new ArrayList<>();
         mListHeaderItem.add(4);
-        mListHeaderItem.add(6);
 
-        //{optional}
+        //{optional} - Among the names there is any item counter, you must indicate it (position) and the value here
         SparseIntArray mSparseCounterItem = new SparseIntArray(); //indicate all items that have a counter
         mSparseCounterItem.put(0, 7);
         mSparseCounterItem.put(6, 250);
@@ -80,6 +83,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
     @Override
     public void onPrepareOptionsMenuNavigation(Menu menu, int position, boolean visible) {
 
+        //hide the menu when the navigation is opens
         switch (position) {
             case 0:
                 menu.findItem(R.id.menu_add).setVisible(!visible);
@@ -95,11 +99,13 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
     @Override
     public void onClickUserPhotoNavigation(View v) {
+        //user photo onClick
         Toast.makeText(this, R.string.open_user_profile, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onClickFooterItemNavigation(View v) {
-        Toast.makeText(this, R.string.open_settings, Toast.LENGTH_SHORT).show();
+        //footer onClick
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 }

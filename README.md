@@ -1,78 +1,149 @@
-Navigation drawer (it is not library)
+Navigation drawer (library)
 ===============================
 
-<b>Example material design</b>
+It requires 8+ API and android support v7 (Toolbar)
 
 <b>app:</b> <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">NavigationDrawer Live-O</a>
 
 How to use? Very simple! : D
 
-Class "Utils" - package: br.liveo.util <br>
+#How to add to your project
 
-<b>*Change the "nameNavigation" and "iconNavigation" as both are important items to list the assembly. Recalling that the names and icons due to have the same position in the array.</br> <br>
+Add this to your build.gradle:
 
-<b>Altere o "nameNavigation" e "iconNavigation" pois ambos são itens importantes para montagem da lista. Lembrando que os nomes e ícones deveram ter a mesma posição no array.</b> <br>
+repositories {
+    mavenCentral()
+}
 
-    public static int[] nameNavigation = new int[] {
-            R.string.inbox, R.string.starred, R.string.sent_mail,
-            R.string.drafts, R.string.more_markers, R.string.trash,
-            R.string.spam}; 
-<br>
+dependencies {
+    compile 'br.com.liveo:navigationdrawer-material:1.0.0'
+}
 
-<b>*The string "R.string.more markers" refers to a subheader, then how icon will put 0 since it does not have icon (position 4 of the array)</b> <br>
-<b>If you want a normal item no icon is only inform 0 in place of an icon. </b> <br>
+In your styles.xml choose your version:
 
-<b>A string "R.string.more markers" é referente a uma subHeader, então como ícone iremos colocar 0 já que o mesmo não possui ícone (posição 4 do array) </b> <br>
-<b>Caso queira um item normal sem ícone é só informar 0 no lugar de um ícone. </b> <br>
+    <!--Customize here the subject of your application-->
+    <style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/nliveo_blue_colorPrimaryDark</item>
+        <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
+    </style>
 
-	public static int[] iconNavigation = new int[] {
-            R.drawable.ic_inbox_black_24dp, R.drawable.ic_star_black_24dp, R.drawable.ic_send_black_24dp,
-            R.drawable.ic_drafts_black_24dp, 0, R.drawable.ic_delete_black_24dp, 
-            R.drawable.ic_report_black_24dp}; <br>
+    <!--Here will be the theme of the class that will extends NavigationLiveo-->
+    <style name="nLiveoDrawer" parent="nLiveo.Theme.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
+        <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
+    </style>
 
-<b>*Once you have created your "nameNavigation" and "iconNavigation" it is time to say what is subheader and which items teram a counter.</b>
-<b>As we can see in the method "mountListNavigation" the NavigationMain class, to report that an item is a subheader is only to build the following: </b> <br>
-<b>The following code tells you that the item "R.string.more markers" which has the position 4 in the "nameNavigation" will be a subheader. </b> <br>
+<a href="https://gist.github.com/rudsonlive/5f4001ac00fcd4dfc1a4" target="_blank">Available colors</a>
 
-<b>Depois de ter criado o seu "nameNavigation" e "iconNavigation" chegou a hora de dizer o que é subHeader e quais os itens que teram um contador.</b>
-<b>Como podemos ver no método "mountListNavigation" da classe NavigationMain, para informar que um item é um subHeader é só criarmos o seguinte: </b> <br>
-<b>O código abaixo informa que o item "R.string.more_markers" que tem a posição 4 no "nameNavigation" será um subHeader. </b> <br>
+note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with alpha eg # 80RRGGBB - The "# 80" will ensure the transparency of statusBar.
 
-        List<Integer> mListHeader = new ArrayList<>();
-        mListHeader.add(4); 
+Remember to set your theme in your AndroidManifest.xml:
 
-<b>*And if you want an item has a counter just do the following: </b> <br>
-<b>E caso queira que um item tenha um contador é só fazer o seguinte: </b> <br>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
 
-"R.string.inbox"- posição (position)  = 0 - valor do contador (counter value) = 7 <br>
-"R.string.spam"- posição (position) = 6 - valor do contador (counter value) = 10
+    <!--Theme of your application-->
+        android:theme="@style/myTheme" >
 
-        SparseIntArray  mSparseCounter = new SparseIntArray();
-        mSparseCounter.put(0, 7);
-        mSparseCounter.put(6, 10);
-        
-<b>*When you need to update just use setInboxCounter method that is in class NavigationAdapter. </b> <br>        
-<b>Quando precisar atualizar é só usar o método setInboxCounter que se encontra na class NavigationAdapter. </b> <br>
+        <activity
+            android:name=".MainActivity"
 
-	public void setInboxCounter(int count){
-		mInboxCounter = count;
-		mList.get(Constant.INBOX).counter = mInboxCounter;
-		notifyDataSetChanged();
-	}
+    <!--Theme of the class that will extends NavigationLiveo-->
+            android:theme="@style/nLiveoDrawer"
+        </activity>
+    </application>
 
-<b>*I made the example of the inbox but you can create this method for all other items with counters. </b> <br>
-<b>And to finish just add the mListHeader and mSparseCounter the adapter </b> <br>
+#In your Activity...
 
-<b>Fiz o exemplo do inbox mas você pode criar este método para todos os outros itens com contadores. </b> <br>
-<b>E pra finalizar é só adicionar o mListHeader e mSparseCounter ao adapter </b> <br>
+Create a class and it extends the NavigationLiveo and implement the NavigationLiveoListener.
 
-        mNavigationAdapter = new NavigationAdapter(this, 
-        NavigationList.getNavigationAdapter(this, mListHeader, mSparseCounter));
-        mList.setAdapter(mNavigationAdapter);
-<br>
-<b>Username, email, user photo and background can be changed in mountListHeader method of class NavigationMain. </b> <br>
+Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveoListener {
 
-<b>Nome de usuário, e-mail, foto do usuário e plano de fundo pode ser alterado no método mountListHeader da class NavigationMain. </b> <br>
+In the method "onUserInformation" report user data logged
+
+    @Override
+    public void onUserInformation() {
+        //User information here
+        this.mUserName.setText("Rudson Lima");
+        this.mUserEmail.setText("rudsonlive@gmail.com");
+        this.mUserPhoto.setImageResource(R.drawable.ic_rudsonlive);
+        this.mUserBackground.setImageResource(R.drawable.ic_user_background);
+    }
+
+In the method "onInt" inform the items on your list
+
+@Override
+    public void onInt(Bundle savedInstanceState) {
+        //Creation of the list items is here
+
+        // set listener {required}
+        this.setNavigationListener(this);
+
+        // name of the list items
+        List<String> mListNameItem = new ArrayList<>();
+        mListNameItem.add(0, getString(R.string.inbox));
+        mListNameItem.add(1, getString(R.string.starred));
+        mListNameItem.add(2, getString(R.string.sent_mail));
+        mListNameItem.add(3, getString(R.string.drafts));
+        mListNameItem.add(4, getString(R.string.more_markers)); //This item will be a subHeader
+        mListNameItem.add(5, getString(R.string.trash));
+        mListNameItem.add(6, getString(R.string.spam));
+
+        // icons list items
+        List<Integer> mListIconItem = new ArrayList<>();
+        mListIconItem.add(0, R.drawable.ic_inbox_black_24dp);
+        mListIconItem.add(1, 0); //Item no icon set 0
+        mListIconItem.add(2, 0); //Item no icon set 0
+        mListIconItem.add(3, R.drawable.ic_drafts_black_24dp);
+        mListIconItem.add(4, 0); //When the item is a subHeader the value of the icon 0
+        mListIconItem.add(5, R.drawable.ic_delete_black_24dp);
+        mListIconItem.add(6, R.drawable.ic_report_black_24dp);
+
+        //{optional} - Among the names there is some subheader, you must indicate it here
+        List<Integer> mListHeaderItem = new ArrayList<>();
+        mListHeaderItem.add(4);
+
+        //{optional} - Among the names there is any item counter, you must indicate it (position) and the value here
+        SparseIntArray mSparseCounterItem = new SparseIntArray(); //indicate all items that have a counter
+        mSparseCounterItem.put(0, 7);
+        mSparseCounterItem.put(6, 250);
+
+        //If not please use the FooterDrawer use the setFooterVisible(boolean visible) method with value false
+        this.setFooterInformationDrawer(R.string.settings, R.drawable.ic_settings_black_24dp);
+
+        this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
+    }
+
+In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment
+
+    @Override
+    public void onItemClickNavigation(int position, int layoutContainerId) {
+
+        FragmentManager mFragmentManager = getSupportFragmentManager();
+        Fragment mFragment = new FragmentMain().newInstance(mListNameItem.get(position));
+
+        if (mFragment != null){
+            mFragmentManager.beginTransaction().replace(layoutContainerId, mFragment).commit();
+        }
+    }
+
+User photo onClick
+    @Override
+    public void onClickUserPhotoNavigation(View v) {
+    }
+
+Footer onClick
+    @Override
+    public void onClickFooterItemNavigation(View v) {
+        startActivity(new Intent(this, SettingsActivity.class));
+    }
+
 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png"> 
 
@@ -86,10 +157,23 @@ Assunto: Navigation Drawer - Material Design
 <br>
 
 When using the design please remove all images and strings referring to Live-O. Thank you: D <br>
-=================================================================================================
 
-Quando for utilizar o projeto por favor, retire todas as imagens e strings referente a Live-O. Obrigado :D
-==========================================================================================================
+/*
+ * Copyright 2015 Rudson Lima
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 <br>
 source:<br> 
 <a href="http://www.google.com/design/spec/patterns/navigation-drawer.html" target="_blank">NavigationDrawer</a>
