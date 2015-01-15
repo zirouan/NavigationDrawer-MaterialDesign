@@ -3,7 +3,7 @@ Navigation drawer (library)
 
 It requires 8+ API and android support v7 21.0.3 (Toolbar)
 
-<b>app:</b> <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">NavigationDrawer Live-O</a>
+<b>App is not update:</b> <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">NavigationDrawer Live-O</a> ()
 
 How to use? Very simple! : D
 
