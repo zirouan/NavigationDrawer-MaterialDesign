@@ -12,7 +12,7 @@ How to use? Very simple! : D
 <b>Add this to your build.gradle:</b>
 
 dependencies {<br>
-    compile 'br.com.liveo:navigationdrawer-material:1.0.0'<br>
+        compile 'br.com.liveo:navigationdrawer-material:1.0.0'<br>
 }
 
 <b>In your styles.xml choose your version:</b>
@@ -72,6 +72,8 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
         this.mUserBackground.setImageResource(R.drawable.ic_user_background);
     }
 
+#Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
+
 <b>In the method "onInt" inform the items on your list</b>
 
 @Override
@@ -116,7 +118,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
         this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
     }
 
-In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment
+<br>In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment</b>
 
     @Override
     public void onItemClickNavigation(int position, int layoutContainerId) {
@@ -153,8 +155,9 @@ Assunto: Navigation Drawer - Material Design
 
 <b>When using the design please remove all images and strings referring to Live-O. Thank you: D <br></b>
 
+
 /*
- * Copyright 2015 Rudson Lima
+ * Copyright 2015 Rudson Lima<br>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
