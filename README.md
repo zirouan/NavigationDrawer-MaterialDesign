@@ -42,17 +42,12 @@ note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with
 <b>Remember to set your theme in your AndroidManifest.xml:</b>
 
     <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-
     <!--Theme of your application-->
         android:theme="@style/myTheme" >
 
         <activity
+    <!--Theme of the class that will extends NavigationLiveo-->        
             android:name=".MainActivity"
-
-    <!--Theme of the class that will extends NavigationLiveo-->
             android:theme="@style/nLiveoDrawer"
         </activity>
     </application>
