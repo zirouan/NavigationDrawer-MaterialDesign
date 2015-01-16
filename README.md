@@ -166,6 +166,8 @@ Footer onClick <br>
 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_02.png"> 
 
+<b>Your app uses this library? You can promote it here! Just send your app that'll be happy to disclose.</b> <br>
+
 <br>
 <b>Duvida ou sugestões (Questions or suggestions)</b> <br>
 Nome: Rudson Lima <br>
