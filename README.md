@@ -11,12 +11,13 @@ How to use? Very simple! : D
 
 <b>Add this to your build.gradle:</b>
 
-dependencies {<br>
-        compile 'br.com.liveo:navigationdrawer-material:1.0.0'<br>
+```
+dependencies {
+        compile 'br.com.liveo:navigationdrawer-material:1.0.0'
 }
-
+````
 <b>In your styles.xml choose your version:</b>
-
+```
     <!--Customize here the subject of your application-->
     <style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -32,7 +33,7 @@ dependencies {<br>
         <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
         <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
     </style>
-
+```
 <b>Also there is nLiveo.Theme.Light theme<b><br>
 
 <a href="https://gist.github.com/rudsonlive/5f4001ac00fcd4dfc1a4" target="_blank">Available colors</a>
@@ -41,6 +42,7 @@ note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with
 
 <b>Remember to set your theme in your AndroidManifest.xml:</b>
 
+```
     <application
     <!--Theme of your application-->
         android:theme="@style/myTheme" >
@@ -51,6 +53,7 @@ note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with
             android:theme="@style/nLiveoDrawer"
         </activity>
     </application>
+````
 
 #In your Activity...
 
@@ -60,6 +63,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
 <b>In the method "onUserInformation" report user data logged</b>
 
+```
     @Override
     public void onUserInformation() {
         //User information here
@@ -68,11 +72,13 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
         this.mUserPhoto.setImageResource(R.drawable.ic_rudsonlive);
         this.mUserBackground.setImageResource(R.drawable.ic_user_background);
     }
+````
 
 #Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
 
 <b>In the method "onInt" inform the items on your list</b>
 
+```
 @Override
     public void onInt(Bundle savedInstanceState) {
         //Creation of the list items is here
@@ -114,6 +120,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
         this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
     }
+````
 
 <b>More methods</b><br>
 <a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">Other methods</a> <br>
@@ -121,6 +128,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
 <br>In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment</b>
 
+```
     @Override //The "layoutContainerId" should be used in "beginTransaction (). Replace"
     public void onItemClickNavigation(int position, int layoutContainerId) {
 
@@ -131,9 +139,11 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
             mFragmentManager.beginTransaction().replace(layoutContainerId, mFragment).commit();
         }
     }
+````
 
 It has the same functionality as public boolean onPrepareOptionsMenu(Menu menu) and the example was used to hide the fragment menus. <br>
 
+```
     @Override
     public void onPrepareOptionsMenuNavigation(Menu menu, int position, boolean visible) {
 
@@ -150,17 +160,18 @@ It has the same functionality as public boolean onPrepareOptionsMenu(Menu menu) 
                 break;
         }
     }
+```    
 
 User photo onClick <br>
-
+```
     @Override
     public void onClickUserPhotoNavigation(View v) {}
-
+```
 Footer onClick <br>
-
+```
     @Override
     public void onClickFooterItemNavigation(View v) {}
-
+```
 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png"> 
 
@@ -178,21 +189,22 @@ Assunto: Navigation Drawer - Material Design
 <b>When using the design please remove all images and strings referring to Live-O. Thank you: D <br></b>
 
 
-/*
- * Copyright 2015 Rudson Lima<br>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+```
+  Copyright 2015 Rudson Lima<br>
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+ 
+      http://www.apache.org/licenses/LICENSE-2.0
+ 
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ 
+````
 
 <br>
 source:<br> 
