@@ -195,7 +195,7 @@ Footer onClick <br>
 
 <br>
 #Developed By<br>
-Name: Rudson Lima 
+Name: Rudson Lima<br> 
 E-mail: rudsonlive@gmail.com<br>
 Subject: Navigation Drawer - Material Design
 <br>
