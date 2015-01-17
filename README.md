@@ -9,13 +9,24 @@ How to use? Very simple! : D
 
 #How to add to your project
 
-<b>Add this to your build.gradle:</b>
+#<b>Gradle</b>
 
 ```groovy
 dependencies {
         compile 'br.com.liveo:navigationdrawer-material:1.0.0'
 }
-````
+```
+#<b>Maven</b>
+
+```groovy
+<dependency>
+  <groupId>br.com.liveo</groupId>
+  <artifactId>navigationdrawer-material</artifactId>
+  <version>1.0.0</version>
+  <type>aar</type>
+</dependency>
+```
+
 <b>In your styles.xml choose your version:</b>
 
     <!--Customize here the subject of your application-->
@@ -125,9 +136,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
     }
 ````
 
-<b>More methods</b><br>
-<a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">Other methods</a> <br>
-
+<a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">updated - Other methods</a> <br>
 
 <br>In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment</b>
 
