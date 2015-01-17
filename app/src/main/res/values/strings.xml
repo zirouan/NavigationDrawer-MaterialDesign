@@ -3,6 +3,8 @@
 
     <string name="app_name">nDrawer</string>
 
+    <string name="sign_in">Sign in</string>
+
     <string name="inbox">Inbox</string>
     <string name="starred">Starred</string>
     <string name="sent_mail">Sent Mail</string>

@@ -54,8 +54,6 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     private Toolbar mToolbar;
 
     private View mHeader;
-    private View mCustomHeader;
-    private boolean isCustomHeader = false;
 
     private TextView mTitleFooter;
     private ImageView mIconFooter;
@@ -82,13 +80,15 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
+    public abstract void onUserInformation();
+
     /**
      * onCreate(Bundle savedInstanceState).
      * @param savedInstanceState onCreate(Bundle savedInstanceState).
      */
     public abstract void onInt(Bundle savedInstanceState);
+    public abstract void onUserInformationCustomHeader();
 
-    public abstract void onUserInformation();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -243,6 +243,11 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         createUserDefaultHeader();
         onUserInformation();
         onInt(savedInstanceState);
+        setAdapterNavigation();
+        onUserInformationCustomHeader();
+    }
+
+    private void setAdapterNavigation(){
 
         if (mNavigationListener == null){
             throw new RuntimeException("You must start the NavigationListener in onInit() method of its main activity. Example: this.setNavigationListener(this);");
@@ -252,6 +257,15 @@ public abstract class NavigationLiveo extends ActionBarActivity {
                 mListHeader, mSparseCounter, mColorSelected, mRemoveSelector), mNewSelector, mColorDefault, mRemoveAlpha);
 
         mList.setAdapter(mNavigationAdapter);
+    }
+
+    private void resetAdpterNavigation(View v){
+        mNavigationAdapter = null;
+        mList.setAdapter(mNavigationAdapter);
+        mList.addHeaderView(v, null, false);
+        setAdapterNavigation();
+
+        setCheckedItemNavigation(mCurrentPosition, true);
     }
 
     /**
@@ -272,26 +286,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 //        mUserPhotoTree = (ImageView) mHeader.findViewById(R.id.userPhotoTree);
 
         mUserBackground = (ImageView) mHeader.findViewById(R.id.userBackground);
-
-        if (!isCustomHeader) {
-            mList.addHeaderView(mHeader);
-        }
-    }
-
-    /**
-     * Create user default header
-     * @param resource Enter the id of your layout - R.layout.customHeader.
-     */
-    private void createUsercustomHeader(int resource){
-
-        mCustomHeader = getLayoutInflater().inflate(resource, mList, false);
-
-        if (mCustomHeader == null){
-            throw new RuntimeException("custom header was not created");
-        }
-
-        isCustomHeader = true;
-        mList.addHeaderView(mCustomHeader);
+        mList.addHeaderView(mHeader);
     }
 
     /**
@@ -492,31 +487,57 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     }
 
     /**
-     * get custom header
+     * Remove default Header
      */
-    private View getCustomHeader() {
-
-        if (mCustomHeader == null){
-            throw new RuntimeException("custom header was not created");
+    public void showDefauldHeader() {
+        if (mHeader == null){
+            throw new RuntimeException("header was not created");
         }
 
-        return this.mCustomHeader;
+        resetAdpterNavigation(mHeader);
     }
 
     /**
-     * Remove custom Header
+     * Remove default Header
      */
-    private void removeCustomHeader() {
-        if (isCustomHeader){
-
-            if (mCustomHeader == null){
-                throw new RuntimeException("custom header was not created");
-            }
-
-            isCustomHeader = false;
-            mList.removeHeaderView(mCustomHeader);
-            mList.addHeaderView(mHeader);
+    private void removeDefauldHeader() {
+        if (mHeader == null){
+            throw new RuntimeException("header was not created");
         }
+
+        mList.removeHeaderView(mHeader);
+    }
+
+    /**
+     * Add custom Header
+     * @param v ...
+     */
+    public void addCustomHeader(View v) {
+        if (v == null){
+            throw new RuntimeException("header custom was not created");
+        }
+
+        removeDefauldHeader();
+        resetAdpterNavigation(v);
+    }
+
+    /**
+     * Remove default Header
+     * @param v ...
+     */
+    public void removeCustomdHeader(View v) {
+        if (v == null){
+            throw new RuntimeException("header custom was not created");
+        }
+
+        mList.removeHeaderView(v);
+    }
+
+    /**
+     * get listview
+     */
+    public ListView getListView() {
+        return this.mList;
     }
 
     /**
@@ -527,10 +548,17 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     }
 
     /**
-     * get DrawerLayout
+     * Open drawer
      */
-    public DrawerLayout getDrawerLayout() {
-        return this.mDrawerLayout;
+    public void openDrawer() {
+        mDrawerLayout.openDrawer(mRelativeDrawer);
+    }
+
+    /**
+     * Close drawer
+     */
+    public void closeDrawer() {
+        mDrawerLayout.closeDrawer(mRelativeDrawer);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import br.liveo.navigationliveo.NavigationLiveo;
 
 public class MainActivity extends NavigationLiveo implements NavigationLiveoListener {
 
+    private View mCustomHeader;
     public List<String> mListNameItem;
 
     @Override
@@ -68,6 +70,25 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
         this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
     }
+
+    @Override
+    public void onUserInformationCustomHeader() {
+        mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
+
+        TextView textview = (TextView) mCustomHeader.findViewById(R.id.textview);
+        textview.setOnClickListener(onClick);
+        this.addCustomHeader(mCustomHeader);
+    }
+
+    private View.OnClickListener onClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            removeCustomdHeader(mCustomHeader);
+            showDefauldHeader();
+            onUserInformation();
+            closeDrawer();
+        }
+    };
 
     @Override
     public void onItemClickNavigation(int position, int layoutContainerId) {

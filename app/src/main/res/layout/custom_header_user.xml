@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="189dp"
+    android:background="@color/nliveo_cyan_colorPrimary">
+
+    <br.liveo.ui.RoundedImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:id="@+id/imageView"
+        android:src="@drawable/ic_no_user"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/sign_in"
+        android:id="@+id/textview"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:textColor="@color/nliveo_white"
+        android:layout_gravity="center_vertical"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
