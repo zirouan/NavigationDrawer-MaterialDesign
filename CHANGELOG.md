@@ -2,6 +2,8 @@
 
 Version 1.1.0 *(17-01-2015)*
 ----------------------------
+It requires 8+ API and android support v7 21.0.3 (Toolbar)
+
 * Add @param
 * New functions
 ```groovy
@@ -14,4 +16,6 @@ Version 1.1.0 *(17-01-2015)*
 
 Version 1.0.0 *(15-01-2015)*
 ----------------------------
+It requires 8+ API and android support v7 21.0.3 (Toolbar)
+
 * Library publication :D
