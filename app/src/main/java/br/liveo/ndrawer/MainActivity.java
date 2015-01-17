@@ -73,6 +73,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
     public void onItemClickNavigation(int position, int layoutContainerId) {
 
         FragmentManager mFragmentManager = getSupportFragmentManager();
+
         Fragment mFragment = new FragmentMain().newInstance(mListNameItem.get(position));
 
         if (mFragment != null){

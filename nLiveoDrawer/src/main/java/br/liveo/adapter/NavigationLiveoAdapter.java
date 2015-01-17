@@ -34,13 +34,17 @@ import br.liveo.navigationliveo.R;
 public class NavigationLiveoAdapter extends BaseAdapter {
 
     private int mNewDrawable = 0;
+    private int mColorDefault = 0;
 	private final Context mcontext;
+    private boolean mRemoveAlpha = false;
 	private final List<NavigationLiveoItemAdapter> mList;
 	
-	public NavigationLiveoAdapter(Context context, List<NavigationLiveoItemAdapter> list, int drawable) {
+	public NavigationLiveoAdapter(Context context, List<NavigationLiveoItemAdapter> list, int drawable, int colorDefault, boolean removeAlpha) {
 		this.mList = list;		
 		this.mcontext = context;
+        this.mColorDefault = colorDefault;
         this.mNewDrawable = drawable;
+        this.mRemoveAlpha = removeAlpha;
 	}
 
 	@Override
@@ -110,13 +114,25 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 	}
 
     private void setAlpha(View v, float alpha) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            v.setAlpha(alpha);
-        } else {
-            AlphaAnimation animation = new AlphaAnimation(alpha, alpha);
-            animation.setDuration(0);
-            animation.setFillAfter(true);
-            v.startAnimation(animation);
+
+        if (!mRemoveAlpha) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                v.setAlpha(alpha);
+            } else {
+                AlphaAnimation animation = new AlphaAnimation(alpha, alpha);
+                animation.setDuration(0);
+                animation.setFillAfter(true);
+                v.startAnimation(animation);
+            }
+        }else{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                v.setAlpha(1f);
+            } else {
+                AlphaAnimation animation = new AlphaAnimation(1f, 1f);
+                animation.setDuration(0);
+                animation.setFillAfter(true);
+                v.startAnimation(animation);
+            }
         }
     }
 
@@ -180,7 +196,8 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 
                 holder.icon.setColorFilter((!item.isHeader && item.checked && item.colorSelected > 0 ?
                         mcontext.getResources().getColor(item.colorSelected) :
-                        mcontext.getResources().getColor(R.color.nliveo_black)));
+                        (mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
+                                           mcontext.getResources().getColor(R.color.nliveo_black))));
 			} else {
 				holder.icon.setVisibility(View.GONE);
 			}

@@ -17,7 +17,6 @@
 
         <include layout="@layout/navigation_toolbar" />
         <include layout="@layout/navigation_container" />
-
     </LinearLayout>
 
     <br.liveo.ui.ScrimInsetsFrameLayout

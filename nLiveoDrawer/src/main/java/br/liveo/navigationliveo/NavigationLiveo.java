@@ -53,12 +53,18 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     private ListView mList;
     private Toolbar mToolbar;
 
+    private View mHeader;
+    private View mCustomHeader;
+    private boolean isCustomHeader = false;
+
     private TextView mTitleFooter;
     private ImageView mIconFooter;
 
+    private int mColorDefault = 0;
     private int mColorSelected = 0;
     private int mCurrentPosition = 1;
     private int mNewSelector = 0;
+    private boolean mRemoveAlpha = false;
     private boolean mRemoveSelector = false;
 
     private List<Integer> mListIcon;
@@ -76,7 +82,12 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
+    /**
+     * onCreate(Bundle savedInstanceState).
+     * @param savedInstanceState onCreate(Bundle savedInstanceState).
+     */
     public abstract void onInt(Bundle savedInstanceState);
+
     public abstract void onUserInformation();
 
 	@Override
@@ -229,7 +240,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     };
 
     private void mountListNavigation(Bundle savedInstanceState){
-        mountListHeader();
+        createUserDefaultHeader();
         onUserInformation();
         onInt(savedInstanceState);
 
@@ -238,13 +249,16 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         }
 
         mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(mListNameItem, mListIcon,
-                mListHeader, mSparseCounter, mColorSelected, mRemoveSelector), mNewSelector);
+                mListHeader, mSparseCounter, mColorSelected, mRemoveSelector), mNewSelector, mColorDefault, mRemoveAlpha);
 
         mList.setAdapter(mNavigationAdapter);
     }
 
-    private void mountListHeader() {
-        View mHeader = getLayoutInflater().inflate(R.layout.navigation_list_header, mList, false);
+    /**
+     * Create user default header
+     */
+    private void createUserDefaultHeader() {
+        mHeader = getLayoutInflater().inflate(R.layout.navigation_list_header, mList, false);
 
         mUserName = (TextView) mHeader.findViewById(R.id.userName);
         mUserEmail = (TextView) mHeader.findViewById(R.id.userEmail);
@@ -258,10 +272,35 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 //        mUserPhotoTree = (ImageView) mHeader.findViewById(R.id.userPhotoTree);
 
         mUserBackground = (ImageView) mHeader.findViewById(R.id.userBackground);
-        mList.addHeaderView(mHeader);
+
+        if (!isCustomHeader) {
+            mList.addHeaderView(mHeader);
+        }
     }
 
-    /*{ Set adapter attributes }*/
+    /**
+     * Create user default header
+     * @param resource Enter the id of your layout - R.layout.customHeader.
+     */
+    private void createUsercustomHeader(int resource){
+
+        mCustomHeader = getLayoutInflater().inflate(resource, mList, false);
+
+        if (mCustomHeader == null){
+            throw new RuntimeException("custom header was not created");
+        }
+
+        isCustomHeader = true;
+        mList.addHeaderView(mCustomHeader);
+    }
+
+    /**
+     * Set adapter attributes
+     * @param listNameItem list name item.
+     * @param listIcon list icon item.
+     * @param listItensHeader list header name item.
+     * @param sparceItensCount sparce count item.
+     */
     public void setNavigationAdapter(List<String> listNameItem, List<Integer> listIcon, List<Integer> listItensHeader, SparseIntArray sparceItensCount){
         this.mListNameItem = listNameItem;
         this.mListIcon = listIcon;
@@ -269,39 +308,64 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         this.mSparseCounter = sparceItensCount;
     }
 
-    /*{ Set adapter attributes }*/
+    /**
+     * Set adapter attributes
+     * @param listNameItem list name item.
+     * @param listIcon list icon item.
+     */
     public void setNavigationAdapter(List<String> listNameItem, List<Integer> listIcon){
         this.mListNameItem = listNameItem;
         this.mListIcon = listIcon;
     }
 
-    /*{ Starting listener navigation }*/
+    /**
+     * Starting listener navigation
+     * @param navigationListener listener.
+     */
     public void setNavigationListener(NavigationLiveoListener navigationListener){
         this.mNavigationListener = navigationListener;
     };
 
-    /*{ First item of the position selected from the list }*/
+    /**
+     * First item of the position selected from the list
+     * @param position ...
+     */
     public void setDefaultStartPositionNavigation(int position){
         this.mCurrentPosition = position;
     }
 
-    /*{ Position in the last clicked item list }*/
+    /**
+     * Position in the last clicked item list
+     * @param position ...
+     */
     private void setCurrentPosition(int position){
         this.mCurrentPosition = position;
     }
 
-    /*{ get position in the last clicked item list }*/
+    /**
+     * get position in the last clicked item list
+     */
     public int getCurrentPosition(){
         return this.mCurrentPosition;
     }
 
-    /*{ Select item clicked }*/
-    private void setCheckedItemNavigation(int position, boolean checked){
+    /*{  }*/
+
+    /**
+     * Select item clicked
+     * @param position item position.
+     * @param checked true to check.
+     */
+    public void setCheckedItemNavigation(int position, boolean checked){
         this.mNavigationAdapter.resetarCheck();
         this.mNavigationAdapter.setChecked(position, checked);
     }
 
-    /*{ Information footer list item }*/
+    /**
+     * Information footer list item
+     * @param title item footer name.
+     * @param icon item footer icon.
+     */
     public void setFooterInformationDrawer(String title, int icon){
 
         if (title == null){
@@ -321,7 +385,11 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         }
     };
 
-    /*{ Information footer list item }*/
+    /**
+     * Information footer list item
+     * @param title item footer name.
+     * @param icon item footer icon.
+     */
     public void setFooterInformationDrawer(int title, int icon){
 
         if (title == 0){
@@ -337,17 +405,42 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         }
     };
 
-    /*{ If not want to use the footer item just put false }*/
+    /**
+     * If not want to use the footer item just put false
+     * @param visible true or false.
+     */
     public void setFooterNavigationVisible(boolean visible){
         this.mFooterDrawer.setVisibility((visible) ? View.VISIBLE : View.GONE);
     }
 
-    /*{ Item color selected in the list - name and icon }*/
+    /**
+     * Item color selected in the list - name and icon (use before the setNavigationAdapter)
+     * @param colorId color id.
+     */
     public void setColorSelectedItemNavigation(int colorId){
         this.mColorSelected = colorId;
     }
 
-    /*{ New selector navigation }*/
+    /**
+     * Footer icon color
+     * @param colorId color id.
+     */
+    public void setFooterIconColorNavigation(int colorId){
+        this.mIconFooter.setColorFilter(getResources().getColor(colorId));
+    }
+
+    /**
+     * Item color default in the list - name and icon (use before the setNavigationAdapter)
+     * @param colorId color id.
+     */
+    public void setColorDefaultItemNavigation(int colorId){
+        this.mColorDefault = colorId;
+    }
+
+    /**
+     * New selector navigation
+     * @param drawable drawable xml - selector.
+     */
     public void setNewSelectorNavigation(int drawable){
 
         if (mRemoveSelector){
@@ -357,32 +450,85 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         this.mNewSelector = drawable;
     }
 
-    /*{ Remove selector navigation }*/
+    /**
+     * Remove selector navigation
+     */
     public void removeSelectorNavigation(){
         this.mRemoveSelector = true;
     }
 
-    /*{ --- }*/
+    /**
+     * New counter value
+     * @param position item position.
+     * @param value new counter value.
+     */
     public void setNewCounterValue(int position, int value){
         this.mNavigationAdapter.setNewCounterValue(position, value);
     }
 
-    /*{ --- }*/
+    /**
+     * Increasing counter value
+     * @param position item position.
+     * @param value new counter value (old value + new value).
+     */
     public void setIncreasingCounterValue(int position, int value){
         this.mNavigationAdapter.setIncreasingCounterValue(position, value);
     }
 
-    /*{ --- }*/
+    /**
+     * Decrease counter value
+     * @param position item position.
+     * @param value new counter value (old value - new value).
+     */
     public void setDecreaseCountervalue(int position, int value){
         this.mNavigationAdapter.setDecreaseCountervalue(position, value);
     }
 
-    /*{ get toolbar }*/
+    /**
+     * Remove alpha item navigation (use before the setNavigationAdapter)
+     */
+    public void removeAlphaItemNavigation(){
+        this.mRemoveAlpha = !mRemoveAlpha;
+    }
+
+    /**
+     * get custom header
+     */
+    private View getCustomHeader() {
+
+        if (mCustomHeader == null){
+            throw new RuntimeException("custom header was not created");
+        }
+
+        return this.mCustomHeader;
+    }
+
+    /**
+     * Remove custom Header
+     */
+    private void removeCustomHeader() {
+        if (isCustomHeader){
+
+            if (mCustomHeader == null){
+                throw new RuntimeException("custom header was not created");
+            }
+
+            isCustomHeader = false;
+            mList.removeHeaderView(mCustomHeader);
+            mList.addHeaderView(mHeader);
+        }
+    }
+
+    /**
+     * get toolbar
+     */
     public Toolbar getToolbar() {
         return this.mToolbar;
     }
 
-    /*{ get toolbar }*/
+    /**
+     * get DrawerLayout
+     */
     public DrawerLayout getDrawerLayout() {
         return this.mDrawerLayout;
     }
