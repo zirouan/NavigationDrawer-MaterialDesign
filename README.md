@@ -8,11 +8,14 @@ How to use? Very simple! : D
 
 #How to add to your project
 
+<b>Change Log</b><br>
+<a href="https://github.com/rudsonlive/NavigationDrawer-MaterialDesign/blob/master/CHANGELOG.md" target="_blank">Log file</a>
+
 #<b>Gradle</b>
 
 ```groovy
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:1.0.0'
+        compile 'br.com.liveo:navigationdrawer-material:1.1.0'
 }
 ```
 #<b>Maven</b>
@@ -21,7 +24,7 @@ dependencies {
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <type>aar</type>
 </dependency>
 ```
@@ -191,10 +194,10 @@ Footer onClick <br>
 <b>Your app uses this library? You can promote it here! Just send your app that'll be happy to disclose.</b> <br>
 
 <br>
-<b>Duvida ou sugestões (Questions or suggestions)</b> <br>
-Nome: Rudson Lima <br>
+#Developed By<br>
+Name: Rudson Lima 
 E-mail: rudsonlive@gmail.com<br>
-Assunto: Navigation Drawer - Material Design
+Subject: Navigation Drawer - Material Design
 <br>
 
 <b>When using the design please remove all images and strings referring to Live-O. Thank you: D <br></b>
