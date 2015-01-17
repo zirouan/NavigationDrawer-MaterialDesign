@@ -1,9 +1,9 @@
 Navigation drawer (library)
 ===============================
 
-It requires 8+ API and android support v7 (Toolbar)
+It requires 8+ API and android support v7 21.0.3 (Toolbar)
 
-<b>app:</b> <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">NavigationDrawer Live-O</a>
+<b>Google Play:</b> <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">NavigationDrawer Live-O</a>
 
 How to use? Very simple! : D
 
@@ -11,28 +11,31 @@ How to use? Very simple! : D
 
 <b>Add this to your build.gradle:</b>
 
-dependencies {<br>
-        compile 'br.com.liveo:navigationdrawer-material:1.0.0'<br>
+```groovy
+dependencies {
+        compile 'br.com.liveo:navigationdrawer-material:1.0.0'
 }
-
+````
 <b>In your styles.xml choose your version:</b>
 
     <!--Customize here the subject of your application-->
+```groovy
     <style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_blue_colorPrimaryDark</item>
         <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
     </style>
-
+````
     <!--Here will be the theme of the class that will extends NavigationLiveo-->
+```groovy
     <style name="nLiveoDrawer" parent="nLiveo.Theme.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
         <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
     </style>
-
+```
 <b>Also there is nLiveo.Theme.Light theme<b><br>
 
 <a href="https://gist.github.com/rudsonlive/5f4001ac00fcd4dfc1a4" target="_blank">Available colors</a>
@@ -41,16 +44,19 @@ note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with
 
 <b>Remember to set your theme in your AndroidManifest.xml:</b>
 
+```groovy
     <application
     <!--Theme of your application-->
         android:theme="@style/myTheme" >
-
+```      
+```groovy
         <activity
     <!--Theme of the class that will extends NavigationLiveo-->        
             android:name=".MainActivity"
             android:theme="@style/nLiveoDrawer"
         </activity>
     </application>
+````
 
 #In your Activity...
 
@@ -60,6 +66,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
 <b>In the method "onUserInformation" report user data logged</b>
 
+```groovy
     @Override
     public void onUserInformation() {
         //User information here
@@ -68,11 +75,13 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
         this.mUserPhoto.setImageResource(R.drawable.ic_rudsonlive);
         this.mUserBackground.setImageResource(R.drawable.ic_user_background);
     }
+````
 
 #Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
 
 <b>In the method "onInt" inform the items on your list</b>
 
+```groovy
 @Override
     public void onInt(Bundle savedInstanceState) {
         //Creation of the list items is here
@@ -114,6 +123,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
         this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
     }
+````
 
 <b>More methods</b><br>
 <a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">Other methods</a> <br>
@@ -121,6 +131,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
 <br>In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment</b>
 
+```groovy
     @Override //The "layoutContainerId" should be used in "beginTransaction (). Replace"
     public void onItemClickNavigation(int position, int layoutContainerId) {
 
@@ -131,9 +142,11 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
             mFragmentManager.beginTransaction().replace(layoutContainerId, mFragment).commit();
         }
     }
+````
 
 It has the same functionality as public boolean onPrepareOptionsMenu(Menu menu) and the example was used to hide the fragment menus. <br>
 
+```groovy
     @Override
     public void onPrepareOptionsMenuNavigation(Menu menu, int position, boolean visible) {
 
@@ -150,21 +163,24 @@ It has the same functionality as public boolean onPrepareOptionsMenu(Menu menu) 
                 break;
         }
     }
+```    
 
 User photo onClick <br>
-
+```groovy
     @Override
     public void onClickUserPhotoNavigation(View v) {}
-
+```
 Footer onClick <br>
-
+```groovy
     @Override
     public void onClickFooterItemNavigation(View v) {}
-
+```
 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png"> 
 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_02.png"> 
+
+<b>Your app uses this library? You can promote it here! Just send your app that'll be happy to disclose.</b> <br>
 
 <br>
 <b>Duvida ou sugestões (Questions or suggestions)</b> <br>
@@ -175,22 +191,23 @@ Assunto: Navigation Drawer - Material Design
 
 <b>When using the design please remove all images and strings referring to Live-O. Thank you: D <br></b>
 
-
-/*
- * Copyright 2015 Rudson Lima<br>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+#License
+```
+  Copyright 2015 Rudson Lima
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+ 
+      http://www.apache.org/licenses/LICENSE-2.0
+ 
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ 
+````
 
 <br>
 source:<br> 
