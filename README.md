@@ -95,7 +95,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
     }
 ````
 
-#Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
+###Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
 
 <b>In the method "onInt" inform the items on your list</b>
 
