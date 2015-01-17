@@ -11,22 +11,24 @@ How to use? Very simple! : D
 
 <b>Add this to your build.gradle:</b>
 
-```
+```groovy
 dependencies {
         compile 'br.com.liveo:navigationdrawer-material:1.0.0'
 }
 ````
 <b>In your styles.xml choose your version:</b>
-```
+
     <!--Customize here the subject of your application-->
+```groovy
     <style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_blue_colorPrimaryDark</item>
         <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
     </style>
-
+````
     <!--Here will be the theme of the class that will extends NavigationLiveo-->
+```groovy
     <style name="nLiveoDrawer" parent="nLiveo.Theme.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
@@ -42,11 +44,12 @@ note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with
 
 <b>Remember to set your theme in your AndroidManifest.xml:</b>
 
-```
+```groovy
     <application
     <!--Theme of your application-->
         android:theme="@style/myTheme" >
-
+```      
+```groovy
         <activity
     <!--Theme of the class that will extends NavigationLiveo-->        
             android:name=".MainActivity"
@@ -63,7 +66,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
 <b>In the method "onUserInformation" report user data logged</b>
 
-```
+```groovy
     @Override
     public void onUserInformation() {
         //User information here
@@ -78,7 +81,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
 <b>In the method "onInt" inform the items on your list</b>
 
-```
+```groovy
 @Override
     public void onInt(Bundle savedInstanceState) {
         //Creation of the list items is here
@@ -128,7 +131,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
 <br>In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment</b>
 
-```
+```groovy
     @Override //The "layoutContainerId" should be used in "beginTransaction (). Replace"
     public void onItemClickNavigation(int position, int layoutContainerId) {
 
@@ -143,7 +146,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
 
 It has the same functionality as public boolean onPrepareOptionsMenu(Menu menu) and the example was used to hide the fragment menus. <br>
 
-```
+```groovy
     @Override
     public void onPrepareOptionsMenuNavigation(Menu menu, int position, boolean visible) {
 
@@ -163,12 +166,12 @@ It has the same functionality as public boolean onPrepareOptionsMenu(Menu menu) 
 ```    
 
 User photo onClick <br>
-```
+```groovy
     @Override
     public void onClickUserPhotoNavigation(View v) {}
 ```
 Footer onClick <br>
-```
+```groovy
     @Override
     public void onClickFooterItemNavigation(View v) {}
 ```
@@ -188,7 +191,7 @@ Assunto: Navigation Drawer - Material Design
 
 <b>When using the design please remove all images and strings referring to Live-O. Thank you: D <br></b>
 
-
+#License
 ```
   Copyright 2015 Rudson Lima
  
