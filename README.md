@@ -2,26 +2,34 @@
 
 It requires 8+ API and android support v7 21.0.3 (Toolbar)
 
-<b>Google Play:</b> <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">NavigationDrawer Live-O</a>
+###Sample Application
+
+<a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">
+  <img alt="Android app on Google Play"
+       src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
+</a>
 
 How to use? Very simple! : D
 
 #How to add to your project
 
-#<b>Gradle</b>
+<b>Change Log</b><br>
+<a href="https://github.com/rudsonlive/NavigationDrawer-MaterialDesign/blob/master/CHANGELOG.md" target="_blank">Log file</a>
+
+###<b>Gradle</b>
 
 ```groovy
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:1.0.0'
+        compile 'br.com.liveo:navigationdrawer-material:1.1.0'
 }
 ```
-#<b>Maven</b>
+###<b>Maven</b>
 
 ```groovy
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <type>aar</type>
 </dependency>
 ```
@@ -87,7 +95,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
     }
 ````
 
-#Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
+###Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
 
 <b>In the method "onInt" inform the items on your list</b>
 
@@ -191,10 +199,10 @@ Footer onClick <br>
 <b>Your app uses this library? You can promote it here! Just send your app that'll be happy to disclose.</b> <br>
 
 <br>
-<b>Duvida ou sugestões (Questions or suggestions)</b> <br>
-Nome: Rudson Lima <br>
+#Developed By<br>
+Name: Rudson Lima<br> 
 E-mail: rudsonlive@gmail.com<br>
-Assunto: Navigation Drawer - Material Design
+Subject: Navigation Drawer - Material Design
 <br>
 
 <b>When using the design please remove all images and strings referring to Live-O. Thank you: D <br></b>
