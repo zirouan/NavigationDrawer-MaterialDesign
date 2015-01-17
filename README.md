@@ -2,7 +2,7 @@
 
 It requires 8+ API and android support v7 21.0.3 (Toolbar)
 
-### Sample Application
+###Sample Application
 
 <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">
   <img alt="Android app on Google Play"
@@ -16,14 +16,14 @@ How to use? Very simple! : D
 <b>Change Log</b><br>
 <a href="https://github.com/rudsonlive/NavigationDrawer-MaterialDesign/blob/master/CHANGELOG.md" target="_blank">Log file</a>
 
-#<b>Gradle</b>
+###<b>Gradle</b>
 
 ```groovy
 dependencies {
         compile 'br.com.liveo:navigationdrawer-material:1.1.0'
 }
 ```
-#<b>Maven</b>
+###<b>Maven</b>
 
 ```groovy
 <dependency>
