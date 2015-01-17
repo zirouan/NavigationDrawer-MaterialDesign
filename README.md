@@ -9,13 +9,24 @@ How to use? Very simple! : D
 
 #How to add to your project
 
-<b>Add this to your build.gradle:</b>
+#<b>Gradle</b>
 
 ```groovy
 dependencies {
         compile 'br.com.liveo:navigationdrawer-material:1.0.0'
 }
-````
+```
+#<b>Maven</b>
+
+```groovy
+<dependency>
+  <groupId>br.com.liveo</groupId>
+  <artifactId>navigationdrawer-material</artifactId>
+  <version>1.0.0</version>
+  <type>aar</type>
+</dependency>
+```
+
 <b>In your styles.xml choose your version:</b>
 
     <!--Customize here the subject of your application-->
