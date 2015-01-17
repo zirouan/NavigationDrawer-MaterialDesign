@@ -136,9 +136,7 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
     }
 ````
 
-<b>More methods</b><br>
-<a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">Other methods</a> <br>
-
+<a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">updated - Other methods</a> <br>
 
 <br>In the method "onItemClickNavigation" you can get the position of the clicked item and the layout that you must inform the replace fragment</b>
 
