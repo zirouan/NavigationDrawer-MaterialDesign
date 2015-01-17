@@ -2,7 +2,12 @@
 
 It requires 8+ API and android support v7 21.0.3 (Toolbar)
 
-<b>Google Play:</b> <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">NavigationDrawer Live-O</a>
+### Sample Application
+
+<a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">
+  <img alt="Android app on Google Play"
+       src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
+</a>
 
 How to use? Very simple! : D
 
