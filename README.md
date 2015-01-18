@@ -228,5 +228,5 @@ Subject: Navigation Drawer - Material Design
 ````
 
 <br>
-source:<br> 
+reference: 
 <a href="http://www.google.com/design/spec/patterns/navigation-drawer.html" target="_blank">NavigationDrawer</a>
