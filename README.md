@@ -9,6 +9,8 @@ It requires 8+ API and android support v7 21.0.3 (Toolbar)
        src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 </a>
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-NavigationDrawer--MaterialDesign-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1398)
+
 How to use? Very simple! : D
 
 #How to add to your project
@@ -232,5 +234,5 @@ Subject: Navigation Drawer - Material Design
 ````
 
 <br>
-source:<br> 
+reference: 
 <a href="http://www.google.com/design/spec/patterns/navigation-drawer.html" target="_blank">NavigationDrawer</a>
