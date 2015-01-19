@@ -1,6 +1,6 @@
 #Navigation drawer (library)
 
-It requires 8+ API and android support v7 21.0.3 (Toolbar)
+It requires 14+ API and android support v7 21.0.3 (Toolbar)
 
 ###Sample Application
 
@@ -13,16 +13,18 @@ It requires 8+ API and android support v7 21.0.3 (Toolbar)
 
 How to use? Very simple! : D
 
-#How to add to your project
+#If you want, check versions before
 
 <b>Change Log</b><br>
 <a href="https://github.com/rudsonlive/NavigationDrawer-MaterialDesign/blob/master/CHANGELOG.md" target="_blank">Log file</a>
+
+#How to add to your project
 
 ###<b>Gradle</b>
 
 ```groovy
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:1.1.0'
+        compile 'br.com.liveo:navigationdrawer-material:1.2.0'
 }
 ```
 ###<b>Maven</b>
@@ -31,7 +33,7 @@ dependencies {
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <type>aar</type>
 </dependency>
 ```
