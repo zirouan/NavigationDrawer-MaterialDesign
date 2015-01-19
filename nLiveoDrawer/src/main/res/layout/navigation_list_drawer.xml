@@ -9,7 +9,7 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/drawer_layout_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_above="@+id/footerDrawer"

@@ -92,6 +92,12 @@ Ex: public class MainActivity extends NavigationLiveo implements NavigationLiveo
         this.mUserEmail.setText("rudsonlive@gmail.com");
         this.mUserPhoto.setImageResource(R.drawable.ic_rudsonlive);
         this.mUserBackground.setImageResource(R.drawable.ic_user_background);
+
+    <!--If you want to create your own user header just do the following-->
+
+        View mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
+        ImageView imageView = (ImageView) mCustomHeader.findViewById(R.id.imageView);
+        this.addCustomHeader(mCustomHeader); //This will add the new header and remove the default user header
     }
 ````
 

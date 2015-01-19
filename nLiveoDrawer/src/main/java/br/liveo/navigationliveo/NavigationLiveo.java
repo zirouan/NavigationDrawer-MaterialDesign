@@ -80,6 +80,9 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
+    /**
+     * User information
+     */
     public abstract void onUserInformation();
 
     /**
@@ -87,7 +90,6 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      * @param savedInstanceState onCreate(Bundle savedInstanceState).
      */
     public abstract void onInt(Bundle savedInstanceState);
-    public abstract void onUserInformationCustomHeader();
 
 
 	@Override
@@ -244,7 +246,6 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         onUserInformation();
         onInt(savedInstanceState);
         setAdapterNavigation();
-        onUserInformationCustomHeader();
     }
 
     private void setAdapterNavigation(){
@@ -259,15 +260,6 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         mList.setAdapter(mNavigationAdapter);
     }
 
-    private void resetAdpterNavigation(View v){
-        mNavigationAdapter = null;
-        mList.setAdapter(mNavigationAdapter);
-        mList.addHeaderView(v, null, false);
-        setAdapterNavigation();
-
-        setCheckedItemNavigation(mCurrentPosition, true);
-    }
-
     /**
      * Create user default header
      */
@@ -279,11 +271,6 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
         mUserPhoto = (ImageView) mHeader.findViewById(R.id.userPhoto);
         mUserPhoto.setOnClickListener(onClickUserPhoto);
-
-//        public ImageView mUserPhotoTwo;
-//        public ImageView mUserPhotoTree;
-//        mUserPhotoTwo = (ImageView) mHeader.findViewById(R.id.userPhotoTwo);
-//        mUserPhotoTree = (ImageView) mHeader.findViewById(R.id.userPhotoTree);
 
         mUserBackground = (ImageView) mHeader.findViewById(R.id.userBackground);
         mList.addHeaderView(mHeader);
@@ -494,7 +481,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
             throw new RuntimeException("header was not created");
         }
 
-        resetAdpterNavigation(mHeader);
+        mList.addHeaderView(mHeader);
     }
 
     /**
@@ -518,7 +505,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         }
 
         removeDefauldHeader();
-        resetAdpterNavigation(v);
+        mList.addHeaderView(v);
     }
 
     /**

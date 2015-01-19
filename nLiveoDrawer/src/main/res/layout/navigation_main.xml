@@ -21,7 +21,7 @@
 
     <br.liveo.ui.ScrimInsetsFrameLayout
         android:id="@+id/relativeDrawer"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/drawer_layout_width"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"

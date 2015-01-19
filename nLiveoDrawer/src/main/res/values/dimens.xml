@@ -1,11 +1,11 @@
 <resources>
 
+    <!-- navigation_drawer.xml -->
     <dimen name="drawer_layout_width">-.5dp</dimen>
 
     <!-- title item list -->
     <dimen name="default_textSize">14sp</dimen>
 
-    <!-- navigation_drawer.xml -->
     <dimen name="userBackground_layout_height">164dp</dimen>
 
     <dimen name="userPhoto_layout_width">64dp</dimen>

@@ -17,11 +17,9 @@
 package br.liveo.adapter;
 
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -114,25 +112,10 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 	}
 
     private void setAlpha(View v, float alpha) {
-
         if (!mRemoveAlpha) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                v.setAlpha(alpha);
-            } else {
-                AlphaAnimation animation = new AlphaAnimation(alpha, alpha);
-                animation.setDuration(0);
-                animation.setFillAfter(true);
-                v.startAnimation(animation);
-            }
+            v.setAlpha(alpha);
         }else{
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                v.setAlpha(1f);
-            } else {
-                AlphaAnimation animation = new AlphaAnimation(1f, 1f);
-                animation.setDuration(0);
-                animation.setFillAfter(true);
-                v.startAnimation(animation);
-            }
+            v.setAlpha(1f);
         }
     }
 
@@ -209,7 +192,9 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 			} else {
                 convertView.setBackgroundResource(R.drawable.selector_no_check_item_navigation);
 			}
-		}
+		}else{
+            convertView.setBackgroundResource(R.drawable.selector_no_check_item_navigation);
+        }
 
 	    return convertView;		
 	}
