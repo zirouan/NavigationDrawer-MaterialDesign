@@ -1,6 +1,6 @@
 #Change Log
 
-Version 1.2.0 *(19-01-2015)*
+Version 1.0.2 *(20-01-2015)*
 ----------------------------
 It requires 14+ API and android support v7 21.0.3 (Toolbar)
 
@@ -10,6 +10,7 @@ It requires 14+ API and android support v7 21.0.3 (Toolbar)
     private void removeDefauldHeader(){}
     public void addCustomHeader(View v){}
     public void removeCustomdHeader(View v){}
+    public void setElevationToolBar(float elevation){}
 ```
 <a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">Other methods</a> <br>
 

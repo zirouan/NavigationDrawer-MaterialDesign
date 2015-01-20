@@ -24,7 +24,7 @@ How to use? Very simple! : D
 
 ```groovy
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:1.2.0'
+        compile 'br.com.liveo:navigationdrawer-material:1.0.2'
 }
 ```
 ###<b>Maven</b>
@@ -33,7 +33,7 @@ dependencies {
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>1.2.0</version>
+  <version>1.0.2</version>
   <type>aar</type>
 </dependency>
 ```

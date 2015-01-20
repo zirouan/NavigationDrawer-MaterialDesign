@@ -97,6 +97,10 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.navigation_main);
 
+        if (savedInstanceState != null) {
+            setCurrentPosition(savedInstanceState.getInt(CURRENT_POSITION));
+        }
+
         mList = (ListView) findViewById(R.id.list);
         mList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -114,19 +118,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
         mRelativeDrawer = (FrameLayout) this.findViewById(R.id.relativeDrawer);
 
-		if (mList != null) {
-            mountListNavigation(savedInstanceState);
-		}
-
-		if (savedInstanceState != null) {
-			setCurrentPosition(savedInstanceState.getInt(CURRENT_POSITION));
-	    }else{
-            mNavigationListener.onItemClickNavigation(mCurrentPosition, R.id.container);
-	    }
-
         this.setSupportActionBar(mToolbar);
-
-        setCheckedItemNavigation(mCurrentPosition, true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -139,8 +131,18 @@ public abstract class NavigationLiveo extends ActionBarActivity {
                 e.getMessage();
             }
 
-            this.getToolbar().setElevation(10);
+            this.setElevationToolBar(15);
         }
+
+        if (mList != null) {
+            mountListNavigation(savedInstanceState);
+        }
+
+        if (savedInstanceState == null) {
+            mNavigationListener.onItemClickNavigation(mCurrentPosition, R.id.container);
+        }
+
+        setCheckedItemNavigation(mCurrentPosition, true);
 	}
 
 	@Override
@@ -471,6 +473,18 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      */
     public void removeAlphaItemNavigation(){
         this.mRemoveAlpha = !mRemoveAlpha;
+    }
+
+    /**
+     * public void setElevation (float elevation)
+     * Added in API level 21
+     * Default value is 15
+     * @param elevation Sets the base elevation of this view, in pixels.
+     */
+    public void setElevationToolBar(float elevation){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            this.getToolbar().setElevation(elevation);
+        }
     }
 
     /**
