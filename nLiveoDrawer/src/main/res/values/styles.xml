@@ -30,10 +30,10 @@
     </style>
 
     <style name="AppTheme.DarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
-        <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
-        <item name="colorControlHighlight">@color/nliveo_blue_colorPrimary</item>
+        <item name="colorPrimary">@color/nliveo_cyan_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/nliveo_cyan_alpha_colorPrimaryDark</item>
+        <item name="colorAccent">@color/nliveo_cyan_colorPrimary</item>
+        <item name="colorControlHighlight">@color/nliveo_cyan_colorPrimary</item>
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">true</item>

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
    ~ Copyright 2015 Rudson Lima
 
    ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,9 +14,10 @@
    ~ limitations under the License.
 -->
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minHeight="?attr/actionBarSize"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:minHeight="?attr/actionBarSize"
     android:background="?attr/colorPrimary">
+
 </android.support.v7.widget.Toolbar>
