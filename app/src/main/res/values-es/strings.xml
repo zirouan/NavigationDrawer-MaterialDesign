@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">nDrawer</string>
+
+    <string name="sign_in">Sign in</string>
+
+    <string name="inbox">Inbox</string>
+    <string name="starred">Favorito</string>
+    <string name="sent_mail">Mensajes Enviados</string>
+    <string name="drafts">Borradores</string>
+    <string name="more_markers">+ Marcadores</string>
+    <string name="trash">Papelera</string>
+    <string name="spam">Spam</string>
+    <string name="settings">Configuración</string>
+
+    <string name="add">Agregar</string>
+    <string name="search">Buscar</string>
+
+    <!-- Toast -->
+    <string name="open_user_profile">Abrir perfil de usuario</string>
+    <string name="open_settings">Abrir configuración</string>
+
+</resources>
