@@ -1,12 +1,12 @@
 #Change Log
 
-Version 1.0.3 *(21-01-2015)* (Coming soon)
+Version 1.0.3 *(00-00-000)* (Coming soon)
 ----------------------------
 It requires 14+ API and android support v7 21.0.3 (Toolbar)
 
-* Corrections
-```Center toolbar icons in landscape mode
-```
+* Corrections <br>
+Center toolbar icons in landscape mode
+
 
 Version 1.0.2 *(20-01-2015)*
 ----------------------------
