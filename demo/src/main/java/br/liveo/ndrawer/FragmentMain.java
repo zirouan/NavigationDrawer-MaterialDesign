@@ -81,7 +81,7 @@ public class FragmentMain extends Fragment {
         searchView.setOnQueryTextListener(onQuerySearchView);
 
 		menu.findItem(R.id.menu_add).setVisible(true);
-		
+
 		mSearchCheck = false;	
 	}
 
