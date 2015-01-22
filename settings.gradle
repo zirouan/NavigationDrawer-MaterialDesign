@@ -1,2 +1,2 @@
-include ':app'
-include ':nLiveoDrawer'
+include ':demo'
+include ':library'
