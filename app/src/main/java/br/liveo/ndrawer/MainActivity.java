@@ -77,6 +77,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         SparseIntArray mSparseCounterItem = new SparseIntArray(); //indicate all items that have a counter
         mSparseCounterItem.put(0, 7);
         mSparseCounterItem.put(6, 250);
+        mSparseCounterItem.put(1, 123);
 
         //If not please use the FooterDrawer use the setFooterVisible(boolean visible) method with value false
         this.setFooterInformationDrawer(R.string.settings, R.drawable.ic_settings_black_24dp);
