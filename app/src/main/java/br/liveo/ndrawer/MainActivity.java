@@ -49,6 +49,9 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         // set listener {required}
         this.setNavigationListener(this);
 
+        //First item of the position selected from the list
+        this.setDefaultStartPositionNavigation(1);
+
         // name of the list items
         mListNameItem = new ArrayList<>();
         mListNameItem.add(0, getString(R.string.inbox));
@@ -76,8 +79,8 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         //{optional} - Among the names there is any item counter, you must indicate it (position) and the value here
         SparseIntArray mSparseCounterItem = new SparseIntArray(); //indicate all items that have a counter
         mSparseCounterItem.put(0, 7);
-        mSparseCounterItem.put(6, 250);
         mSparseCounterItem.put(1, 123);
+        mSparseCounterItem.put(6, 250);
 
         //If not please use the FooterDrawer use the setFooterVisible(boolean visible) method with value false
         this.setFooterInformationDrawer(R.string.settings, R.drawable.ic_settings_black_24dp);
