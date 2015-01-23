@@ -66,22 +66,25 @@ public class FragmentMain extends Fragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		// TODO Auto-generated method stub
-		super.onCreateOptionsMenu(menu, inflater);		
+		super.onCreateOptionsMenu(menu, inflater);
 		inflater.inflate(R.menu.menu, menu);
+        
+        //Select search item
+        final MenuItem menuItem = menu.findItem(R.id.menu_search);
+        menuItem.setVisible(true);
 
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.menu_search));
+        SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint(this.getString(R.string.search));
 
-        ((EditText)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text))
+        ((EditText) searchView.findViewById(R.id.search_src_text))
                 .setHintTextColor(getResources().getColor(R.color.nliveo_white));
         searchView.setOnQueryTextListener(onQuerySearchView);
 
 		menu.findItem(R.id.menu_add).setVisible(true);
-		menu.findItem(R.id.menu_search).setVisible(true);
-  	    
+
 		mSearchCheck = false;	
-	}	
-	
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
