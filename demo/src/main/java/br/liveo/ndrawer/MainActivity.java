@@ -65,8 +65,8 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         // icons list items
         List<Integer> mListIconItem = new ArrayList<>();
         mListIconItem.add(0, R.drawable.ic_inbox_black_24dp);
-        mListIconItem.add(1, 0); //Item no icon set 0
-        mListIconItem.add(2, 0); //Item no icon set 0
+        mListIconItem.add(1, R.drawable.ic_star_black_24dp); //Item no icon set 0
+        mListIconItem.add(2, R.drawable.ic_send_black_24dp); //Item no icon set 0
         mListIconItem.add(3, R.drawable.ic_drafts_black_24dp);
         mListIconItem.add(4, 0); //When the item is a subHeader the value of the icon 0
         mListIconItem.add(5, R.drawable.ic_delete_black_24dp);

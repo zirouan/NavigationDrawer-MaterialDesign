@@ -60,6 +60,14 @@ public class NavigationLiveoList {
                 if (title.trim().equals("")) {
                     throw new RuntimeException("Enter the item name position " + i);
                 }
+            }else{
+                if (title == null) {
+                    title = "";
+                }
+
+                if (title.trim().equals("")) {
+                    title = "";
+                }
             }
 
             mItemAdapter = new NavigationLiveoItemAdapter(title, icon, isHeader, count, colorSelected, removeSelector);

@@ -58,6 +58,9 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     private TextView mTitleFooter;
     private ImageView mIconFooter;
 
+    private int mColorName = 0;
+    private int mColorIcon = 0;
+
     private int mColorDefault = 0;
     private int mColorSelected = 0;
     private int mCurrentPosition = 1;
@@ -257,7 +260,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         }
 
         mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(mListNameItem, mListIcon,
-                mListHeader, mSparseCounter, mColorSelected, mRemoveSelector), mNewSelector, mColorDefault, mRemoveAlpha);
+                mListHeader, mSparseCounter, mColorSelected, mRemoveSelector), mNewSelector, mColorDefault, mRemoveAlpha, mColorIcon, mColorName);
 
         mList.setAdapter(mNavigationAdapter);
     }
@@ -373,6 +376,40 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      * Information footer list item
      * @param title item footer name.
      * @param icon item footer icon.
+     * @param colorName item footer name color.
+     * @param colorIcon item footer icon color.
+     */
+    public void setFooterInformationDrawer(String title, int icon, int colorName, int colorIcon){
+
+        if (title == null){
+            throw new RuntimeException("The title can not be null or empty");
+        }
+
+        if (title.trim().equals("")){
+            throw new RuntimeException("The title can not be null or empty");
+        }
+
+        mTitleFooter.setText(title);
+
+        if (colorName > 0){
+            mTitleFooter.setTextColor(getResources().getColor(colorName));
+        }
+
+        if (icon == 0){
+            mIconFooter.setVisibility(View.GONE);
+        }else{
+            mIconFooter.setImageResource(icon);
+
+            if ( colorIcon > 0) {
+                mIconFooter.setColorFilter(getResources().getColor(colorIcon));
+            }
+        }
+    };
+
+    /**
+     * Information footer list item
+     * @param title item footer name.
+     * @param icon item footer icon.
      */
     public void setFooterInformationDrawer(int title, int icon){
 
@@ -386,6 +423,36 @@ public abstract class NavigationLiveo extends ActionBarActivity {
             mIconFooter.setVisibility(View.GONE);
         }else{
             mIconFooter.setImageResource(icon);
+        }
+    };
+
+    /**
+     * Information footer list item
+     * @param title item footer name.
+     * @param icon item footer icon.
+     * @param colorName item footer name color.
+     * @param colorIcon item footer icon color.
+     */
+    public void setFooterInformationDrawer(int title, int icon, int colorName, int colorIcon){
+
+        if (title == 0){
+            throw new RuntimeException("The title can not be null or empty");
+        }
+
+        mTitleFooter.setText(title);
+
+        if (colorName > 0){
+            mTitleFooter.setTextColor(getResources().getColor(colorName));
+        }
+
+        if (icon == 0){
+            mIconFooter.setVisibility(View.GONE);
+        }else{
+            mIconFooter.setImageResource(icon);
+
+            if ( colorIcon > 0) {
+                mIconFooter.setColorFilter(getResources().getColor(colorIcon));
+            }
         }
     };
 
@@ -419,6 +486,22 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      */
     public void setColorDefaultItemNavigation(int colorId){
         this.mColorDefault = colorId;
+    }
+
+    /**
+     * Icon item color in the list - icon (use before the setNavigationAdapter)
+     * @param colorId color id.
+     */
+    public void setColorIconItemNavigation(int colorId){
+        this.mColorIcon = colorId;
+    }
+
+    /**
+     * Name item color in the list - name (use before the setNavigationAdapter)
+     * @param colorId color id.
+     */
+    public void setColorNameItemNavigation(int colorId){
+        this.mColorName = colorId;
     }
 
     /**

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   ~ Copyright 2015 Rudson Lima
+
+   ~ Licensed under the Apache License, Version 2.0 (the "License");
+   ~ you may not use this file except in compliance with the License.
+   ~ You may obtain a copy of the License at
+
+   ~ http://www.apache.org/licenses/LICENSE-2.0
+
+   ~ Unless required by applicable law or agreed to in writing, software
+   ~ distributed under the License is distributed on an "AS IS" BASIS,
+   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   ~ See the License for the specific language governing permissions and
+   ~ limitations under the License.
+-->
+<resources>
+
+    <!-- navigation_drawer.xml -->
+    <dimen name="drawer_layout_width">320dp</dimen>
+
+    <!-- title item list -->
+    <dimen name="default_textSize">14sp</dimen>
+
+    <dimen name="userBackground_layout_height">164dp</dimen>
+
+    <dimen name="userPhoto_layout_width">64dp</dimen>
+    <dimen name="userPhoto_layout_height">64dp</dimen>
+    <dimen name="userPhoto_layout_marginTop">16dp</dimen>
+    <dimen name="userPhoto_layout_marginLeft">16dp</dimen>
+
+    <dimen name="userPhotoTwo_layout_width">40dp</dimen>
+    <dimen name="userPhotoTwo_layout_height">40dp</dimen>
+    <dimen name="userPhotoTwo_layout_marginRight">16dp</dimen>
+
+    <dimen name="userPhotoTree_layout_width">40dp</dimen>
+    <dimen name="userPhotoTree_layout_height">40dp</dimen>
+    <dimen name="userPhotoTree_layout_marginRight">16dp</dimen>
+
+    <dimen name="userData_layout_height">56dp</dimen>
+    <dimen name="userData_layout_marginBottom">8dp</dimen>
+
+    <dimen name="userName_textSize">14sp</dimen>
+    <dimen name="userName_layout_marginLeft">16dp</dimen>
+
+    <dimen name="userEmail_textSize">14sp</dimen>
+    <dimen name="userEmail_layout_marginLeft">16dp</dimen>
+
+</resources>

@@ -1,12 +1,22 @@
 #Change Log
 
-Version 1.0.3 *(00-00-000)* (Coming soon)
+Version 1.0.3 *(25-01-2015)*
 ----------------------------
 It requires 14+ API and android support v7 21.0.3 (Toolbar)
 
 * Corrections <br>
+```groovy
+Bugs list items
+List width in landscape mode
 Center toolbar icons in landscape mode
-
+```groovy
+* New functions
+```groovy
+   public void setColorIconItemNavigation(int colorId){}
+   public void setColorNameItemNavigation(int colorId){}
+   public void setFooterInformationDrawer(String title, int icon, int colorName, int colorIcon){}
+   public void setFooterInformationDrawer(int title, int icon, int colorName, int colorIcon){}
+```
 
 Version 1.0.2 *(20-01-2015)*
 ----------------------------

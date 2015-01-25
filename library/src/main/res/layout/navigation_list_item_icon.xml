@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
    ~ Copyright 2015 Rudson Lima
 
    ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +20,20 @@
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
+    <LinearLayout
+        android:id="@+id/layoutSeparator"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/nliveo_gray" />
+    </LinearLayout>
+
     <RelativeLayout
+        android:id="@+id/layoutDados"
         android:layout_width="match_parent"
         android:layout_height="48dp">
 
@@ -32,6 +44,7 @@
             android:alpha="0.54"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_centerVertical="true"
             android:contentDescription="@string/clear" />
 
@@ -40,8 +53,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/title"
             android:layout_centerVertical="true"
-            android:layout_marginStart="72dp"
-            android:layout_marginLeft="72dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/icon"
+            android:layout_toEndOf="@+id/icon"
             android:textSize="@dimen/default_textSize"
             android:textColor="@color/nliveo_black"
             android:alpha="0.87"

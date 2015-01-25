@@ -35,7 +35,7 @@
         android:fitsSystemWindows="true"
         android:divider="@color/nliveo_transparent"
         android:background="@color/nliveo_white"
-        android:dividerHeight="1dp" />
+        android:dividerHeight="0dp" />
 
     <RelativeLayout
         android:id="@+id/footerDrawer"
@@ -43,7 +43,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@color/nliveo_white"
+        android:background="@drawable/selector_no_check_item_navigation"
         android:layout_height="48dp">
 
         <ImageView
