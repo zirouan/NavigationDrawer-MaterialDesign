@@ -17,6 +17,7 @@ Center toolbar icons in landscape mode
    public void setFooterInformationDrawer(String title, int icon, int colorName, int colorIcon){}
    public void setFooterInformationDrawer(int title, int icon, int colorName, int colorIcon){}
 ```
+<a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">Other methods</a> <br>
 
 Version 1.0.2 *(20-01-2015)*
 ----------------------------
