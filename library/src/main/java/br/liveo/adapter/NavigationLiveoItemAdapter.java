@@ -34,4 +34,11 @@ public class NavigationLiveoItemAdapter {
         this.colorSelected = colorSelected;
         this.removeSelector = removeSelector;
 	}
+
+    public NavigationLiveoItemAdapter(String title, int icon, boolean header, int counter) {
+        this.title = title;
+        this.icon = icon;
+        this.isHeader = header;
+        this.counter = counter;
+    }
 }

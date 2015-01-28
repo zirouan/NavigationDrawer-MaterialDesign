@@ -1,5 +1,21 @@
 #Change Log
 
+Version 1.0.4 *(00-00-0000)* (coming soon)
+----------------------------
+It requires 14+ API and android support v7 21.0.3 (Toolbar)
+
+* New functions
+```groovy
+    public void setColorSeparatorItemSubHeaderNavigation(int colorId){}
+    public void setNewName(int position, String name){}
+    public void setNewName(int position, int name){}
+    public void setNewIcon(int position, int icon){}
+    public void setNewInformationItem(int position, int name, int icon, int counter){}
+    public void setNewInformationItem(int position, String name, int icon, int counter){}
+```
+<a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">Other methods</a> <br>
+
+
 Version 1.0.3 *(25-01-2015)*
 ----------------------------
 It requires 14+ API and android support v7 21.0.3 (Toolbar)

@@ -38,6 +38,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.liveo.adapter.NavigationLiveoAdapter;
@@ -60,6 +61,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
     private int mColorName = 0;
     private int mColorIcon = 0;
+    private int mColorSeparator = 0;
 
     private int mColorDefault = 0;
     private int mColorSelected = 0;
@@ -259,8 +261,15 @@ public abstract class NavigationLiveo extends ActionBarActivity {
             throw new RuntimeException("You must start the NavigationListener in onInit() method of its main activity. Example: this.setNavigationListener(this);");
         }
 
+        List<Integer> mListExtra = new ArrayList<>();
+        mListExtra.add(0, mNewSelector);
+        mListExtra.add(1, mColorDefault);
+        mListExtra.add(2, mColorIcon);
+        mListExtra.add(3, mColorName);
+        mListExtra.add(4, mColorSeparator);
+
         mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(mListNameItem, mListIcon,
-                mListHeader, mSparseCounter, mColorSelected, mRemoveSelector), mNewSelector, mColorDefault, mRemoveAlpha, mColorIcon, mColorName);
+                mListHeader, mSparseCounter, mColorSelected, mRemoveSelector), mRemoveAlpha, mListExtra);
 
         mList.setAdapter(mNavigationAdapter);
     }
@@ -497,6 +506,14 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     }
 
     /**
+     * Separator item subHeader color in the list - icon (use before the setNavigationAdapter)
+     * @param colorId color id.
+     */
+    public void setColorSeparatorItemSubHeaderNavigation(int colorId){
+        this.mColorSeparator = colorId;
+    }
+
+    /**
      * Name item color in the list - name (use before the setNavigationAdapter)
      * @param colorId color id.
      */
@@ -506,15 +523,15 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
     /**
      * New selector navigation
-     * @param drawable drawable xml - selector.
+     * @param resourceSelector drawable xml - selector.
      */
-    public void setNewSelectorNavigation(int drawable){
+    public void setNewSelectorNavigation(int resourceSelector){
 
         if (mRemoveSelector){
             throw new RuntimeException("The option to remove the select is active. Please remove the removeSelectorNavigation method so you can use the setNewSelectorNavigation");
         }
 
-        this.mNewSelector = drawable;
+        this.mNewSelector = resourceSelector;
     }
 
     /**
@@ -522,6 +539,56 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      */
     public void removeSelectorNavigation(){
         this.mRemoveSelector = true;
+    }
+
+    /**
+     * New name item
+     * @param position item position.
+     * @param name new name
+     */
+    public void setNewName(int position, String name){
+        this.mNavigationAdapter.setNewName(position, name);
+    }
+
+    /**
+     * New name item
+     * @param position item position.
+     * @param name new name
+     */
+    public void setNewName(int position, int name){
+        this.mNavigationAdapter.setNewName(position, getString(name));
+    }
+
+    /**
+     * New name item
+     * @param position item position.
+     * @param icon new icon
+     */
+    public void setNewIcon(int position, int icon){
+        this.mNavigationAdapter.setNewIcon(position, icon);
+    }
+
+    /**
+     * New information item navigation
+     * @param position item position.
+     * @param name new name
+     * @param icon new icon
+     * @param counter new counter
+     */
+    public void setNewInformationItem(int position, int name, int icon, int counter){
+        this.mNavigationAdapter.setNewInformationItem(position, getString(name), icon, counter);
+    }
+
+    /**
+     * New information item navigation
+     * @param position item position.
+     * @param name new name
+     * @param icon new icon
+     * @param counter new counter
+     */
+
+    public void setNewInformationItem(int position, String name, int icon, int counter){
+        this.mNavigationAdapter.setNewInformationItem(position, name, icon, counter);
     }
 
     /**

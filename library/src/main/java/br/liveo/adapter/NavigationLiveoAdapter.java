@@ -35,21 +35,23 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 
     private int mColorIcon = 0;
     private int mColorName = 0;
+    private int mColorSeparator = 0;
 
-    private int mNewDrawable = 0;
+    private int mNewSelector = 0;
     private int mColorDefault = 0;
 	private final Context mcontext;
     private boolean mRemoveAlpha = false;
 	private final List<NavigationLiveoItemAdapter> mList;
 	
-	public NavigationLiveoAdapter(Context context, List<NavigationLiveoItemAdapter> list, int drawable, int colorDefault, boolean removeAlpha, int colorIcon, int colorName) {
+	public NavigationLiveoAdapter(Context context, List<NavigationLiveoItemAdapter> list, boolean removeAlpha, List<Integer> extra) {
 		this.mList = list;		
 		this.mcontext = context;
-        this.mColorIcon = colorIcon;
-        this.mColorName = colorName;
-        this.mNewDrawable = drawable;
+        this.mNewSelector = extra.get(0);
+        this.mColorDefault = extra.get(1);
+        this.mColorIcon = extra.get(2);
+        this.mColorName = extra.get(3);
+        this.mColorSeparator = extra.get(4);
         this.mRemoveAlpha = removeAlpha;
-        this.mColorDefault = colorDefault;
 	}
 
 	@Override
@@ -94,8 +96,25 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 		this.notifyDataSetChanged();
 	}
 
+    public void setNewName(int position, String name){
+        mList.get(position).title = name;
+        notifyDataSetChanged();
+    }
+
+    public void setNewIcon(int position, int icon){
+        mList.get(position).icon = icon;
+        notifyDataSetChanged();
+    }
+
     public void setNewCounterValue(int position, int value){
         mList.get(position).counter = value;
+        notifyDataSetChanged();
+    }
+
+    public void setNewInformationItem(int position, String name, int icon, int counter){
+        mList.get(position).title = name;
+        mList.get(position).icon = icon;
+        mList.get(position).counter = counter;
         notifyDataSetChanged();
     }
 
@@ -113,6 +132,8 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 		public TextView title;
 		public ImageView icon;
         public TextView counter;
+
+        public View separator;
 
         public RelativeLayout layoutDados;
         public LinearLayout layoutSeparator;
@@ -137,7 +158,7 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 		if (convertView == null) {
 			holder = new ViewHolder();
 			
-			int layout = R.layout.navigation_list_item_icon;
+			int layout = R.layout.navigation_list_item;
 
             LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, parent, false);
@@ -145,6 +166,8 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 			holder.title = (TextView) convertView.findViewById(R.id.title);
 			holder.counter = (TextView) convertView.findViewById(R.id.counter);
 			holder.icon = (ImageView) convertView.findViewById(R.id.icon);
+
+            holder.separator = convertView.findViewById(R.id.separator);
 
             holder.layoutDados = (RelativeLayout) convertView.findViewById(R.id.layoutDados);
             holder.layoutSeparator = (LinearLayout) convertView.findViewById(R.id.layoutSeparator);
@@ -169,6 +192,10 @@ public class NavigationLiveoAdapter extends BaseAdapter {
                         mcontext.getResources().getColor(R.color.nliveo_black)));
             }else{
                 holder.layoutSeparator.setVisibility(View.VISIBLE);
+
+                if (mColorSeparator > 0){
+                    holder.separator.setBackgroundResource(mColorSeparator);
+                }
 
                 if (item.title.equals("")){
                     holder.title.setVisibility(View.GONE);
@@ -210,7 +237,7 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 	
 		if (!item.isHeader) {			
 			if (item.checked) {
-                convertView.setBackgroundResource((!item.removeSelector ? ( mNewDrawable == 0 ? R.drawable.selector_check_item_navigation : mNewDrawable) : R.drawable.selector_no_check_item_navigation));
+                convertView.setBackgroundResource((!item.removeSelector ? ( mNewSelector == 0 ? R.drawable.selector_check_item_navigation : mNewSelector) : R.drawable.selector_no_check_item_navigation));
 			} else {
                 convertView.setBackgroundResource(R.drawable.selector_no_check_item_navigation);
 			}
