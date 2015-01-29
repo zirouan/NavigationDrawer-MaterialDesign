@@ -16,6 +16,7 @@
 
 package br.liveo.navigationliveo;
 
+import android.content.Context;
 import android.util.SparseIntArray;
 
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ public class NavigationLiveoList {
 
     public static List<NavigationLiveoItemAdapter> getNavigationAdapter(List<String> listNameItem, List<Integer> listIcon,
                                                                         List<Integer> listItensHeader, SparseIntArray sparceItensCount,
-                                                                        int colorSelected, boolean removeSelector) {
+                                                                        int colorSelected, boolean removeSelector, Context context) {
 
         List<NavigationLiveoItemAdapter> mList = new ArrayList<>();
         if (listNameItem == null || listNameItem.size() == 0) {
-            throw new RuntimeException("List of null or empty names. Solution: mListNameItem = new ArrayList <> (); mListNameItem.add (position, R.string.name);");
+            throw new RuntimeException(context.getString(R.string.list_null_or_empty));
         }
 
         int icon;
@@ -49,16 +50,16 @@ public class NavigationLiveoList {
             count = (sparceItensCount != null ? sparceItensCount.get(i, -1) : -1);
 
             if (isHeader && icon > 0){
-                throw new RuntimeException("The value of the icon for a subHeader item should be 0");
+                throw new RuntimeException(context.getString(R.string.value_icon_should_be_0));
             }
 
             if (!isHeader) {
                 if (title == null) {
-                    throw new RuntimeException("Enter the item name position " + i);
+                    throw new RuntimeException(context.getString(R.string.enter_item_name_position) + i);
                 }
 
                 if (title.trim().equals("")) {
-                    throw new RuntimeException("Enter the item name position " + i);
+                    throw new RuntimeException(context.getString(R.string.enter_item_name_position) + i);
                 }
             }else{
                 if (title == null) {

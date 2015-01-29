@@ -152,11 +152,11 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub		
-		super.onSaveInstanceState(outState);		
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
 		outState.putInt(CURRENT_POSITION, mCurrentPosition);
 	}
-	
+
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -195,16 +195,16 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         }
 
 		@Override
-		public void onDrawerClosed(View view) {			
+		public void onDrawerClosed(View view) {
 			supportInvalidateOptionsMenu();
 		}
 
 		@Override
 		public void onDrawerOpened(View drawerView) {
 			supportInvalidateOptionsMenu();
-		}		
+		}
 	}
-		  
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
@@ -214,7 +214,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
             mDrawerToggle.onConfigurationChanged(newConfig);
         }
 	}
-	
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -258,7 +258,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     private void setAdapterNavigation(){
 
         if (mNavigationListener == null){
-            throw new RuntimeException("You must start the NavigationListener in onInit() method of its main activity. Example: this.setNavigationListener(this);");
+            throw new RuntimeException(getString(R.string.start_navigation_listener));
         }
 
         List<Integer> mListExtra = new ArrayList<>();
@@ -269,7 +269,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         mListExtra.add(4, mColorSeparator);
 
         mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(mListNameItem, mListIcon,
-                mListHeader, mSparseCounter, mColorSelected, mRemoveSelector), mRemoveAlpha, mListExtra);
+                mListHeader, mSparseCounter, mColorSelected, mRemoveSelector, this), mRemoveAlpha, mListExtra);
 
         mList.setAdapter(mNavigationAdapter);
     }
@@ -365,11 +365,11 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     public void setFooterInformationDrawer(String title, int icon){
 
         if (title == null){
-            throw new RuntimeException("The title can not be null or empty");
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
         }
 
         if (title.trim().equals("")){
-            throw new RuntimeException("The title can not be null or empty");
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
         }
 
         mTitleFooter.setText(title);
@@ -391,11 +391,11 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     public void setFooterInformationDrawer(String title, int icon, int colorName, int colorIcon){
 
         if (title == null){
-            throw new RuntimeException("The title can not be null or empty");
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
         }
 
         if (title.trim().equals("")){
-            throw new RuntimeException("The title can not be null or empty");
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
         }
 
         mTitleFooter.setText(title);
@@ -423,7 +423,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     public void setFooterInformationDrawer(int title, int icon){
 
         if (title == 0){
-            throw new RuntimeException("The title can not be null or empty");
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
         }
 
         mTitleFooter.setText(getString(title));
@@ -445,7 +445,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     public void setFooterInformationDrawer(int title, int icon, int colorName, int colorIcon){
 
         if (title == 0){
-            throw new RuntimeException("The title can not be null or empty");
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
         }
 
         mTitleFooter.setText(title);
@@ -528,7 +528,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     public void setNewSelectorNavigation(int resourceSelector){
 
         if (mRemoveSelector){
-            throw new RuntimeException("The option to remove the select is active. Please remove the removeSelectorNavigation method so you can use the setNewSelectorNavigation");
+            throw new RuntimeException(getString(R.string.remove_selector_navigation));
         }
 
         this.mNewSelector = resourceSelector;
@@ -642,7 +642,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      */
     public void showDefauldHeader() {
         if (mHeader == null){
-            throw new RuntimeException("header was not created");
+            throw new RuntimeException(getString(R.string.header_not_created));
         }
 
         mList.addHeaderView(mHeader);
@@ -653,7 +653,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      */
     private void removeDefauldHeader() {
         if (mHeader == null){
-            throw new RuntimeException("header was not created");
+            throw new RuntimeException(getString(R.string.header_not_created));
         }
 
         mList.removeHeaderView(mHeader);
@@ -665,7 +665,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      */
     public void addCustomHeader(View v) {
         if (v == null){
-            throw new RuntimeException("header custom was not created");
+            throw new RuntimeException(getString(R.string.custom_header_not_created));
         }
 
         removeDefauldHeader();
@@ -678,7 +678,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      */
     public void removeCustomdHeader(View v) {
         if (v == null){
-            throw new RuntimeException("header custom was not created");
+            throw new RuntimeException(getString(R.string.custom_header_not_created));
         }
 
         mList.removeHeaderView(v);
