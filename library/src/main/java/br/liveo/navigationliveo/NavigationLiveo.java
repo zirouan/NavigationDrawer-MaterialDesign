@@ -640,7 +640,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     /**
      * Remove default Header
      */
-    public void showDefauldHeader() {
+    public void showDefaultHeader() {
         if (mHeader == null){
             throw new RuntimeException(getString(R.string.header_not_created));
         }
@@ -651,7 +651,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
     /**
      * Remove default Header
      */
-    private void removeDefauldHeader() {
+    private void removeDefaultHeader() {
         if (mHeader == null){
             throw new RuntimeException(getString(R.string.header_not_created));
         }
@@ -668,7 +668,7 @@ public abstract class NavigationLiveo extends ActionBarActivity {
             throw new RuntimeException(getString(R.string.custom_header_not_created));
         }
 
-        removeDefauldHeader();
+        removeDefaultHeader();
         mList.addHeaderView(v);
     }
 
