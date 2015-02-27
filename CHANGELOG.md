@@ -1,6 +1,6 @@
 #Change Log
 
-Version 1.0.4 *(00-00-0000)* (coming soon)
+Version 1.0.4 *(26-02-2015)*
 ----------------------------
 It requires 14+ API and android support v7 21.0.3 (Toolbar)
 
