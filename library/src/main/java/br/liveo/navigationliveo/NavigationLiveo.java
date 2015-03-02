@@ -250,8 +250,8 @@ public abstract class NavigationLiveo extends ActionBarActivity {
 
     private void mountListNavigation(Bundle savedInstanceState){
         createUserDefaultHeader();
-        onUserInformation();
         onInt(savedInstanceState);
+        onUserInformation();
         setAdapterNavigation();
     }
 
