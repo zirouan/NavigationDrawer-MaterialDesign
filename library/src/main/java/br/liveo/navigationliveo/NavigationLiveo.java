@@ -96,7 +96,6 @@ public abstract class NavigationLiveo extends ActionBarActivity {
      */
     public abstract void onInt(Bundle savedInstanceState);
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
