@@ -49,8 +49,10 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         // set listener {required}
         this.setNavigationListener(this);
 
-        //First item of the position selected from the list
-        this.setDefaultStartPositionNavigation(1);
+        if (savedInstanceState == null) {
+            //First item of the position selected from the list
+            this.setDefaultStartPositionNavigation(1);
+        }
 
         // name of the list items
         mListNameItem = new ArrayList<>();

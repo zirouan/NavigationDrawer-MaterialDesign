@@ -1,6 +1,6 @@
 #Navigation drawer (library)
 
-It requires 14+ API and android support v7 21.0.3 (Toolbar)
+It requires 14+ API and android support v7 22.0.0 (Toolbar)
 
 ###Sample Application
 
