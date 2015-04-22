@@ -23,8 +23,9 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseIntArray;
 import android.view.Menu;
@@ -44,7 +45,7 @@ import java.util.List;
 import br.liveo.adapter.NavigationLiveoAdapter;
 import br.liveo.interfaces.NavigationLiveoListener;
 
-public abstract class NavigationLiveo extends ActionBarActivity {
+public abstract class NavigationLiveo extends AppCompatActivity {
 
     public TextView mUserName;
     public TextView mUserEmail;
@@ -123,8 +124,13 @@ public abstract class NavigationLiveo extends ActionBarActivity {
         mRelativeDrawer = (FrameLayout) this.findViewById(R.id.relativeDrawer);
 
         this.setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {

@@ -43,12 +43,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_width="match_parent"
+        android:background="@color/nliveo_white"
         android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/footerDrawer"
             android:layout_width="match_parent"
-            android:background="@drawable/selector_no_check_item_navigation"
+            android:background="@color/nliveo_white"
             android:layout_height="48dp">
 
             <ImageView

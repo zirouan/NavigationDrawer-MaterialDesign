@@ -16,11 +16,12 @@
 package br.liveo.ndrawer;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class SettingsActivity extends ActionBarActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +31,13 @@ public class SettingsActivity extends ActionBarActivity {
         TextView mTxtTitle = (TextView) findViewById(R.id.txtTitle);
         mTxtTitle.setText(getString(R.string.settings));
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
+        ActionBar actionBar = getSupportActionBar();
 
+        if (actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
