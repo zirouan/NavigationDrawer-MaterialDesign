@@ -1,5 +1,16 @@
 #Change Log
 
+Version 1.0.5 *(22-04-2015)*
+----------------------------
+It requires 14+ API and android support v7 22.1.0 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    Add AppCompatActivity
+```
+<a href="http://android-developers.blogspot.com.br/2015/04/android-support-library-221.html?m=1" target="_blank">AppCompatActivity</a> <br>
+
+
 Version 1.0.4 *(26-02-2015)*
 ----------------------------
 It requires 14+ API and android support v7 21.0.3 (Toolbar)
