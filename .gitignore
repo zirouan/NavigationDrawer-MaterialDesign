@@ -30,6 +30,7 @@ local.properties
 .project
 
 # DSStore
-.DS_Store
+**/.DS_Store
+*/.DS_Store
 /release.keystore
 /release.properties
