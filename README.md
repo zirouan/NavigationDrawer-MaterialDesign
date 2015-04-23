@@ -1,6 +1,6 @@
 #Navigation drawer (library)
 
-It requires 14+ API and android support v7 22.1.0 (AppCompatActivity + Toolbar)
+It requires 14+ API and android support v7 22.1.0 (Toolbar)
 
 ###Sample Application
 
@@ -24,7 +24,7 @@ How to use? Very simple! : D
 
 ```groovy
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:1.0.5'
+        compile 'br.com.liveo:navigationdrawer-material:1.0.4'
 }
 ```
 ###<b>Maven</b>
@@ -33,7 +33,7 @@ dependencies {
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.4</version>
   <type>aar</type>
 </dependency>
 ```
