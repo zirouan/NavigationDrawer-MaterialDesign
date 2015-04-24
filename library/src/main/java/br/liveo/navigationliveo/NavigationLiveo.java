@@ -255,8 +255,8 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
     private void mountListNavigation(Bundle savedInstanceState){
         createUserDefaultHeader();
-        onUserInformation();
         onInt(savedInstanceState);
+        onUserInformation();
         setAdapterNavigation();
     }
 
