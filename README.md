@@ -161,8 +161,6 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
     }
 ````
 
-<a href="https://gist.github.com/rudsonlive/759a2c554a5d34d8dd05" target="_blank">updated - Other methods</a> <br>
-
 <br>In the method "onItemClick" you can get the position of the clicked item and the layout that you must inform the replace is the library R.id.container.</b>
 
 ```groovy
