@@ -1,6 +1,32 @@
 #Change Log
 
-Version 1.0.5 *(22-04-2015)*
+Version 2.0.0 *(24-05-2015)*
+----------------------------
+It requires 14+ API and android support v7 22.1.1 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    with(this).startingPosition(1) //Starting position in the list
+            .nameItem(mListNameItem)
+            .iconItem(mListIconItem)
+            .headerItem(mListHeaderItem)
+            .countItem(mSparseCounterItem)
+
+            //{optional} - List Customization "If you remove these methods and the list will take his white standard color"
+            .selectorCheck(R.drawable.selector_check) //Inform the background of the selected item color
+            .colorItemDefault(R.color.nliveo_gray) //Inform the standard color name, icon and counter
+            .colorItemSelected(R.color.nliveo_purple_colorPrimary) //State the name of the color, icon and meter when it is selected
+            .backgroundList(R.color.nliveo_black_light) //Inform the list of background color
+            .colorLineSeparator(R.color.nliveo_transparent) //Inform the color of the subheader line
+
+            .footerItem(R.string.settings, R.drawable.ic_settings_black_24dp)
+
+            .setOnClickUser(onClickPhoto)
+            .setOnClickFooter(onClickFooter)
+            .build();
+```
+
+Version 1.0.5 *(22-04-2015)* @deprecated
 ----------------------------
 It requires 14+ API and android support v7 22.1.0 (AppCompatActivity + Toolbar)
 
