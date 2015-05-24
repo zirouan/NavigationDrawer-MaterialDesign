@@ -23,8 +23,11 @@
 
 
     <string name="header_not_created">Header was not created</string>
+
+    <string name="list_hide_item">The list is empty or has not been created</string>
+
     <string name="custom_header_not_created">Custom header was not created</string>
-    <string name="start_navigation_listener">You must start the NavigationListener in onInit() method of its main activity. Example: this.setNavigationListener(this);</string>
+    <string name="start_navigation_listener">You must start the .build(); in onInit() from your main Activity.</string>
     <string name="title_null_or_empty">The title can not be null or empty</string>
     <string name="remove_selector_navigation">The option to remove the select is active. Please remove the removeSelectorNavigation method so you can use the setNewSelectorNavigation</string>
     <string name="list_null_or_empty">List of null or empty names. Solution: mListNameItem = new ArrayList &#60;&#62; (); mListNameItem.add (position, R.string.name);</string>

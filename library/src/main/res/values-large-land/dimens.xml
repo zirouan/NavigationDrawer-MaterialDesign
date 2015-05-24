@@ -3,11 +3,11 @@
     <!-- navigation_drawer.xml -->
     <dimen name="drawer_layout_width">320dp</dimen>
 
-    <dimen name="userBackground_layout_height">189dp</dimen>
+    <dimen name="userBackground_layout_height">160dp</dimen>
 
     <dimen name="userPhoto_layout_width">64dp</dimen>
     <dimen name="userPhoto_layout_height">64dp</dimen>
-    <dimen name="userPhoto_layout_marginTop">41dp</dimen>
+    <dimen name="userPhoto_layout_marginTop">16dp</dimen>
     <dimen name="userPhoto_layout_marginLeft">16dp</dimen>
 
     <dimen name="userPhotoTwo_layout_width">40dp</dimen>

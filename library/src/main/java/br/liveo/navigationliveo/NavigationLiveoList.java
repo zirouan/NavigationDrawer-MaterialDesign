@@ -17,21 +17,19 @@
 package br.liveo.navigationliveo;
 
 import android.content.Context;
-import android.util.SparseIntArray;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.liveo.Model.Navigation;
 import br.liveo.adapter.NavigationLiveoItemAdapter;
 
 public class NavigationLiveoList {
 
-    public static List<NavigationLiveoItemAdapter> getNavigationAdapter(List<String> listNameItem, List<Integer> listIcon,
-                                                                        List<Integer> listItensHeader, SparseIntArray sparceItensCount,
-                                                                        int colorSelected, boolean removeSelector, Context context) {
+    public static List<NavigationLiveoItemAdapter> getNavigationAdapter(Context context, Navigation navigation) {
 
         List<NavigationLiveoItemAdapter> mList = new ArrayList<>();
-        if (listNameItem == null || listNameItem.size() == 0) {
+        if (navigation.nameItem == null || navigation.nameItem.size() == 0) {
             throw new RuntimeException(context.getString(R.string.list_null_or_empty));
         }
 
@@ -39,15 +37,20 @@ public class NavigationLiveoList {
         int count;
         boolean isHeader;
 
-        for (int i = 0; i < listNameItem.size(); i++) {
+        for (int i = 0; i < navigation.nameItem.size(); i++) {
 
-            String title = listNameItem.get(i);
+            String title = navigation.nameItem.get(i);
 
             NavigationLiveoItemAdapter mItemAdapter;
 
-            icon = (listIcon != null ? listIcon.get(i) : 0);
-            isHeader = (listItensHeader != null && listItensHeader.contains(i));
-            count = (sparceItensCount != null ? sparceItensCount.get(i, -1) : -1);
+            icon = (navigation.iconItem != null ? navigation.iconItem.get(i) : 0);
+            isHeader = (navigation.headerItem != null && navigation.headerItem.contains(i));
+            count = (navigation.countItem != null ? navigation.countItem.get(i, -1) : -1);
+
+            boolean isVisible = false;
+            if(navigation.hideItem != null){
+                isVisible = navigation.hideItem.contains(i);
+            }
 
             if (isHeader && icon > 0){
                 throw new RuntimeException(context.getString(R.string.value_icon_should_be_0));
@@ -71,7 +74,7 @@ public class NavigationLiveoList {
                 }
             }
 
-            mItemAdapter = new NavigationLiveoItemAdapter(title, icon, isHeader, count, colorSelected, removeSelector);
+            mItemAdapter = new NavigationLiveoItemAdapter(title, icon, isHeader, count, navigation.colorSelected, navigation.removeSelector, !isVisible);
             mList.add(mItemAdapter);
         }
         return mList;

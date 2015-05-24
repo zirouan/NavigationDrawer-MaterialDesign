@@ -19,40 +19,27 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.SparseIntArray;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.liveo.interfaces.NavigationLiveoListener;
+import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.navigationliveo.NavigationLiveo;
 
-public class MainActivity extends NavigationLiveo implements NavigationLiveoListener {
+public class MainActivity extends NavigationLiveo implements OnItemClickListener {
 
     public List<String> mListNameItem;
 
     @Override
-    public void onUserInformation() {
-        //User information here
-        this.mUserName.setText("Rudson Lima");
-        this.mUserEmail.setText("rudsonlive@gmail.com");
-        this.mUserPhoto.setImageResource(R.drawable.ic_rudsonlive);
-        this.mUserBackground.setImageResource(R.drawable.ic_user_background);
-    }
-
-    @Override
     public void onInt(Bundle savedInstanceState) {
-        //Creation of the list items is here
 
-        // set listener {required}
-        this.setNavigationListener(this);
-
-        if (savedInstanceState == null) {
-            //First item of the position selected from the list
-            this.setDefaultStartPositionNavigation(1);
-        }
+        // User Information
+        this.userName.setText("Rudson Lima");
+        this.userEmail.setText("rudsonlive@gmail.com");
+        this.userPhoto.setImageResource(R.drawable.ic_rudsonlive);
+        this.userBackground.setImageResource(R.drawable.ic_user_background_second);
 
         // name of the list items
         mListNameItem = new ArrayList<>();
@@ -84,50 +71,50 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         mSparseCounterItem.put(1, 123);
         mSparseCounterItem.put(6, 250);
 
-        //If not please use the FooterDrawer use the setFooterVisible(boolean visible) method with value false
-        this.setFooterInformationDrawer(R.string.settings, R.drawable.ic_settings_black_24dp);
+        with(this).startingPosition(1) //Starting position in the list
+                .nameItem(mListNameItem)
+                .iconItem(mListIconItem)
+                .headerItem(mListHeaderItem)
+                .countItem(mSparseCounterItem)
 
-        this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
+                //{optional} - List Customization "If you remove these methods and the list will take his white standard color"
+                .selectorCheck(R.drawable.selector_check) //Inform the background of the selected item color
+                .colorItemDefault(R.color.nliveo_gray) //Inform the standard color name, icon and counter
+                .colorItemSelected(R.color.nliveo_purple_colorPrimary) //State the name of the color, icon and meter when it is selected
+                .backgroundList(R.color.nliveo_black_light) //Inform the list of background color
+                .colorLineSeparator(R.color.nliveo_transparent) //Inform the color of the subheader line
+
+                .footerItem(R.string.settings, R.drawable.ic_settings_black_24dp)
+
+                .setOnClickUser(onClickPhoto)
+                .setOnClickFooter(onClickFooter)
+                .build();
     }
 
     @Override
-    public void onItemClickNavigation(int position, int layoutContainerId) {
-
+    public void onItemClick(int position) {
         FragmentManager mFragmentManager = getSupportFragmentManager();
-
         Fragment mFragment = new FragmentMain().newInstance(mListNameItem.get(position));
 
         if (mFragment != null){
-            mFragmentManager.beginTransaction().replace(layoutContainerId, mFragment).commit();
+            mFragmentManager.beginTransaction().replace(R.id.container, mFragment).commit();
         }
     }
 
-    @Override
-    public void onPrepareOptionsMenuNavigation(Menu menu, int position, boolean visible) {
-
-        //hide the menu when the navigation is opens
-        switch (position) {
-            case 0:
-                menu.findItem(R.id.menu_add).setVisible(!visible);
-                menu.findItem(R.id.menu_search).setVisible(!visible);
-                break;
-
-            case 1:
-                menu.findItem(R.id.menu_add).setVisible(!visible);
-                menu.findItem(R.id.menu_search).setVisible(!visible);
-                break;
+    private View.OnClickListener onClickPhoto = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getApplicationContext(), "onClickPhoto :D", Toast.LENGTH_SHORT).show();
+            closeDrawer();
         }
-    }
+    };
 
-    @Override
-    public void onClickUserPhotoNavigation(View v) {
-        //user photo onClick
-        Toast.makeText(this, R.string.open_user_profile, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onClickFooterItemNavigation(View v) {
-        //footer onClick
-        startActivity(new Intent(this, SettingsActivity.class));
-    }
+    private View.OnClickListener onClickFooter = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+            closeDrawer();
+        }
+    };
 }
+

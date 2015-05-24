@@ -76,6 +76,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="8dp"
             android:lines="1"
+            android:alpha="0.87"
+            android:textColor="@color/nliveo_black"
             android:maxLength="3"
             android:textSize="@dimen/default_textSize"
             android:textStyle="bold"

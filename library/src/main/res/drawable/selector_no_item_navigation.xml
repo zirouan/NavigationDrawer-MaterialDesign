@@ -20,5 +20,5 @@
     <item android:state_pressed="true"
         android:drawable="@color/nliveo_transparent" />
     <item android:state_selected="false"
-        android:drawable="@color/nliveo_purple_alpha_colorPrimaryDark"/>
+        android:drawable="@color/nliveo_transparent"/>
 </selector>

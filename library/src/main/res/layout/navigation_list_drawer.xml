@@ -16,10 +16,10 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="@color/nliveo_white"
     android:fitsSystemWindows="true"
     tools:ignore="MissingPrefix">
 
@@ -32,10 +32,9 @@
         android:cacheColorHint="@color/nliveo_transparent"
         android:choiceMode="singleChoice"
         android:fitsSystemWindows="true"
-        android:divider="@color/nliveo_transparent"
         android:background="@color/nliveo_white"
+        android:divider="@color/nliveo_transparent"
         android:dividerHeight="0dp" />
-
 
     <RelativeLayout
         android:id="@+id/layoutFooter"
@@ -79,41 +78,5 @@
                 android:layout_toRightOf="@+id/iconFooter"
                 android:layout_toEndOf="@+id/iconFooter" />
         </RelativeLayout>
-
-        <!--<RelativeLayout-->
-            <!--android:id="@+id/footerDrawerOne"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_below="@id/footerDrawer"-->
-            <!--android:background="@drawable/selector_no_check_item_navigation"-->
-            <!--android:layout_height="48dp">-->
-
-            <!--<ImageView-->
-                <!--android:id="@+id/iconFooterOne"-->
-                <!--android:layout_width="24dp"-->
-                <!--android:layout_height="24dp"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_marginStart="16dp"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:layout_marginEnd="16dp"-->
-                <!--android:layout_marginRight="16dp"-->
-                <!--android:src="@drawable/ic_rudsonlive"-->
-                <!--android:contentDescription="@string/clear" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/titleFooterOneOne"-->
-                <!--fontPath="fonts/Roboto-Medium.ttf"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_marginStart="16dp"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginRight="8dp"-->
-                <!--android:textColor="#000000"-->
-                <!--android:text="@string/drawer_open"-->
-                <!--android:textSize="@dimen/default_textSize"-->
-                <!--android:layout_toRightOf="@+id/iconFooterOne"-->
-                <!--android:layout_toEndOf="@+id/iconFooterOne" />-->
-        <!--</RelativeLayout>-->
     </RelativeLayout>
 </RelativeLayout>

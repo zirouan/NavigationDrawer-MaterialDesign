@@ -27,6 +27,8 @@
     <!--Here will be the theme of the class that will extends NavigationLiveo-->
     <style name="nLiveoDrawer" parent="nLiveo.Theme.DarkActionBar">
         <!-- Customize your theme here. -->
-
+        <item name="colorPrimary">@color/nliveo_purple_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/nliveo_purple_alpha_colorPrimaryDark</item>
+        <item name="colorAccent">@color/nliveo_purple_colorPrimary</item>
     </style>
 </resources>

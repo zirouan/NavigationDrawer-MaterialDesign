@@ -17,7 +17,8 @@
 <resources>
 	<color name="nliveo_white">#ffffff</color>
 	<color name="nliveo_gray">#e0e0e0</color>
-	<color name="nliveo_black">#000000</color>
+    <color name="nliveo_black">#000000</color>
+	<color name="nliveo_black_light">#222222</color>
 	<color name="nliveo_transparent">#00000000</color>
 
     <color name="nliveo_blue_colorPrimary">#2196F3</color>
@@ -59,4 +60,9 @@
     <color name="nliveo_blue_gray_colorPrimary">#607D8B</color>
     <color name="nliveo_blue_gray_colorPrimaryDark">#80455A64</color>
     <color name="nliveo_blue_gray_alpha_colorPrimaryDark">#80455A64</color>
+
+    <color name="nliveo_purple_colorPrimary">#673AB7</color>
+    <color name="nliveo_purple_colorPrimaryDark">#512DA8</color>
+    <color name="nliveo_purple_alpha_colorPrimaryDark">#80512DA8</color>
+
 </resources>

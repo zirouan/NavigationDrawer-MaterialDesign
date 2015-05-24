@@ -35,13 +35,15 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 
     private int mColorIcon = 0;
     private int mColorName = 0;
+    private int mColorCounter = 0;
     private int mColorSeparator = 0;
 
     private int mNewSelector = 0;
     private int mColorDefault = 0;
 	private final Context mcontext;
+    private int mSelectorDefault = 0;
     private boolean mRemoveAlpha = false;
-	private final List<NavigationLiveoItemAdapter> mList;
+    private final List<NavigationLiveoItemAdapter> mList;
 	
 	public NavigationLiveoAdapter(Context context, List<NavigationLiveoItemAdapter> list, boolean removeAlpha, List<Integer> extra) {
 		this.mList = list;		
@@ -51,6 +53,8 @@ public class NavigationLiveoAdapter extends BaseAdapter {
         this.mColorIcon = extra.get(2);
         this.mColorName = extra.get(3);
         this.mColorSeparator = extra.get(4);
+        this.mColorCounter = extra.get(5);
+        this.mSelectorDefault = extra.get(6);
         this.mRemoveAlpha = removeAlpha;
 	}
 
@@ -76,7 +80,7 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 
 	@Override
 	public int getItemViewType(int position) {
-		return getItem(position).isHeader ? 0 : 1;
+		return mList.get(position).isVisible ? 0 : 1;
 	}
 
 	@Override
@@ -128,6 +132,11 @@ public class NavigationLiveoAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    public void setVisibleItemNavigation(int position, boolean visible){
+        mList.get(position).isVisible = visible;
+        notifyDataSetChanged();
+    }
+
     class ViewHolder {
 		public TextView title;
 		public ImageView icon;
@@ -143,11 +152,7 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 	}
 
     private void setAlpha(View v, float alpha) {
-        if (!mRemoveAlpha) {
-            v.setAlpha(alpha);
-        }else{
-            v.setAlpha(1f);
-        }
+        v.setAlpha(!mRemoveAlpha ? alpha : 1f);
     }
 
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -157,8 +162,8 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 
 		if (convertView == null) {
 			holder = new ViewHolder();
-			
-			int layout = R.layout.navigation_list_item;
+
+            int layout = R.layout.navigation_list_item;
 
             LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, parent, false);
@@ -183,13 +188,11 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 
             if (!item.isHeader) {
                 holder.layoutSeparator.setVisibility(View.GONE);
-                holder.layoutDados.setVisibility(View.VISIBLE);
-                setAlpha(holder.title, (item.checked ? 1f : 0.87f));
 
-                holder.title.setTextColor((!item.isHeader && item.checked && item.colorSelected > 0 ?
-                        mcontext.getResources().getColor(item.colorSelected) :
-                        mColorName > 0 ? mcontext.getResources().getColor(mColorName) :
-                        mcontext.getResources().getColor(R.color.nliveo_black)));
+                int type = getItemViewType(position);
+                holder.layoutDados.setVisibility(type == 0 ? View.VISIBLE : View.GONE);
+
+                setAlpha(holder.title, (item.checked ? 1f : 0.87f));
             }else{
                 holder.layoutSeparator.setVisibility(View.VISIBLE);
 
@@ -204,13 +207,28 @@ public class NavigationLiveoAdapter extends BaseAdapter {
                     holder.layoutDados.setVisibility(View.VISIBLE);
                 }
             }
+
+            holder.title.setTextColor((!item.isHeader && item.checked && item.colorSelected > 0 ?
+                    mcontext.getResources().getColor(item.colorSelected) :
+                    mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
+                            mColorName > 0 ? mcontext.getResources().getColor(mColorName) :
+                                    mcontext.getResources().getColor(R.color.nliveo_black)));
 		}
 
 		if (holder.counter != null) {
 			if (item.counter >= 1) {
+                setAlpha(holder.title, (item.checked ? 1f : 0.87f));
 				holder.counter.setVisibility(View.VISIBLE);
                 holder.counter.setText((item.counter > 99) ? "99+" : item.counter + "");
-			} else {
+
+                holder.counter.setTextColor((!item.isHeader && item.checked && item.colorSelected > 0 ?
+                        mcontext.getResources().getColor(item.colorSelected) :
+                        mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
+                        mColorCounter > 0 ?
+                                mcontext.getResources().getColor(mColorCounter) :
+                                mcontext.getResources().getColor(R.color.nliveo_black)));
+
+            } else {
 				holder.counter.setVisibility(View.GONE);
 
                 if (item.counter < 0){
@@ -229,7 +247,7 @@ public class NavigationLiveoAdapter extends BaseAdapter {
                         mcontext.getResources().getColor(item.colorSelected) :
                         (mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
                                 mColorIcon > 0 ? mcontext.getResources().getColor(mColorIcon) :
-                                           mcontext.getResources().getColor(R.color.nliveo_black))));
+                                        mcontext.getResources().getColor(R.color.nliveo_black))));
 			} else {
 				holder.icon.setVisibility(View.GONE);
 			}
@@ -237,12 +255,12 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 	
 		if (!item.isHeader) {			
 			if (item.checked) {
-                convertView.setBackgroundResource((!item.removeSelector ? ( mNewSelector == 0 ? R.drawable.selector_check_item_navigation : mNewSelector) : R.drawable.selector_no_check_item_navigation));
+                convertView.setBackgroundResource((!item.removeSelector ? ( mNewSelector == 0 ? R.drawable.selector_check_item_navigation : mNewSelector) : R.drawable.selector_no_item_navigation));
 			} else {
-                convertView.setBackgroundResource(R.drawable.selector_no_check_item_navigation);
+                convertView.setBackgroundResource(mSelectorDefault == 0 ? R.drawable.selector_no_check_item_navigation : R.drawable.selector_no_item_navigation);
 			}
 		}else{
-            convertView.setBackgroundResource(R.drawable.selector_no_check_item_navigation);
+            convertView.setBackgroundResource(mSelectorDefault == 0 ? R.drawable.selector_no_check_item_navigation : mSelectorDefault);
         }
 
 	    return convertView;		
