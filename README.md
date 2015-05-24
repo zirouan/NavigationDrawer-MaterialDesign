@@ -131,8 +131,8 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
         mSparseCounterItem.put(6, 250);
 
         //If you want to create your own user header just do the following
-        View mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
-        ImageView imageView = (ImageView) mCustomHeader.findViewById(R.id.imageView);
+        //View mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
+        //ImageView imageView = (ImageView) mCustomHeader.findViewById(R.id.imageView);
 
         with(this).startingPosition(1) //Starting position in the list
                 .nameItem(mListNameItem)
@@ -141,14 +141,14 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
                 .countItem(mSparseCounterItem)
 
                 //This will add the new header and remove the default user header
-                .customHeader(mCustomHeader)
+                //.customHeader(mCustomHeader)
 
                 //{optional} - List Customization "If you remove these methods and the list will take his white standard color"
-                .selectorCheck(R.drawable.selector_check) //Inform the background of the selected item color
-                .colorItemDefault(R.color.nliveo_gray) //Inform the standard color name, icon and counter
-                .colorItemSelected(R.color.nliveo_purple_colorPrimary) //State the name of the color, icon and meter when it is selected
-                .backgroundList(R.color.nliveo_black_light) //Inform the list of background color
-                .colorLineSeparator(R.color.nliveo_transparent) //Inform the color of the subheader line
+                //.selectorCheck(R.drawable.selector_check) //Inform the background of the selected item color
+                //.colorItemDefault(R.color.nliveo_gray) //Inform the standard color name, icon and counter
+                //.colorItemSelected(R.color.nliveo_purple_colorPrimary) //State the name of the color, icon and meter when it is selected
+                //.backgroundList(R.color.nliveo_black_light) //Inform the list of background color
+                //.colorLineSeparator(R.color.nliveo_transparent) //Inform the color of the subheader line
                 //{optional} - List Customization
 
                 //If not please use the footer item, use the ".removeFooter()" method;
