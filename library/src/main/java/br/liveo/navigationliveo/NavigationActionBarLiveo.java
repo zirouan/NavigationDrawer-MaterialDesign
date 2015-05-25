@@ -26,7 +26,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -108,7 +107,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
-        mDrawerToggle = new ActionBarDrawerToggleCompat(this, mDrawerLayout, null);
+        mDrawerToggle = new ActionBarDrawerToggleCompat(this, mDrawerLayout);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mTitleFooter = (TextView) this.findViewById(R.id.titleFooter);
@@ -187,7 +186,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
 
 	private class ActionBarDrawerToggleCompat extends ActionBarDrawerToggle {
 
-        public ActionBarDrawerToggleCompat(Activity activity, DrawerLayout drawerLayout, Toolbar toolbar){
+        public ActionBarDrawerToggleCompat(Activity activity, DrawerLayout drawerLayout){
             super(
                     activity,
                     drawerLayout,
@@ -233,9 +232,15 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     }
 
     private void mountListNavigation(Bundle savedInstanceState){
-        createUserDefaultHeader();
-        onInt(savedInstanceState);
-        addHeaderView();
+        this.createUserDefaultHeader();
+        this.onInt(savedInstanceState);
+        this.addHeaderView();
+    }
+
+    private void addHeaderView() {
+        if(!this.mRemoveHeader) {
+            this.mList.addHeaderView(this.mHeader);
+        }
     }
 
     /**
@@ -291,12 +296,6 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         userEmail = (TextView) mHeader.findViewById(R.id.userEmail);
         userPhoto = (ImageView) mHeader.findViewById(R.id.userPhoto);
         userBackground = (ImageView) mHeader.findViewById(R.id.userBackground);
-    }
-
-    private void addHeaderView(){
-        if (!mRemoveHeader) {
-            mList.addHeaderView(mHeader);
-        }
     }
 
     /**
