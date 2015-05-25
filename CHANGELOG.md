@@ -1,5 +1,15 @@
 #Change Log
 
+Version 2.0.1 *(25-05-2015)*
+----------------------------
+It requires 14+ API and android support v7 22.1.1 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    Add NavigationActionBarLiveo
+    .removeHeader() //only in NavigationActionBarLiveo
+```
+
 Version 2.0.0 *(24-05-2015)*
 ----------------------------
 It requires 14+ API and android support v7 22.1.1 (AppCompatActivity + Toolbar)
