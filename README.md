@@ -205,7 +205,8 @@ Footer onClick - Inform the listener in .setOnClickFooter(onClickFooter) method 
 <b>To remove the header, use the method ".removeHeader()"</b> <br>
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_04.png">
 
-<b>Your app uses this library? You can promote it here! Just send your app that'll be happy to disclose.</b> <br>
+<br>
+<b>Your application uses this library? You can promote it here! Just send your application that will be happy to disclose..</b> <br>
 
 <br>
 #Developed By<br>
