@@ -1,5 +1,19 @@
 #Change Log
 
+Version 2.1.1 *(25-05-2015)*
+----------------------------
+It requires 14+ API and android support v7 22.1.1 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    Bug position
+
+    .footerNameColor(int color)
+    .footerIconColor(int color)
+    .footerBackground(int color)
+```
+
+
 Version 2.0.1 *(25-05-2015)*
 ----------------------------
 It requires 14+ API and android support v7 22.1.1 (AppCompatActivity + Toolbar)

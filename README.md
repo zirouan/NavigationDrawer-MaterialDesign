@@ -24,7 +24,7 @@ How to use? Very simple! : D
 
 ```groovy
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:2.0.1'
+        compile 'br.com.liveo:navigationdrawer-material:2.1.1'
 }
 ```
 ###<b>Maven</b>
@@ -33,7 +33,7 @@ dependencies {
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>2.0.1</version>
+  <version>2.1.1</version>
   <type>aar</type>
 </dependency>
 ```
@@ -113,10 +113,10 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
         // icons list items
         List<Integer> mListIconItem = new ArrayList<>();
         mListIconItem.add(0, R.drawable.ic_inbox_black_24dp);
-        mListIconItem.add(1, R.drawable.ic_star_black_24dp); //Item no icon set 0
-        mListIconItem.add(2, R.drawable.ic_send_black_24dp); //Item no icon set 0
+        mListIconItem.add(1, R.drawable.ic_star_black_24dp); //Item no icon set NavigationLiveo.NO_ICON
+        mListIconItem.add(2, R.drawable.ic_send_black_24dp); //Item no icon set NavigationLiveo.NO_ICON
         mListIconItem.add(3, R.drawable.ic_drafts_black_24dp);
-        mListIconItem.add(4, 0); //When the item is a subHeader the value of the icon 0
+        mListIconItem.add(4, NavigationLiveo.NO_ICON); //When the item is a subHeader the value of the icon NavigationLiveo.NO_ICON
         mListIconItem.add(5, R.drawable.ic_delete_black_24dp);
         mListIconItem.add(6, R.drawable.ic_report_black_24dp);
 
@@ -153,6 +153,11 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
 
                 //If not please use the footer item, use the ".removeFooter()" method;
                 .footerItem(R.string.settings, R.drawable.ic_settings_black_24dp)
+
+                //{optional} - Footer Customization
+                //.footerNameColor(R.color.nliveo_blue_colorPrimary)
+                //.footerIconColor(R.color.nliveo_blue_colorPrimary)
+                //.footerBackground(R.color.nliveo_white)
 
                 .setOnClickUser(onClickPhoto)
                 .setOnClickFooter(onClickFooter)

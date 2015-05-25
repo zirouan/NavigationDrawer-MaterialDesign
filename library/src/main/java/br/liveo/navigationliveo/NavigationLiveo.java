@@ -84,6 +84,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private OnItemClickListener mOnItemClickLiveo;
     private OnPrepareOptionsMenuLiveo mOnPrepareOptionsMenu;
 
+    public static final int NO_ICON = 0;
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
     /**
@@ -307,6 +308,15 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     public NavigationLiveo backgroundList(int color){
         this.mSelectorDefault = color;
         this.mList.setBackgroundResource(color);
+        this.mFooterDrawer.setBackgroundResource(color);
+        return this;
+    }
+
+    /**
+     * Background Footer
+     * @param color Default color - R.color.nliveo_white
+     */
+    public NavigationLiveo footerBackground(int color){
         this.mFooterDrawer.setBackgroundResource(color);
         return this;
     }
@@ -606,8 +616,8 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         }
 
         if (mColorDefault > 0){
-            setFooterNameColorNavigation(mColorDefault);
-            setFooterIconColorNavigation(mColorDefault);
+            footerNameColor(mColorDefault);
+            footerIconColor(mColorDefault);
         }
 
         return this;
@@ -633,8 +643,8 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         }
 
         if (mColorDefault > 0){
-            setFooterNameColorNavigation(mColorDefault);
-            setFooterIconColorNavigation(mColorDefault);
+            footerNameColor(mColorDefault);
+            footerIconColor(mColorDefault);
         }
 
         return this;
@@ -803,14 +813,34 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     /**
      * Footer name color
      * @param colorId color id.
+     * @deprecated
      */
     public void setFooterNameColorNavigation(int colorId){
         this.mTitleFooter.setTextColor(getResources().getColor(colorId));
     }
 
     /**
+     * Footer name color
+     * @param colorId color id.
+     */
+    public NavigationLiveo footerNameColor(int colorId){
+        this.mTitleFooter.setTextColor(getResources().getColor(colorId));
+        return this;
+    }
+
+    /**
      * Footer icon color
      * @param colorId color id.
+     */
+    public NavigationLiveo footerIconColor(int colorId) {
+        this.mIconFooter.setColorFilter(getResources().getColor(colorId));
+        return this;
+    }
+
+    /**
+     * Footer icon color
+     * @param colorId color id.
+     * @deprecated
      */
     public void setFooterIconColorNavigation(int colorId) {
         this.mIconFooter.setColorFilter(getResources().getColor(colorId));

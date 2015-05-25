@@ -84,6 +84,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     private OnItemClickListener mOnItemClickLiveo;
     private OnPrepareOptionsMenuLiveo mOnPrepareOptionsMenu;
 
+    public static final int NO_ICON = 0;
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
     /**
@@ -219,9 +220,9 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            int mPosition = (position - 1);
+            int mPosition = (!mRemoveHeader ? position - 1 : position);
 
-            if (position != 0) {
+            if (position != 0 || mRemoveHeader) {
                 mOnItemClickLiveo.onItemClick(mPosition);
                 setCurrentPosition(mPosition);
                 setCheckedItemNavigation(mPosition, true);
@@ -305,6 +306,15 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     public NavigationActionBarLiveo backgroundList(int color){
         this.mSelectorDefault = color;
         this.mList.setBackgroundResource(color);
+        this.mFooterDrawer.setBackgroundResource(color);
+        return this;
+    }
+
+    /**
+     * Background Footer
+     * @param color Default color - R.color.nliveo_white
+     */
+    public NavigationActionBarLiveo footerBackground(int color){
         this.mFooterDrawer.setBackgroundResource(color);
         return this;
     }
@@ -604,8 +614,8 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         }
 
         if (mColorDefault > 0){
-            setFooterNameColorNavigation(mColorDefault);
-            setFooterIconColorNavigation(mColorDefault);
+            footerNameColor(mColorDefault);
+            footerIconColor(mColorDefault);
         }
 
         return this;
@@ -631,8 +641,8 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         }
 
         if (mColorDefault > 0){
-            setFooterNameColorNavigation(mColorDefault);
-            setFooterIconColorNavigation(mColorDefault);
+            footerNameColor(mColorDefault);
+            footerIconColor(mColorDefault);
         }
 
         return this;
@@ -801,14 +811,33 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     /**
      * Footer name color
      * @param colorId color id.
+     * @deprecated
      */
     public void setFooterNameColorNavigation(int colorId){
         this.mTitleFooter.setTextColor(getResources().getColor(colorId));
     }
 
     /**
+     * Footer name color
+     * @param colorId color id.
+     */
+    public NavigationActionBarLiveo footerNameColor(int colorId){
+        this.mTitleFooter.setTextColor(getResources().getColor(colorId));
+        return this;
+    }
+
+    /**
      * Footer icon color
      * @param colorId color id.
+     */
+    public NavigationActionBarLiveo footerIconColor(int colorId) {
+        this.mIconFooter.setColorFilter(getResources().getColor(colorId));
+        return this;
+    }
+    /**
+     * Footer icon color
+     * @param colorId color id.
+     * @deprecated
      */
     public void setFooterIconColorNavigation(int colorId) {
         this.mIconFooter.setColorFilter(getResources().getColor(colorId));
