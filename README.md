@@ -75,7 +75,7 @@ note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with
         <activity
     <!--Theme of the class that will extends NavigationLiveo-->        
             android:name=".MainActivity"
-            android:theme="@style/nLiveoDrawer"
+            android:theme="@style/nLiveoDrawer" //This is only necessary if using the NavigationLiveo
         </activity>
     </application>
 ````
@@ -195,9 +195,15 @@ Footer onClick - Inform the listener in .setOnClickFooter(onClickFooter) method 
     };
 ```
 
-<img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png"> 
-
+<img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png">
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_02.png"> 
+
+
+<b>To use the NavigationActionBarLiveo, remove the theme "android:theme="@style/nLiveoDrawer"" demo project and extend the MainActitivity of NavigationActionBarLiveo</b> <br>
+<img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_03.png">
+
+<b>To remove the header, use the method ".removeHeader()"</b> <br>
+<img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_04.png">
 
 <b>Your app uses this library? You can promote it here! Just send your app that'll be happy to disclose.</b> <br>
 

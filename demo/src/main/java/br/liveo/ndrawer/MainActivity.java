@@ -39,7 +39,7 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         this.userName.setText("Rudson Lima");
         this.userEmail.setText("rudsonlive@gmail.com");
         this.userPhoto.setImageResource(R.drawable.ic_rudsonlive);
-        this.userBackground.setImageResource(R.drawable.ic_user_background_second);
+        this.userBackground.setImageResource(R.drawable.ic_user_background_first);
 
         // name of the list items
         mListNameItem = new ArrayList<>();
@@ -85,7 +85,6 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 //.colorLineSeparator(R.color.nliveo_transparent) //Inform the color of the subheader line
 
                 .footerItem(R.string.settings, R.drawable.ic_settings_black_24dp)
-
                 .setOnClickUser(onClickPhoto)
                 .setOnClickFooter(onClickFooter)
                 .build();

@@ -46,7 +46,7 @@ import br.liveo.adapter.NavigationLiveoAdapter;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
 
-public abstract class NavigationLiveo extends AppCompatActivity {
+public abstract class NavigationActionBarLiveo extends AppCompatActivity {
 
     public TextView userName;
     public TextView userEmail;
@@ -56,7 +56,6 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private View mHeader;
 
     private ListView mList;
-    private Toolbar mToolbar;
     private TextView mTitleFooter;
     private ImageView mIconFooter;
     private int mColorName = 0;
@@ -70,7 +69,9 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private int mCurrentPosition = 1;
     private int mSelectorDefault = 0;
     private boolean mRemoveAlpha = false;
+    private boolean mRemoveHeader = false;
 
+    private ActionBar mActionBar;
     private DrawerLayout mDrawerLayout;
     private FrameLayout mRelativeDrawer;
     private RelativeLayout mFooterDrawer;
@@ -95,7 +96,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.navigation_main);
+		setContentView(R.layout.navigation_main_actionbar);
 
         if (savedInstanceState != null) {
             isSaveInstance = true;
@@ -105,10 +106,9 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mList = (ListView) findViewById(R.id.list);
         mList.setOnItemClickListener(new DrawerItemClickListener());
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
-        mDrawerToggle = new ActionBarDrawerToggleCompat(this, mDrawerLayout, mToolbar);
+        mDrawerToggle = new ActionBarDrawerToggleCompat(this, mDrawerLayout, null);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mTitleFooter = (TextView) this.findViewById(R.id.titleFooter);
@@ -117,13 +117,11 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mFooterDrawer = (RelativeLayout) this.findViewById(R.id.footerDrawer);
         mRelativeDrawer = (FrameLayout) this.findViewById(R.id.relativeDrawer);
 
-        this.setSupportActionBar(mToolbar);
+        mActionBar = getSupportActionBar();
 
-        ActionBar actionBar = getSupportActionBar();
-
-        if (actionBar != null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeButtonEnabled(true);
+        if (mActionBar != null){
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+            mActionBar.setHomeButtonEnabled(true);
         }
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -179,7 +177,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     }
 
 	@Override
-    protected void onPostCreate(Bundle savedInstanceState) {
+	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 
         if (mDrawerToggle != null) {
@@ -192,7 +190,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         public ActionBarDrawerToggleCompat(Activity activity, DrawerLayout drawerLayout, Toolbar toolbar){
             super(
                     activity,
-                    drawerLayout, toolbar,
+                    drawerLayout,
                     R.string.drawer_open,
                     R.string.drawer_close);
         }
@@ -237,6 +235,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private void mountListNavigation(Bundle savedInstanceState){
         createUserDefaultHeader();
         onInt(savedInstanceState);
+        addHeaderView();
     }
 
     /**
@@ -278,13 +277,8 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mListExtra.add(6, mSelectorDefault);
 
         mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mNavigation), mRemoveAlpha, mListExtra);
-        setAdapter();
-    }
 
-    private void setAdapter(){
-        if (mNavigationAdapter != null){
-            mList.setAdapter(mNavigationAdapter);
-        }
+        mList.setAdapter(mNavigationAdapter);
     }
 
     /**
@@ -297,14 +291,19 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         userEmail = (TextView) mHeader.findViewById(R.id.userEmail);
         userPhoto = (ImageView) mHeader.findViewById(R.id.userPhoto);
         userBackground = (ImageView) mHeader.findViewById(R.id.userBackground);
-        mList.addHeaderView(mHeader);
+    }
+
+    private void addHeaderView(){
+        if (!mRemoveHeader) {
+            mList.addHeaderView(mHeader);
+        }
     }
 
     /**
      * Background ListView
      * @param color Default color - R.color.nliveo_white
      */
-    public NavigationLiveo backgroundList(int color){
+    public NavigationActionBarLiveo backgroundList(int color){
         this.mSelectorDefault = color;
         this.mList.setBackgroundResource(color);
         this.mFooterDrawer.setBackgroundResource(color);
@@ -315,7 +314,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * Starting listener navigation
      * @param listener listener.
      */
-    public NavigationLiveo with(OnItemClickListener listener){
+    public NavigationActionBarLiveo with(OnItemClickListener listener){
         this.mOnItemClickLiveo = listener;
         return this;
     };
@@ -323,7 +322,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     /**
      * @param listNameItem list name item.
      */
-    public NavigationLiveo nameItem(List<String> listNameItem){
+    public NavigationActionBarLiveo nameItem(List<String> listNameItem){
         this.mNavigation.nameItem = listNameItem;
         return this;
     }
@@ -331,7 +330,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     /**
      * @param listIcon list icon item.
      */
-    public NavigationLiveo iconItem(List<Integer> listIcon){
+    public NavigationActionBarLiveo iconItem(List<Integer> listIcon){
         this.mNavigation.iconItem = listIcon;
         return this;
     }
@@ -339,7 +338,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     /**
      * @param listHeader list header name item.
      */
-    public NavigationLiveo headerItem(List<Integer> listHeader){
+    public NavigationActionBarLiveo headerItem(List<Integer> listHeader){
         this.mNavigation.headerItem = listHeader;
         return this;
     }
@@ -347,7 +346,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     /**
      * @param sparceCount sparce count item.
      */
-    public NavigationLiveo countItem(SparseIntArray sparceCount){
+    public NavigationActionBarLiveo countItem(SparseIntArray sparceCount){
         this.mNavigation.countItem = sparceCount;
         return this;
     }
@@ -380,7 +379,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * hide navigation item
      * @param listHide list hide item.
      */
-    public NavigationLiveo hideItem(List<Integer> listHide){
+    public NavigationActionBarLiveo hideItem(List<Integer> listHide){
         mNavigation.hideItem = listHide;
         return this;
     }
@@ -424,7 +423,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * First item of the position selected from the list
      * @param position ...
      */
-    public NavigationLiveo startingPosition(int position){
+    public NavigationActionBarLiveo startingPosition(int position){
         if (!isSaveInstance) {
             this.mCurrentPosition = position;
         }
@@ -494,7 +493,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param title item footer name.
      * @param icon item footer icon.
      */
-    public NavigationLiveo footerItem(String title, int icon){
+    public NavigationActionBarLiveo footerItem(String title, int icon){
 
         if (title == null){
             throw new RuntimeException(getString(R.string.title_null_or_empty));
@@ -557,7 +556,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param colorName item footer name color.
      * @param colorIcon item footer icon color.
      */
-    public NavigationLiveo footerInformationDrawer(String title, int icon, int colorName, int colorIcon){
+    public NavigationActionBarLiveo footerInformationDrawer(String title, int icon, int colorName, int colorIcon){
 
         if (title == null){
             throw new RuntimeException(getString(R.string.title_null_or_empty));
@@ -591,7 +590,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param icon item footer icon.
      * @deprecated
      */
-    public NavigationLiveo setFooterInformationDrawer(int title, int icon){
+    public NavigationActionBarLiveo setFooterInformationDrawer(int title, int icon){
 
         if (title == 0){
             throw new RuntimeException(getString(R.string.title_null_or_empty));
@@ -601,7 +600,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
         if (icon == 0){
             mIconFooter.setVisibility(View.GONE);
-        }else {
+        }else{
             mIconFooter.setImageResource(icon);
         }
 
@@ -618,7 +617,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param title item footer name.
      * @param icon item footer icon.
      */
-    public NavigationLiveo footerItem(int title, int icon){
+    public NavigationActionBarLiveo footerItem(int title, int icon){
 
         if (title == 0){
             throw new RuntimeException(getString(R.string.title_null_or_empty));
@@ -662,7 +661,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
         if (icon == 0){
             mIconFooter.setVisibility(View.GONE);
-        }else {
+        }else{
             mIconFooter.setImageResource(icon);
 
             if ( colorIcon > 0) {
@@ -678,7 +677,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param colorName item footer name color.
      * @param colorIcon item footer icon color.
      */
-    public NavigationLiveo footerItem(int title, int icon, int colorName, int colorIcon){
+    public NavigationActionBarLiveo footerItem(int title, int icon, int colorName, int colorIcon){
 
         if (title == 0){
             throw new RuntimeException(getString(R.string.title_null_or_empty));
@@ -708,7 +707,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param icon item footer icon.
      * @param color item footer name and icon color.
      */
-    public NavigationLiveo footerItem(int title, int icon, int color){
+    public NavigationActionBarLiveo footerItem(int title, int icon, int color){
 
         if (title == 0){
             throw new RuntimeException(getString(R.string.title_null_or_empty));
@@ -738,7 +737,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param icon item footer icon.
      * @param color item footer name and icon color.
      */
-    public NavigationLiveo footerItem(String title, int icon, int color){
+    public NavigationActionBarLiveo footerItem(String title, int icon, int color){
 
         if (title == null){
             throw new RuntimeException(getString(R.string.title_null_or_empty));
@@ -777,7 +776,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     /**
      * Remove footer
      */
-    public NavigationLiveo removeFooter(){
+    public NavigationActionBarLiveo removeFooter(){
         this.mFooterDrawer.setVisibility(View.GONE);
         return this;
     }
@@ -795,7 +794,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * Item color selected in the list - name, icon and counter
      * @param colorId color id.
      */
-    public NavigationLiveo colorItemSelected(int colorId){
+    public NavigationActionBarLiveo colorItemSelected(int colorId){
         mNavigation.colorSelected = colorId;
         return this;
     }
@@ -829,7 +828,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * Item color default in the list - name and icon (use before the setNavigationAdapter)
      * @param colorId color id.
      */
-    public NavigationLiveo colorItemDefault(int colorId){
+    public NavigationActionBarLiveo colorItemDefault(int colorId){
         this.mColorDefault = colorId;
         return this;
     }
@@ -847,7 +846,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * Icon item color in the list - icon (use before the setNavigationAdapter)
      * @param colorId color id.
      */
-    public NavigationLiveo colorItemIcon(int colorId){
+    public NavigationActionBarLiveo colorItemIcon(int colorId){
         this.mColorIcon = colorId;
         return this;
     }
@@ -865,7 +864,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * Separator item subHeader color in the list - icon
      * @param colorId color id.
      */
-    public NavigationLiveo colorLineSeparator(int colorId){
+    public NavigationActionBarLiveo colorLineSeparator(int colorId){
         this.mColorSeparator = colorId;
         return this;
     }
@@ -883,7 +882,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * Counter color in the list (use before the setNavigationAdapter)
      * @param colorId color id.
      */
-    public NavigationLiveo colorItemCounter(int colorId){
+    public NavigationActionBarLiveo colorItemCounter(int colorId){
         this.mColorCounter = colorId;
         return this;
     }
@@ -901,7 +900,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * Name item color in the list - name (use before the setNavigationAdapter)
      * @param colorId color id.
      */
-    public NavigationLiveo colorItemName(int colorId){
+    public NavigationActionBarLiveo colorItemName(int colorId){
         this.mColorName = colorId;
         return this;
     }
@@ -924,7 +923,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * New selector navigation
      * @param resourceSelector drawable xml - selector.
      */
-    public NavigationLiveo selectorCheck(int resourceSelector){
+    public NavigationActionBarLiveo selectorCheck(int resourceSelector){
 
         if (mNavigation.removeSelector){
             throw new RuntimeException(getString(R.string.remove_selector_navigation));
@@ -945,7 +944,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     /**
      * Remove selector navigation
      */
-    public NavigationLiveo removeSelector(){
+    public NavigationActionBarLiveo removeSelector(){
         mNavigation.removeSelector = true;
         return this;
     }
@@ -984,7 +983,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param icon new icon
      * @param counter new counter
      */
-    public void setNewInformationItem(int position, int name, int icon, int counter) {
+    public void setNewInformationItem(int position, int name, int icon, int counter){
         this.mNavigationAdapter.setNewInformationItem(position, getString(name), icon, counter);
     }
 
@@ -996,7 +995,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param counter new counter
      */
 
-    public void setNewInformationItem(int position, String name, int icon, int counter) {
+    public void setNewInformationItem(int position, String name, int icon, int counter){
         this.mNavigationAdapter.setNewInformationItem(position, name, icon, counter);
     }
 
@@ -1047,7 +1046,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     /**
      * Remove alpha item navigation (use before the setNavigationAdapter)
      */
-    public NavigationLiveo removeAlpha(){
+    public NavigationActionBarLiveo removeAlpha(){
         this.mRemoveAlpha = !mRemoveAlpha;
         return this;
     }
@@ -1060,7 +1059,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      */
     public void setElevationToolBar(float elevation){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            this.getToolbar().setElevation(elevation);
+            this.mActionBar.setElevation(elevation);
         }
     }
 
@@ -1086,6 +1085,11 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mList.removeHeaderView(mHeader);
     }
 
+    public NavigationActionBarLiveo removeHeader(){
+        mRemoveHeader = true;
+        return this;
+    }
+
     /**
      * Add custom Header
      * @param v ...
@@ -1104,7 +1108,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * Add custom Header
      * @param view ...
      */
-    public NavigationLiveo customHeader(View view) {
+    public NavigationActionBarLiveo customHeader(View view) {
         if (view == null){
             throw new RuntimeException(getString(R.string.custom_header_not_created));
         }
@@ -1134,13 +1138,6 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     }
 
     /**
-     * get toolbar
-     */
-    public Toolbar getToolbar() {
-        return this.mToolbar;
-    }
-
-    /**
      * Open drawer
      */
     public void openDrawer() {
@@ -1154,22 +1151,22 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mDrawerLayout.closeDrawer(mRelativeDrawer);
     }
 
-    public NavigationLiveo setOnItemClick(OnItemClickListener onItemClick){
+    public NavigationActionBarLiveo setOnItemClick(OnItemClickListener onItemClick){
         this.mOnItemClickLiveo = onItemClick;
         return this;
     }
 
-    public NavigationLiveo setOnPrepareOptionsMenu(OnPrepareOptionsMenuLiveo onPrepareOptionsMenu){
+    public NavigationActionBarLiveo setOnPrepareOptionsMenu(OnPrepareOptionsMenuLiveo onPrepareOptionsMenu){
         this.mOnPrepareOptionsMenu = onPrepareOptionsMenu;
         return this;
     }
 
-    public NavigationLiveo setOnClickUser(View.OnClickListener listener){
+    public NavigationActionBarLiveo setOnClickUser(View.OnClickListener listener){
         this.userPhoto.setOnClickListener(listener);
         return this;
     }
 
-    public NavigationLiveo setOnClickFooter(View.OnClickListener listener){
+    public NavigationActionBarLiveo setOnClickFooter(View.OnClickListener listener){
         this.mFooterDrawer.setOnClickListener(listener);
         return this;
     }
