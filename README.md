@@ -24,7 +24,7 @@ How to use? Very simple! : D
 
 ```groovy
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:2.0.0'
+        compile 'br.com.liveo:navigationdrawer-material:2.0.1'
 }
 ```
 ###<b>Maven</b>
@@ -33,7 +33,7 @@ dependencies {
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>2.0.0</version>
+  <version>2.0.1</version>
   <type>aar</type>
 </dependency>
 ```
@@ -208,7 +208,6 @@ Footer onClick - Inform the listener in .setOnClickFooter(onClickFooter) method 
 <br>
 <b>Your application uses this library? You can promote it here! Just send your application that will be happy to disclose..</b> <br>
 
-<br>
 #Developed By<br>
 Name: Rudson Lima<br> 
 E-mail: rudsonlive@gmail.com<br>
