@@ -114,7 +114,7 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
 
         with(this).startingPosition(2) //Starting position in the list
                 .addAllHelpItem(mHelpLiveo.getHelp())
-                .footerItem(R.string.settings, R.drawable.ic_settings_black_24dp)
+                .footerItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
                 .setOnClickUser(onClickPhoto)
                 .setOnPrepareOptionsMenu(onPrepare)
                 .setOnClickFooter(onClickFooter)
