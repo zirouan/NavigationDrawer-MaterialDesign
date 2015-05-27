@@ -41,6 +41,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.liveo.Model.HelpItem;
 import br.liveo.Model.Navigation;
 import br.liveo.adapter.NavigationLiveoAdapter;
 import br.liveo.interfaces.OnItemClickListener;
@@ -62,15 +63,17 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private int mColorName = 0;
 
     private int mColorIcon = 0;
+    private int mNewSelector = 0;
     private int mColorCounter = 0;
     private int mColorSeparator = 0;
-    private int mNewSelector = 0;
+    private int mColorSubHeader = 0;
 
     private int mColorDefault = 0;
     private int mCurrentPosition = 1;
     private int mSelectorDefault = 0;
     private boolean mRemoveAlpha = false;
 
+    private List<HelpItem> mHelpItem;
     private DrawerLayout mDrawerLayout;
     private FrameLayout mRelativeDrawer;
     private RelativeLayout mFooterDrawer;
@@ -257,8 +260,13 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mListExtra.add(4, mColorSeparator);
         mListExtra.add(5, mColorCounter);
         mListExtra.add(6, mSelectorDefault);
+        mListExtra.add(7, mColorSubHeader);
 
-        mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mNavigation), mRemoveAlpha, mListExtra);
+        if (mHelpItem != null){
+            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mHelpItem, mNavigation.colorSelected, mNavigation.removeSelector), mRemoveAlpha, mListExtra);
+        }else {
+            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mNavigation), mRemoveAlpha, mListExtra);
+        }
 
         mList.setAdapter(mNavigationAdapter);
     }
@@ -277,8 +285,14 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mListExtra.add(4, mColorSeparator);
         mListExtra.add(5, mColorCounter);
         mListExtra.add(6, mSelectorDefault);
+        mListExtra.add(7, mColorSubHeader);
 
-        mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mNavigation), mRemoveAlpha, mListExtra);
+        if (mHelpItem != null){
+            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mHelpItem, mNavigation.colorSelected, mNavigation.removeSelector), mRemoveAlpha, mListExtra);
+        }else {
+            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mNavigation), mRemoveAlpha, mListExtra);
+        }
+
         setAdapter();
     }
 
@@ -329,6 +343,14 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         this.mOnItemClickLiveo = listener;
         return this;
     };
+
+    /**
+     * @param listHelpItem list HelpItem.
+     */
+    public NavigationLiveo addAllHelpItem(List<HelpItem> listHelpItem){
+        this.mHelpItem = listHelpItem;
+        return this;
+    }
 
     /**
      * @param listNameItem list name item.
@@ -889,6 +911,15 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      */
     public void setColorSeparatorItemSubHeaderNavigation(int colorId){
         this.mColorSeparator = colorId;
+    }
+
+    /**
+     * Name item subHeader color
+     * @param colorId color id.
+     */
+    public NavigationLiveo colorNameSubHeader(int colorId){
+        this.mColorSubHeader = colorId;
+        return this;
     }
 
     /**

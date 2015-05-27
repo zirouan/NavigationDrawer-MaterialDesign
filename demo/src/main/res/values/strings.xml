@@ -24,7 +24,7 @@
     <string name="starred">Starred</string>
     <string name="sent_mail">Sent Mail</string>
     <string name="drafts">Drafts</string>
-    <string name="more_markers">+ Markers</string>
+    <string name="categories">Categories</string>
     <string name="trash">Trash</string>
     <string name="spam">Spam</string>
     <string name="settings">Settings</string>

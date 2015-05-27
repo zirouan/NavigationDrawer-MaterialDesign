@@ -18,21 +18,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import br.liveo.Model.HelpLiveo;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
 import br.liveo.navigationliveo.NavigationLiveo;
 
 public class MainActivity extends NavigationLiveo implements OnItemClickListener {
 
-    public List<String> mListNameItem;
+    private HelpLiveo mHelpLiveo;
 
     @Override
     public void onInt(Bundle savedInstanceState) {
@@ -43,41 +40,19 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         this.userPhoto.setImageResource(R.drawable.ic_rudsonlive);
         this.userBackground.setImageResource(R.drawable.ic_user_background_first);
 
-        // name of the list items
-        mListNameItem = new ArrayList<>();
-        mListNameItem.add(0, getString(R.string.inbox));
-        mListNameItem.add(1, getString(R.string.starred));
-        mListNameItem.add(2, getString(R.string.sent_mail));
-        mListNameItem.add(3, getString(R.string.drafts));
-        mListNameItem.add(4, getString(R.string.more_markers)); //This item will be a subHeader
-        mListNameItem.add(5, getString(R.string.trash));
-        mListNameItem.add(6, getString(R.string.spam));
+        // Creating items navigation
+        mHelpLiveo = new HelpLiveo();
+        mHelpLiveo.add(getString(R.string.inbox), R.drawable.ic_inbox_black_24dp, 7);
+        mHelpLiveo.addSubHeader(getString(R.string.categories)); //Item subHeader
+        mHelpLiveo.add(getString(R.string.starred), R.drawable.ic_star_black_24dp);
+        mHelpLiveo.add(getString(R.string.sent_mail), R.drawable.ic_send_black_24dp);
+        mHelpLiveo.add(getString(R.string.drafts), R.drawable.ic_drafts_black_24dp);
+        mHelpLiveo.addSeparator(); // Item separator
+        mHelpLiveo.add(getString(R.string.trash), R.drawable.ic_delete_black_24dp);
+        mHelpLiveo.add(getString(R.string.spam), R.drawable.ic_report_black_24dp, 120);
 
-        // icons list items
-        List<Integer> mListIconItem = new ArrayList<>();
-        mListIconItem.add(0, R.drawable.ic_inbox_black_24dp);
-        mListIconItem.add(1, R.drawable.ic_star_black_24dp); //Item no icon set NavigationLiveo.NO_ICON
-        mListIconItem.add(2, R.drawable.ic_send_black_24dp); //Item no icon set NavigationLiveo.NO_ICON
-        mListIconItem.add(3, R.drawable.ic_drafts_black_24dp);
-        mListIconItem.add(4, NavigationLiveo.NO_ICON); //When the item is a subHeader the value of the icon NavigationLiveo.NO_ICON
-        mListIconItem.add(5, R.drawable.ic_delete_black_24dp);
-        mListIconItem.add(6, R.drawable.ic_report_black_24dp);
-
-        //{optional} - Among the names there is some subheader, you must indicate it here
-        List<Integer> mListHeaderItem = new ArrayList<>();
-        mListHeaderItem.add(4);
-
-        //{optional} - Among the names there is any item counter, you must indicate it (position) and the value here
-        SparseIntArray mSparseCounterItem = new SparseIntArray(); //indicate all items that have a counter
-        mSparseCounterItem.put(0, 7);
-        mSparseCounterItem.put(1, 123);
-        mSparseCounterItem.put(6, 250);
-
-        with(this).startingPosition(1) //Starting position in the list
-                .nameItem(mListNameItem)
-                .iconItem(mListIconItem)
-                .headerItem(mListHeaderItem)
-                .countItem(mSparseCounterItem)
+        with(this).startingPosition(2) //Starting position in the list
+                .addAllHelpItem(mHelpLiveo.getHelp())
 
                 //{optional} - List Customization "If you remove these methods and the list will take his white standard color"
                 //.selectorCheck(R.drawable.selector_check) //Inform the background of the selected item color
@@ -85,6 +60,11 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 //.colorItemSelected(R.color.nliveo_purple_colorPrimary) //State the name of the color, icon and meter when it is selected
                 //.backgroundList(R.color.nliveo_black_light) //Inform the list of background color
                 //.colorLineSeparator(R.color.nliveo_transparent) //Inform the color of the subheader line
+
+                //{optional} - SubHeader Customization
+                .colorItemSelected(R.color.nliveo_blue_colorPrimary)
+                .colorNameSubHeader(R.color.nliveo_blue_colorPrimary)
+                //.colorLineSeparator(R.color.nliveo_blue_colorPrimary)
 
                 .footerItem(R.string.settings, R.drawable.ic_settings_black_24dp)
 
@@ -102,7 +82,7 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
     @Override
     public void onItemClick(int position) {
         FragmentManager mFragmentManager = getSupportFragmentManager();
-        Fragment mFragment = new FragmentMain().newInstance(mListNameItem.get(position));
+        Fragment mFragment = new FragmentMain().newInstance(mHelpLiveo.get(position).getName());
 
         if (mFragment != null){
             mFragmentManager.beginTransaction().replace(R.id.container, mFragment).commit();

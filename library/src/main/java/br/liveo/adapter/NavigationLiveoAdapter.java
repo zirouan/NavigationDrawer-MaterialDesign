@@ -37,6 +37,7 @@ public class NavigationLiveoAdapter extends BaseAdapter {
     private int mColorName = 0;
     private int mColorCounter = 0;
     private int mColorSeparator = 0;
+    private int mColorSubHeader = 0;
 
     private int mNewSelector = 0;
     private int mColorDefault = 0;
@@ -55,6 +56,7 @@ public class NavigationLiveoAdapter extends BaseAdapter {
         this.mColorSeparator = extra.get(4);
         this.mColorCounter = extra.get(5);
         this.mSelectorDefault = extra.get(6);
+        this.mColorSubHeader = extra.get(7);
         this.mRemoveAlpha = removeAlpha;
 	}
 
@@ -211,7 +213,8 @@ public class NavigationLiveoAdapter extends BaseAdapter {
             holder.title.setTextColor((!item.isHeader && item.checked && item.colorSelected > 0 ?
                     mcontext.getResources().getColor(item.colorSelected) :
                     mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
-                            mColorName > 0 ? mcontext.getResources().getColor(mColorName) :
+                    mColorName > 0 ? mcontext.getResources().getColor(mColorName) :
+                    (item.isHeader && mColorSubHeader > 0) ? mcontext.getResources().getColor(mColorSubHeader) :
                                     mcontext.getResources().getColor(R.color.nliveo_black)));
 		}
 
