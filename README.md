@@ -103,13 +103,14 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
 
         // Creating items navigation
         mHelpLiveo = new HelpLiveo();
-        mHelpLiveo.add(getString(R.string.inbox), R.drawable.ic_inbox_black_24dp, 7);
+        mHelpLiveo.add(getString(R.string.inbox), R.mipmap.ic_inbox_black_24dp, 7);
         mHelpLiveo.addSubHeader(getString(R.string.categories)); //Item subHeader
-        mHelpLiveo.add(getString(R.string.starred), R.drawable.ic_star_black_24dp);
-        mHelpLiveo.add(getString(R.string.sent_mail), R.drawable.ic_send_black_24dp);
-        mHelpLiveo.add(getString(R.string.drafts), R.drawable.ic_drafts_black_24dp);
-        mHelpLiveo.add(getString(R.string.trash), R.drawable.ic_delete_black_24dp);
-        mHelpLiveo.add(getString(R.string.spam), R.drawable.ic_report_black_24dp, 120);
+        mHelpLiveo.add(getString(R.string.starred), R.mipmap.ic_star_black_24dp);
+        mHelpLiveo.add(getString(R.string.sent_mail), R.mipmap.ic_send_black_24dp);
+        mHelpLiveo.add(getString(R.string.drafts), R.mipmap.ic_drafts_black_24dp);
+        mHelpLiveo.addSeparator(); // Item separator
+        mHelpLiveo.add(getString(R.string.trash), R.mipmap.ic_delete_black_24dp);
+        mHelpLiveo.add(getString(R.string.spam), R.mipmap.ic_report_black_24dp, 120);
 
         with(this).startingPosition(2) //Starting position in the list
                 .addAllHelpItem(mHelpLiveo.getHelp())

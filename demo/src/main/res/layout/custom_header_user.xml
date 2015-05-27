@@ -24,7 +24,7 @@
         android:layout_height="40dp"
         android:gravity="center"
         android:id="@+id/imageView"
-        android:src="@drawable/ic_no_user"
+        android:src="@mipmap/ic_no_user"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="51dp" />
