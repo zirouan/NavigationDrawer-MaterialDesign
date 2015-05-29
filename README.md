@@ -169,7 +169,7 @@ Footer onClick - Inform the listener in .setOnClickFooter(onClickFooter) method 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_02.png"> 
 
 ###<b>NavigationActionBarLiveo</b><br>
-To use the NavigationActionBarLiveo, remove the theme "android:theme="@style/nLiveoDrawer"" demo project and extend the MainActitivity of NavigationActionBarLiveo<br>
+To use the NavigationActionBarLiveo, remove the theme "android:theme="@style/nLiveoDrawer"" demo project and extend the MainActitivity of NavigationActionBarLiveo <br>
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_03.png">
 
 To remove the header, use the method ".removeHeader()"<br>
