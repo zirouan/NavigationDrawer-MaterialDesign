@@ -22,14 +22,14 @@ How to use? Very simple! : D
 
 ###<b>Gradle</b>
 
-```groovy
+```java
 dependencies {
         compile 'br.com.liveo:navigationdrawer-material:2.2.1'
 }
 ```
 ###<b>Maven</b>
 
-```groovy
+```xml
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
@@ -41,7 +41,7 @@ dependencies {
 <b>In your styles.xml choose your version:</b>
 
     <!--Customize here the subject of your application-->
-```groovy
+```xml
     <style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
@@ -50,7 +50,7 @@ dependencies {
     </style>
 ````
     <!--Here will be the theme of the class that will extends NavigationLiveo-->
-```groovy
+```xml
     <style name="nLiveoDrawer" parent="nLiveo.Theme.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
@@ -66,12 +66,12 @@ note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with
 
 <b>Remember to set your theme in your AndroidManifest.xml:</b>
 
-```groovy
+```xml
     <application
     <!--Theme of your application-->
         android:theme="@style/myTheme" >
 ```      
-```groovy
+```xml
         <activity
     <!--Theme of the class that will extends NavigationLiveo-->        
             android:name=".MainActivity"
@@ -90,7 +90,7 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
 
 <b>In the method "onInt" inform the items on your list</b>
 
-```groovy
+```java
     private HelpLiveo mHelpLiveo;
 
 @Override
@@ -124,7 +124,7 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
 
 <br>In the method "onItemClick" you can get the position of the clicked item and the layout that you must inform the replace is the library R.id.container.</b>
 
-```groovy
+```java
     @Override //The "R.id.container" should be used in "beginTransaction (). Replace"
     public void onItemClick(int position) {
         FragmentManager mFragmentManager = getSupportFragmentManager();
@@ -137,7 +137,7 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
 ````
 
 User OnPrepareOptionsMenu onClick - Inform the listener in .setOnPrepareOptionsMenu(onPrepare) method in onInit (); <br>
-```groovy
+```java
     private OnPrepareOptionsMenuLiveo onPrepare = new OnPrepareOptionsMenuLiveo() {
         @Override
         public void onPrepareOptionsMenu(Menu menu, int position, boolean visible) {
@@ -146,7 +146,7 @@ User OnPrepareOptionsMenu onClick - Inform the listener in .setOnPrepareOptionsM
 ```
 
 User photo onClick - Inform the listener in .setOnClickUser(onClickPhoto) method in onInit (); <br>
-```groovy
+```java
     private View.OnClickListener onClickPhoto = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -156,7 +156,7 @@ User photo onClick - Inform the listener in .setOnClickUser(onClickPhoto) method
 
 ```
 Footer onClick - Inform the listener in .setOnClickFooter(onClickFooter) method in onInit (); <br>
-```groovy
+```java
     private View.OnClickListener onClickFooter = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -168,11 +168,11 @@ Footer onClick - Inform the listener in .setOnClickFooter(onClickFooter) method 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png">
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_02.png"> 
 
-
-<b>To use the NavigationActionBarLiveo, remove the theme "android:theme="@style/nLiveoDrawer"" demo project and extend the MainActitivity of NavigationActionBarLiveo</b> <br>
+###<b>NavigationActionBarLiveo</b><br>
+To use the NavigationActionBarLiveo, remove the theme "android:theme="@style/nLiveoDrawer"" demo project and extend the MainActitivity of NavigationActionBarLiveo<br>
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_03.png">
 
-<b>To remove the header, use the method ".removeHeader()"</b> <br>
+To remove the header, use the method ".removeHeader()"<br>
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_04.png">
 
 <br>
