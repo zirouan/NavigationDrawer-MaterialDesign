@@ -22,6 +22,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.internal.ScrimInsetsFrameLayout;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -31,7 +32,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -73,13 +73,14 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     private boolean mRemoveHeader = false;
 
     private ActionBar mActionBar;
+    private float mElevationToolBar = 15;
+
     private DrawerLayout mDrawerLayout;
-    private FrameLayout mRelativeDrawer;
+    private ScrimInsetsFrameLayout mRelativeDrawer;
     private RelativeLayout mFooterDrawer;
+    private boolean isSaveInstance = false;
 
     private List<HelpItem> mHelpItem;
-
-    private boolean isSaveInstance = false;
     private Navigation mNavigation = new Navigation();
 
     private NavigationLiveoAdapter mNavigationAdapter;
@@ -88,7 +89,6 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     private OnItemClickListener mOnItemClickLiveo;
     private OnPrepareOptionsMenuLiveo mOnPrepareOptionsMenu;
 
-    public static final int NO_ICON = 0;
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
     /**
@@ -119,13 +119,17 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         mIconFooter = (ImageView) this.findViewById(R.id.iconFooter);
 
         mFooterDrawer = (RelativeLayout) this.findViewById(R.id.footerDrawer);
-        mRelativeDrawer = (FrameLayout) this.findViewById(R.id.relativeDrawer);
+        mRelativeDrawer = (ScrimInsetsFrameLayout) this.findViewById(R.id.relativeDrawer);
 
         mActionBar = getSupportActionBar();
 
         if (mActionBar != null){
             mActionBar.setDisplayHomeAsUpEnabled(true);
             mActionBar.setHomeButtonEnabled(true);
+        }
+
+        if (mList != null) {
+            mountListNavigation(savedInstanceState);
         }
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -137,11 +141,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
                 e.getMessage();
             }
 
-            this.setElevationToolBar(15);
-        }
-
-        if (mList != null) {
-            mountListNavigation(savedInstanceState);
+            this.setElevationToolBar(mElevationToolBar);
         }
 
         if (savedInstanceState == null) {
@@ -237,15 +237,25 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     }
 
     private void mountListNavigation(Bundle savedInstanceState){
-        this.createUserDefaultHeader();
-        this.onInt(savedInstanceState);
-        this.addHeaderView();
+        if (mOnItemClickLiveo == null){
+            this.createUserDefaultHeader();
+            this.onInt(savedInstanceState);
+            this.addHeaderView();
+        }
     }
 
     private void addHeaderView() {
         if(!this.mRemoveHeader) {
             this.mList.addHeaderView(this.mHeader);
         }
+    }
+
+    /**
+     * Remove elevation toolBar
+     */
+    public NavigationActionBarLiveo removeElevationToolBar(){
+        this.mElevationToolBar = 0;
+        return this;
     }
 
     /**
@@ -346,7 +356,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
      * @param listHelpItem list HelpItem.
      */
     public NavigationActionBarLiveo addAllHelpItem(List<HelpItem> listHelpItem){
-        this.mHelpItem.addAll(listHelpItem);
+        this.mHelpItem = listHelpItem;
         return this;
     }
 
@@ -1118,6 +1128,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
      */
     public void setElevationToolBar(float elevation){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            this.mElevationToolBar = elevation;
             this.mActionBar.setElevation(elevation);
         }
     }
@@ -1144,6 +1155,9 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         mList.removeHeaderView(mHeader);
     }
 
+    /**
+     * Remove Header
+     */
     public NavigationActionBarLiveo removeHeader(){
         mRemoveHeader = true;
         return this;

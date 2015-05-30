@@ -23,6 +23,7 @@
 
     <color name="nliveo_blue_colorPrimary">#2196F3</color>
     <color name="nliveo_blue_colorPrimaryDark">#1976D2</color>
+    <color name="nliveo_blue_colorAccent">#03A9F4</color>
     <color name="nliveo_blue_alpha_colorPrimaryDark">#801976D2</color>
 
     <color name="nliveo_green_colorPrimary">#4CAF50</color>

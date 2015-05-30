@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgLiveo"        
         android:gravity="center"
+        android:textColor="@color/nliveo_black"
         android:layout_marginTop="16dp"
         android:text="@string/clear"
         android:textAppearance="?android:attr/textAppearanceMedium" />

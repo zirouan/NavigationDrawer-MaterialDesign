@@ -36,7 +36,7 @@
         <include layout="@layout/navigation_container" />
     </LinearLayout>
 
-    <br.liveo.ui.ScrimInsetsFrameLayout
+    <android.support.design.internal.ScrimInsetsFrameLayout
         android:id="@+id/relativeDrawer"
         android:layout_width="@dimen/drawer_layout_width"
         android:layout_height="match_parent"
@@ -45,7 +45,6 @@
         app:insetForeground="#4000">
 
         <include
-            android:fitsSystemWindows="true"
             layout="@layout/navigation_list_drawer" />
-    </br.liveo.ui.ScrimInsetsFrameLayout>
+    </android.support.design.internal.ScrimInsetsFrameLayout>
 </android.support.v4.widget.DrawerLayout>

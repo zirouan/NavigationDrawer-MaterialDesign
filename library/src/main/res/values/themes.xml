@@ -19,9 +19,6 @@
     <style name="AppTheme.Ligth" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
-        <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
-        <item name="colorControlHighlight">@color/nliveo_blue_colorPrimary</item>
-        <item name="windowActionModeOverlay">true</item>
 
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="theme">@style/ThemeOverlay.AppCompat.Light</item>
@@ -30,9 +27,6 @@
     <style name="AppTheme.DarkActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
-        <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
-        <item name="colorControlHighlight">@color/nliveo_blue_colorPrimary</item>
-        <item name="windowActionModeOverlay">true</item>
 
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
