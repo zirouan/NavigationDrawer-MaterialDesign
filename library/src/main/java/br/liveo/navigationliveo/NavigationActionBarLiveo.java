@@ -240,7 +240,6 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         if (mOnItemClickLiveo == null){
             this.createUserDefaultHeader();
             this.onInt(savedInstanceState);
-            this.addHeaderView();
         }
     }
 
@@ -267,6 +266,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
             throw new RuntimeException(getString(R.string.start_navigation_listener));
         }
 
+        this.addHeaderView();
         List<Integer> mListExtra = new ArrayList<>();
         mListExtra.add(0, mNewSelector);
         mListExtra.add(1, mColorDefault);
@@ -292,6 +292,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
             throw new RuntimeException(getString(R.string.start_navigation_listener));
         }
 
+        this.addHeaderView();
         List<Integer> mListExtra = new ArrayList<>();
         mListExtra.add(0, mNewSelector);
         mListExtra.add(1, mColorDefault);

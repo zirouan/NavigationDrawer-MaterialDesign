@@ -21,7 +21,7 @@
         <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
 
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="theme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
     <style name="AppTheme.DarkActionBar" parent="Theme.AppCompat.Light.NoActionBar">
@@ -29,7 +29,7 @@
         <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
 
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
     <style name="nLiveo.Theme.Light" parent="AppTheme.Ligth" />
