@@ -1,5 +1,25 @@
 #Change Log
 
+Version 2.3.2 *(03-06-2015)*
+----------------------------
+It requires 14+ API and android support v7 22.2.0 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    Bug addHeaderView
+```
+
+
+Version 2.2.2 *(29-05-2015)*
+----------------------------
+It requires 14+ API and android support v7 22.2.0 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    Add NavigationLiveo
+    .removeHeader()
+```
+
 Version 2.1.1 *(25-05-2015)*
 ----------------------------
 It requires 14+ API and android support v7 22.1.1 (AppCompatActivity + Toolbar)
