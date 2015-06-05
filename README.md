@@ -128,12 +128,12 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
     @Override //The "R.id.container" should be used in "beginTransaction (). Replace"
     public void onItemClick(int position) {
         FragmentManager mFragmentManager = getSupportFragmentManager();
-        Fragment mFragment = new FragmentMain().newInstance(mListNameItem.get(position));
+        Fragment mFragment = new FragmentMain().newInstance(mHelpLiveo.get(position).getName());
 
         if (mFragment != null){
             mFragmentManager.beginTransaction().replace(R.id.container, mFragment).commit();
         }
-    }
+    }    
 ````
 
 User OnPrepareOptionsMenu onClick - Inform the listener in .setOnPrepareOptionsMenu(onPrepare) method in onInit (); <br>
