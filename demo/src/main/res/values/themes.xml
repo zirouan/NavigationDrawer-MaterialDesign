@@ -17,7 +17,7 @@
 <resources>
 
     <!--Customize here the subject of your application-->
-    <style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="myTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_blue_colorPrimaryDark</item>
