@@ -23,7 +23,7 @@
         android:label="@string/app_name"
         android:theme="@style/myTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:theme="@style/nLiveoDrawer"
             android:label="@string/app_name" >
             <intent-filter>
@@ -34,7 +34,7 @@
         </activity>
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ui.activity.SettingsActivity"
             android:label="@string/settings">
         </activity>
 

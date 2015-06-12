@@ -17,6 +17,9 @@
     <string name="add">Agregar</string>
     <string name="search">Buscar</string>
 
+    <string name="important">Importante</string>
+    <string name="documents">Documentos</string>
+
     <!-- Toast -->
     <string name="open_user_profile">Abrir perfil de usuario</string>
     <string name="open_settings">Abrir configuración</string>

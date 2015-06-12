@@ -27,6 +27,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,7 +73,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     private boolean mRemoveAlpha = false;
     private boolean mRemoveHeader = false;
 
-    private ActionBar mActionBar;
+    private Toolbar mToolbar;
     private float mElevationToolBar = 15;
 
     private DrawerLayout mDrawerLayout;
@@ -110,9 +111,10 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         mList = (ListView) findViewById(R.id.list);
         mList.setOnItemClickListener(new DrawerItemClickListener());
 
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
-        mDrawerToggle = new ActionBarDrawerToggleCompat(this, mDrawerLayout);
+        mDrawerToggle = new ActionBarDrawerToggleCompat(this, mDrawerLayout, mToolbar);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mTitleFooter = (TextView) this.findViewById(R.id.titleFooter);
@@ -121,11 +123,13 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         mFooterDrawer = (RelativeLayout) this.findViewById(R.id.footerDrawer);
         mRelativeDrawer = (ScrimInsetsFrameLayout) this.findViewById(R.id.relativeDrawer);
 
-        mActionBar = getSupportActionBar();
+        this.setSupportActionBar(mToolbar);
 
-        if (mActionBar != null){
-            mActionBar.setDisplayHomeAsUpEnabled(true);
-            mActionBar.setHomeButtonEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
         }
 
         if (mList != null) {
@@ -191,10 +195,11 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
 
 	private class ActionBarDrawerToggleCompat extends ActionBarDrawerToggle {
 
-        public ActionBarDrawerToggleCompat(Activity activity, DrawerLayout drawerLayout){
+        public ActionBarDrawerToggleCompat(Activity activity, DrawerLayout drawerLayout, Toolbar toolbar){
             super(
                     activity,
                     drawerLayout,
+                    toolbar,
                     R.string.drawer_open,
                     R.string.drawer_close);
         }
@@ -1130,7 +1135,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     public void setElevationToolBar(float elevation){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             this.mElevationToolBar = elevation;
-            this.mActionBar.setElevation(elevation);
+            this.getToolbar().setElevation(elevation);
         }
     }
 
@@ -1209,6 +1214,13 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
      */
     public ListView getListView() {
         return this.mList;
+    }
+
+    /**
+     * get toolbar
+     */
+    public Toolbar getToolbar() {
+        return this.mToolbar;
     }
 
     /**

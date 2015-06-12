@@ -32,6 +32,9 @@
     <string name="add">Add</string>
     <string name="search">Search</string>
 
+    <string name="important">Important</string>
+    <string name="documents">Documents</string>
+
     <!-- Toast -->
     <string name="open_user_profile">Open user profile</string>
     <string name="open_settings">Open settings</string>

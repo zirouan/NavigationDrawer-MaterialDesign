@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.liveo.ndrawer;
+package br.liveo.ndrawer.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,6 +26,9 @@ import br.liveo.Model.HelpLiveo;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
 import br.liveo.navigationliveo.NavigationLiveo;
+import br.liveo.ndrawer.R;
+import br.liveo.ndrawer.ui.fragment.MainFragment;
+import br.liveo.ndrawer.ui.fragment.ViewPagerFragment;
 
 public class MainActivity extends NavigationLiveo implements OnItemClickListener {
 
@@ -77,16 +80,32 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 .setOnPrepareOptionsMenu(onPrepare)
                 .setOnClickFooter(onClickFooter)
                 .build();
+
+        int position = this.getCurrentPosition();
+        this.setElevationToolBar(position != 2 ? 15 : 0);
+
     }
 
     @Override
     public void onItemClick(int position) {
+        Fragment mFragment;
         FragmentManager mFragmentManager = getSupportFragmentManager();
-        Fragment mFragment = new FragmentMain().newInstance(mHelpLiveo.get(position).getName());
+
+        switch (position){
+            case 2:
+                mFragment = new ViewPagerFragment();
+                break;
+
+            default:
+                mFragment = MainFragment.newInstance(mHelpLiveo.get(position).getName());
+                break;
+        }
 
         if (mFragment != null){
             mFragmentManager.beginTransaction().replace(R.id.container, mFragment).commit();
         }
+
+        setElevationToolBar(position != 2 ? 15 : 0);
     }
 
     private OnPrepareOptionsMenuLiveo onPrepare = new OnPrepareOptionsMenuLiveo() {

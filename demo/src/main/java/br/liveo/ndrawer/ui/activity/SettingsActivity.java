@@ -13,13 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.liveo.ndrawer;
+package br.liveo.ndrawer.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import br.liveo.ndrawer.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

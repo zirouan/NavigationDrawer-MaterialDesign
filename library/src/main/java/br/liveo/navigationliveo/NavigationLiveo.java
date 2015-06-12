@@ -214,7 +214,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 		public void onDrawerOpened(View drawerView) {
 			supportInvalidateOptionsMenu();
 		}
-	}
+    }
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {

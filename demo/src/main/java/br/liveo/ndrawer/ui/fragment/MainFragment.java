@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.liveo.ndrawer;
+package br.liveo.ndrawer.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,13 +29,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FragmentMain extends Fragment {
+import br.liveo.ndrawer.R;
+
+public class MainFragment extends Fragment {
 
     private boolean mSearchCheck;
     private static final String TEXT_FRAGMENT = "TEXT_FRAGMENT";
 
-	public FragmentMain newInstance(String text){
-		FragmentMain mFragment = new FragmentMain();
+	public static MainFragment newInstance(String text){
+		MainFragment mFragment = new MainFragment();
 		Bundle mBundle = new Bundle();
 		mBundle.putString(TEXT_FRAGMENT, text);
 		mFragment.setArguments(mBundle);

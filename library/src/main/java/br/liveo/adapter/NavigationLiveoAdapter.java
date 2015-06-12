@@ -160,15 +160,11 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder holder;
-		NavigationLiveoItemAdapter item = mList.get(position);
-
-		if (convertView == null) {
+		//if (convertView == null) {
 			holder = new ViewHolder();
 
-            int layout = R.layout.navigation_list_item;
-
             LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(layout, parent, false);
+            convertView = inflater.inflate(R.layout.navigation_list_item, parent, false);
 
 			holder.title = (TextView) convertView.findViewById(R.id.title);
 			holder.counter = (TextView) convertView.findViewById(R.id.counter);
@@ -180,12 +176,13 @@ public class NavigationLiveoAdapter extends BaseAdapter {
             holder.layoutSeparator = (LinearLayout) convertView.findViewById(R.id.layoutSeparator);
 
             convertView.setTag(holder);
-		}else{
-			holder = (ViewHolder) convertView.getTag();
-		}
+//		}else{
+//			holder = (ViewHolder) convertView.getTag();
+//		}
+
+        NavigationLiveoItemAdapter item = mList.get(position);
 
 		if (holder.title != null){
-
             holder.title.setText(item.title);
 
             if (!item.isHeader) {
@@ -220,7 +217,7 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 
 		if (holder.counter != null) {
 			if (item.counter >= 1) {
-                setAlpha(holder.title, (item.checked ? 1f : 0.87f));
+                setAlpha(holder.counter, (item.checked ? 1f : 0.87f));
 				holder.counter.setVisibility(View.VISIBLE);
                 holder.counter.setText((item.counter > 99) ? "99+" : item.counter + "");
 
