@@ -24,7 +24,7 @@ How to use? Very simple! : D
 
 ```java
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:2.3.2'
+        compile 'br.com.liveo:navigationdrawer-material:2.3.3'
 }
 ```
 ###<b>Maven</b>
@@ -33,7 +33,7 @@ dependencies {
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>2.3.2</version>
+  <version>2.3.3</version>
   <type>aar</type>
 </dependency>
 ```
@@ -169,7 +169,7 @@ Footer onClick - Inform the listener in .setOnClickFooter(onClickFooter) method 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_02.png"> 
 
 ###<b>NavigationActionBarLiveo</b><br>
-To use the NavigationActionBarLiveo, remove the theme "android:theme="@style/nLiveoDrawer"" demo project and extend the MainActitivity of NavigationActionBarLiveo <br>
+To use extends the NavigationActionBarLiveo <br>
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_03.png">
 
 To remove the header, use the method ".removeHeader()"<br>
