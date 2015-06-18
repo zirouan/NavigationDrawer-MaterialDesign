@@ -25,12 +25,12 @@ import android.widget.Toast;
 import br.liveo.Model.HelpLiveo;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
-import br.liveo.navigationliveo.NavigationLiveo;
+import br.liveo.navigationliveo.NavigationActionBarLiveo;
 import br.liveo.ndrawer.R;
 import br.liveo.ndrawer.ui.fragment.MainFragment;
 import br.liveo.ndrawer.ui.fragment.ViewPagerFragment;
 
-public class MainActivity extends NavigationLiveo implements OnItemClickListener {
+public class MainActivity extends NavigationActionBarLiveo implements OnItemClickListener {
 
     private HelpLiveo mHelpLiveo;
 
@@ -83,7 +83,6 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
 
         int position = this.getCurrentPosition();
         this.setElevationToolBar(position != 2 ? 15 : 0);
-
     }
 
     @Override

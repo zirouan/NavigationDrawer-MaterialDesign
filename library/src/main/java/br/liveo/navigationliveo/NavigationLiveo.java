@@ -78,8 +78,8 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
     private List<HelpItem> mHelpItem;
     private DrawerLayout mDrawerLayout;
-    private ScrimInsetsFrameLayout mRelativeDrawer;
     private RelativeLayout mFooterDrawer;
+    private ScrimInsetsFrameLayout mRelativeDrawer;
 
     private boolean isSaveInstance = false;
     private Navigation mNavigation = new Navigation();

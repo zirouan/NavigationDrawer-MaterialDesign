@@ -16,6 +16,7 @@
 
 package br.liveo.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -157,28 +158,25 @@ public class NavigationLiveoAdapter extends BaseAdapter {
         v.setAlpha(!mRemoveAlpha ? alpha : 1f);
     }
 
-	public View getView(int position, View convertView, ViewGroup parent) {
+	@SuppressLint("ViewHolder")
+    public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder holder;
-		//if (convertView == null) {
-			holder = new ViewHolder();
+        holder = new ViewHolder();
 
-            LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.navigation_list_item, parent, false);
+        LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = inflater.inflate(R.layout.navigation_list_item, parent, false);
 
-			holder.title = (TextView) convertView.findViewById(R.id.title);
-			holder.counter = (TextView) convertView.findViewById(R.id.counter);
-			holder.icon = (ImageView) convertView.findViewById(R.id.icon);
+        holder.title = (TextView) convertView.findViewById(R.id.title);
+        holder.counter = (TextView) convertView.findViewById(R.id.counter);
+        holder.icon = (ImageView) convertView.findViewById(R.id.icon);
 
-            holder.separator = convertView.findViewById(R.id.separator);
+        holder.separator = convertView.findViewById(R.id.separator);
 
-            holder.layoutDados = (RelativeLayout) convertView.findViewById(R.id.layoutDados);
-            holder.layoutSeparator = (LinearLayout) convertView.findViewById(R.id.layoutSeparator);
+        holder.layoutDados = (RelativeLayout) convertView.findViewById(R.id.layoutDados);
+        holder.layoutSeparator = (LinearLayout) convertView.findViewById(R.id.layoutSeparator);
 
-            convertView.setTag(holder);
-//		}else{
-//			holder = (ViewHolder) convertView.getTag();
-//		}
+        convertView.setTag(holder);
 
         NavigationLiveoItemAdapter item = mList.get(position);
 
