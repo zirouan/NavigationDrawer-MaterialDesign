@@ -60,8 +60,8 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private Toolbar mToolbar;
     private TextView mTitleFooter;
     private ImageView mIconFooter;
-    private int mColorName = 0;
 
+    private int mColorName = 0;
     private int mColorIcon = 0;
     private int mNewSelector = 0;
     private int mColorCounter = 0;
@@ -70,7 +70,6 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private boolean mRemoveHeader = false;
 
     private int mColorDefault = 0;
-
     private int mCurrentPosition = 1;
     private int mSelectorDefault = 0;
     private float mElevationToolBar = 15;
@@ -90,6 +89,9 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private OnItemClickListener mOnItemClickLiveo;
     private OnPrepareOptionsMenuLiveo mOnPrepareOptionsMenu;
 
+    public static final int THEME_DARK = 0;
+    public static final int THEME_LIGHT = 1;
+
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
     /**
@@ -101,13 +103,21 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.navigation_main);
+        mountListNavigation(savedInstanceState);
 
         if (savedInstanceState != null) {
             isSaveInstance = true;
             setCurrentPosition(savedInstanceState.getInt(CURRENT_POSITION));
         }
 
+        if (savedInstanceState == null) {
+            mOnItemClickLiveo.onItemClick(mCurrentPosition);
+        }
+
+        setCheckedItemNavigation(mCurrentPosition, true);
+	}
+
+    private void configureFindView(){
         mList = (ListView) findViewById(R.id.list);
         mList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -133,10 +143,6 @@ public abstract class NavigationLiveo extends AppCompatActivity {
             actionBar.setHomeButtonEnabled(true);
         }
 
-        if (mList != null) {
-            mountListNavigation(savedInstanceState);
-        }
-
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
                 if (!mRemoveHeader) {
@@ -150,13 +156,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
             this.setElevationToolBar(mElevationToolBar);
         }
-
-        if (savedInstanceState == null) {
-            mOnItemClickLiveo.onItemClick(mCurrentPosition);
-        }
-
-        setCheckedItemNavigation(mCurrentPosition, true);
-	}
+    }
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -374,7 +374,21 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param listener listener.
      */
     public NavigationLiveo with(OnItemClickListener listener){
+        setContentView(R.layout.navigation_main_dark);
         this.mOnItemClickLiveo = listener;
+        configureFindView();
+        return this;
+    };
+
+    /**
+     * Starting listener navigation
+     * @param listener listener.
+     * @param theme theme.
+     */
+    public NavigationLiveo with(OnItemClickListener listener, int theme){
+        setContentView(theme == THEME_DARK ? R.layout.navigation_main_dark : R.layout.navigation_main_light);
+        this.mOnItemClickLiveo = listener;
+        configureFindView();
         return this;
     };
 

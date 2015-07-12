@@ -16,27 +16,12 @@
 -->
 <resources>
 
-    <style name="AppTheme.Ligth" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.nLiveo" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
 
         <item name="android:windowActionModeOverlay">true</item>
-
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="android:theme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
-    <style name="AppTheme.DarkActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
-
-        <item name="android:windowActionModeOverlay">true</item>
-
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-    </style>
-
-    <style name="nLiveo.Theme.Light" parent="AppTheme.Ligth" />
-    <style name="nLiveo.Theme.DarkActionBar" parent="AppTheme.DarkActionBar" />
-
+    <style name="Theme.nLiveo" parent="AppTheme.nLiveo" />
 </resources>

@@ -1,6 +1,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppThemeLigth" parent="AppTheme.Ligth">
+    <style name="AppThemeLiveo" parent="AppTheme.nLiveo">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/nliveo_transparent</item>
 
@@ -11,18 +11,6 @@
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
     </style>
 
-    <style name="AppThemeDarkActionBar" parent="AppTheme.DarkActionBar">
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@color/nliveo_transparent</item>
-
-        <item name="android:windowContentTransitions">true</item>
-        <item name="android:windowAllowEnterTransitionOverlap">true</item>
-        <item name="android:windowAllowReturnTransitionOverlap">true</item>
-        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
-        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
-    </style>
-
-    <style name="nLiveo.Theme.Light" parent="AppTheme.Ligth" />
-    <style name="nLiveo.Theme.DarkActionBar" parent="AppTheme.DarkActionBar" />
+    <style name="Theme.nLiveo" parent="AppTheme.nLiveo" />
 
 </resources>

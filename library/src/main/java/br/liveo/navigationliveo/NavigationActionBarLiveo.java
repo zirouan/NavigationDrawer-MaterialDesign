@@ -90,6 +90,8 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     private OnItemClickListener mOnItemClickLiveo;
     private OnPrepareOptionsMenuLiveo mOnPrepareOptionsMenu;
 
+    public static final int THEME_DARK = 0;
+    public static final int THEME_LIGHT = 1;
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
     /**
@@ -101,13 +103,21 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.navigation_main_actionbar);
+        mountListNavigation(savedInstanceState);
 
         if (savedInstanceState != null) {
             isSaveInstance = true;
             setCurrentPosition(savedInstanceState.getInt(CURRENT_POSITION));
         }
 
+        if (savedInstanceState == null) {
+            mOnItemClickLiveo.onItemClick(mCurrentPosition);
+        }
+
+        setCheckedItemNavigation(mCurrentPosition, true);
+	}
+
+    private void configureFindView(){
         mList = (ListView) findViewById(R.id.list);
         mList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -132,10 +142,6 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
             actionBar.setHomeButtonEnabled(true);
         }
 
-        if (mList != null) {
-            mountListNavigation(savedInstanceState);
-        }
-
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
                 Resources.Theme theme = this.getTheme();
@@ -147,14 +153,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
 
             this.setElevationToolBar(mElevationToolBar);
         }
-
-        if (savedInstanceState == null) {
-            mOnItemClickLiveo.onItemClick(mCurrentPosition);
-        }
-
-        setCheckedItemNavigation(mCurrentPosition, true);
-	}
-
+    }
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
@@ -354,7 +353,21 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
      * @param listener listener.
      */
     public NavigationActionBarLiveo with(OnItemClickListener listener){
+        setContentView(R.layout.navigation_main_actionbar_dark);
         this.mOnItemClickLiveo = listener;
+        configureFindView();
+        return this;
+    };
+
+    /**
+     * Starting listener navigation
+     * @param listener listener.
+     * @param theme theme.
+     */
+    public NavigationActionBarLiveo with(OnItemClickListener listener, int theme){
+        setContentView(theme == THEME_DARK ? R.layout.navigation_main_actionbar_dark : R.layout.navigation_main_actionbar_light);
+        this.mOnItemClickLiveo = listener;
+        configureFindView();
         return this;
     };
 
