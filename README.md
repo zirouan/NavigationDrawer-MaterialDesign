@@ -88,7 +88,7 @@ note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with
 
 <b>Create a class and it extends the NavigationLiveo and implement the br.liveo.interfaces.OnItemClickListener.</b>
 
-Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-MaterialDesign/blob/master/demo/src/main/java/br/liveo/ndrawer/MainActivity.java" target="_blank">MainActivity</a> extends NavigationLiveo implements OnItemClickListener {
+Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-MaterialDesign/blob/master/demo/src/main/java/br/liveo/ndrawer/ui/activity/MainActivity.java" target="_blank">MainActivity</a> extends NavigationLiveo implements OnItemClickListener {
 
 ###Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
 
