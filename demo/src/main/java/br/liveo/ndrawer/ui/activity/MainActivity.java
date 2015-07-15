@@ -54,6 +54,10 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         mHelpLiveo.add(getString(R.string.trash), R.mipmap.ic_delete_black_24dp);
         mHelpLiveo.add(getString(R.string.spam), R.mipmap.ic_report_black_24dp, 120);
 
+        //{optional} - Header Customization - method customHeader
+//        View mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
+//        ImageView imageView = (ImageView) mCustomHeader.findViewById(R.id.imageView);
+
         with(this).startingPosition(2) //Starting position in the list
                 .addAllHelpItem(mHelpLiveo.getHelp())
 
@@ -70,6 +74,9 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 //.colorLineSeparator(R.color.nliveo_blue_colorPrimary)
 
                 .footerItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
+
+                //{optional} - Header Customization
+                //.customHeader(mCustomHeader)
 
                 //{optional} - Footer Customization
                 //.footerNameColor(R.color.nliveo_blue_colorPrimary)

@@ -24,7 +24,7 @@ How to use? Very simple! : D
 
 ```java
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:2.3.3'
+        compile 'br.com.liveo:navigationdrawer-material:2.3.4'
 }
 ```
 ###<b>Maven</b>
@@ -33,7 +33,7 @@ dependencies {
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>2.3.3</version>
+  <version>2.3.4</version>
   <type>aar</type>
 </dependency>
 ```
@@ -46,16 +46,16 @@ dependencies {
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_blue_colorPrimaryDark</item>
-        <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
+        <item name="colorAccent">@color/nliveo_blue_colorPrimaryDark</item>
     </style>
 ````
     <!--Here will be the theme of the class that will extends NavigationLiveo-->
 ```xml
-    <style name="nLiveoDrawer" parent="nLiveo.Theme.DarkActionBar">
+    <style name="nLiveoDrawer" parent="Theme.nLiveo">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
-        <item name="colorAccent">@color/nliveo_blue_colorPrimary</item>
+        <item name="colorAccent">@color/nliveo_blue_colorPrimaryDark</item>
     </style>
 ```
 <b>Also there is nLiveo.Theme.Light theme<b><br>
@@ -112,7 +112,11 @@ Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-Materia
         mHelpLiveo.add(getString(R.string.trash), R.mipmap.ic_delete_black_24dp);
         mHelpLiveo.add(getString(R.string.spam), R.mipmap.ic_report_black_24dp, 120);
 
-        with(this).startingPosition(2) //Starting position in the list
+        //with(this, Navigation.THEME_DARK). add theme dark
+        //with(this, Navigation.THEME_LIGHT). add theme light
+
+        with(this) // default theme is dark
+                .startingPosition(2) //Starting position in the list
                 .addAllHelpItem(mHelpLiveo.getHelp())
                 .footerItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
                 .setOnClickUser(onClickPhoto)

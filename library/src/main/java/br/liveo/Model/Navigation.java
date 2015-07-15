@@ -15,4 +15,7 @@ public class Navigation {
     public SparseIntArray countItem;
     public int colorSelected = 0;
     public boolean removeSelector = false;
+
+    public static final int THEME_DARK = 0;
+    public static final int THEME_LIGHT = 1;
 }

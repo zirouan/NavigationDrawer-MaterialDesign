@@ -1,5 +1,28 @@
 #Change Log
 
+Version 2.3.4 *(15-07-2015)*
+----------------------------
+It requires 14+ API and android support v7 22.2.0 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    Change in the choice of theme
+    with(this) default theme is the dark
+    with(this, Navigation.THEME_DARK) add theme Dark
+    with(this, Navigation.THEME_LIGHT) add theme Light
+
+    Error correction to add a custom header
+```
+
+Version 2.3.3 *(03-07-2015)*
+----------------------------
+It requires 14+ API and android support v7 22.2.0 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    Bug Color Dialog
+```
+
 Version 2.3.2 *(03-06-2015)*
 ----------------------------
 It requires 14+ API and android support v7 22.2.0 (AppCompatActivity + Toolbar)

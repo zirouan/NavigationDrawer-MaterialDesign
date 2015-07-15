@@ -72,6 +72,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     private int mSelectorDefault = 0;
     private boolean mRemoveAlpha = false;
     private boolean mRemoveHeader = false;
+    private boolean mCustomHeader = false;
 
     private Toolbar mToolbar;
     private float mElevationToolBar = 15;
@@ -90,8 +91,6 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     private OnItemClickListener mOnItemClickLiveo;
     private OnPrepareOptionsMenuLiveo mOnPrepareOptionsMenu;
 
-    public static final int THEME_DARK = 0;
-    public static final int THEME_LIGHT = 1;
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
     /**
@@ -228,9 +227,9 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            int mPosition = (!mRemoveHeader ? position - 1 : position);
+            int mPosition = (!mRemoveHeader || !mCustomHeader ? position - 1 : position);
 
-            if (position != 0 || mRemoveHeader) {
+            if (position != 0 || (mRemoveHeader && mCustomHeader)) {
                 mOnItemClickLiveo.onItemClick(mPosition);
                 setCurrentPosition(mPosition);
                 setCheckedItemNavigation(mPosition, true);
@@ -365,7 +364,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
      * @param theme theme.
      */
     public NavigationActionBarLiveo with(OnItemClickListener listener, int theme){
-        setContentView(theme == THEME_DARK ? R.layout.navigation_main_actionbar_dark : R.layout.navigation_main_actionbar_light);
+        setContentView(theme == Navigation.THEME_DARK ? R.layout.navigation_main_actionbar_dark : R.layout.navigation_main_actionbar_light);
         this.mOnItemClickLiveo = listener;
         configureFindView();
         return this;
@@ -1179,6 +1178,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
      */
     public NavigationActionBarLiveo removeHeader(){
         mRemoveHeader = true;
+        mCustomHeader = true;
         return this;
     }
 
@@ -1205,7 +1205,9 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
             throw new RuntimeException(getString(R.string.custom_header_not_created));
         }
 
-        removeDefaultHeader();
+        this.removeHeader();
+        mCustomHeader = false;
+        mRelativeDrawer.setFitsSystemWindows(true);
         mList.addHeaderView(view);
         return this;
     }

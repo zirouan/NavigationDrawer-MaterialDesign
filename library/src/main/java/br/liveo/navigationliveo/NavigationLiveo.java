@@ -68,6 +68,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private int mColorSeparator = 0;
     private int mColorSubHeader = 0;
     private boolean mRemoveHeader = false;
+    private boolean mCustomHeader = false;
 
     private int mColorDefault = 0;
     private int mCurrentPosition = 1;
@@ -88,9 +89,6 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
     private OnItemClickListener mOnItemClickLiveo;
     private OnPrepareOptionsMenuLiveo mOnPrepareOptionsMenu;
-
-    public static final int THEME_DARK = 0;
-    public static final int THEME_LIGHT = 1;
 
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
 
@@ -145,7 +143,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
-                if (!mRemoveHeader) {
+                if (!mRemoveHeader || !mCustomHeader) {
                     Resources.Theme theme = this.getTheme();
                     TypedArray typedArray = theme.obtainStyledAttributes(new int[]{android.R.attr.colorPrimary});
                     mDrawerLayout.setStatusBarBackground(typedArray.getResourceId(0, 0));
@@ -231,9 +229,9 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            int mPosition = (!mRemoveHeader ? position - 1 : position);
+            int mPosition = (!mRemoveHeader || !mCustomHeader ? position - 1 : position);
 
-            if (position != 0 || mRemoveHeader) {
+            if (position != 0 || (mRemoveHeader && mCustomHeader)) {
                 mOnItemClickLiveo.onItemClick(mPosition);
                 setCurrentPosition(mPosition);
                 setCheckedItemNavigation(mPosition, true);
@@ -337,6 +335,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      */
     public NavigationLiveo removeHeader(){
         mRemoveHeader = true;
+        mCustomHeader = true;
         mRelativeDrawer.setFitsSystemWindows(false);
         return this;
     }
@@ -386,7 +385,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param theme theme.
      */
     public NavigationLiveo with(OnItemClickListener listener, int theme){
-        setContentView(theme == THEME_DARK ? R.layout.navigation_main_dark : R.layout.navigation_main_light);
+        setContentView(theme == Navigation.THEME_DARK ? R.layout.navigation_main_dark : R.layout.navigation_main_light);
         this.mOnItemClickLiveo = listener;
         configureFindView();
         return this;
@@ -1219,7 +1218,9 @@ public abstract class NavigationLiveo extends AppCompatActivity {
             throw new RuntimeException(getString(R.string.custom_header_not_created));
         }
 
-        removeDefaultHeader();
+        this.removeHeader();
+        mCustomHeader = false;
+        mRelativeDrawer.setFitsSystemWindows(true);
         mList.addHeaderView(view);
         return this;
     }
