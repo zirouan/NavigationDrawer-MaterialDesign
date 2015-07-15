@@ -2,6 +2,10 @@
 
 It requires 14+ API and android support v7 22.2.0 (AppCompatActivity + Toolbar)
 
+###special thanks :D
+Jacob A. Moura for all his ideas, dedication, time and help.<br>
+You are part of this project.
+
 ###Sample Application
 
 <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">
