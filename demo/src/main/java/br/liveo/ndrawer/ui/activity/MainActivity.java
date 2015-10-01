@@ -74,6 +74,7 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 //.colorLineSeparator(R.color.nliveo_blue_colorPrimary)
 
                 .footerItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
+                //.footerSecondItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
 
                 //{optional} - Header Customization
                 //.customHeader(mCustomHeader)
@@ -86,6 +87,7 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 .setOnClickUser(onClickPhoto)
                 .setOnPrepareOptionsMenu(onPrepare)
                 .setOnClickFooter(onClickFooter)
+                //.setOnClickFooterSecond(onClickFooter)
                 .build();
 
         int position = this.getCurrentPosition();

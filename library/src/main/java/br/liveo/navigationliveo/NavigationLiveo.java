@@ -23,6 +23,7 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.internal.ScrimInsetsFrameLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -61,6 +62,9 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private TextView mTitleFooter;
     private ImageView mIconFooter;
 
+    private TextView mTitleSecondFooter;
+    private ImageView mIconSecondFooter;
+
     private int mColorName = 0;
     private int mColorIcon = 0;
     private int mNewSelector = 0;
@@ -75,10 +79,12 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private int mSelectorDefault = 0;
     private float mElevationToolBar = 15;
     private boolean mRemoveAlpha = false;
+    private boolean mRemoveColorFilter = false;
 
     private List<HelpItem> mHelpItem;
     private DrawerLayout mDrawerLayout;
     private RelativeLayout mFooterDrawer;
+    private RelativeLayout mFooterSecondDrawer;
     private ScrimInsetsFrameLayout mRelativeDrawer;
 
     private boolean isSaveInstance = false;
@@ -129,7 +135,11 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mTitleFooter = (TextView) this.findViewById(R.id.titleFooter);
         mIconFooter = (ImageView) this.findViewById(R.id.iconFooter);
 
+        mTitleSecondFooter = (TextView) this.findViewById(R.id.titleSecondFooter);
+        mIconSecondFooter = (ImageView) this.findViewById(R.id.iconSecondFooter);
+
         mFooterDrawer = (RelativeLayout) this.findViewById(R.id.footerDrawer);
+        mFooterSecondDrawer = (RelativeLayout) this.findViewById(R.id.footerSecondDrawer);
         mRelativeDrawer = (ScrimInsetsFrameLayout) this.findViewById(R.id.relativeDrawer);
 
         this.setSupportActionBar(mToolbar);
@@ -270,10 +280,14 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mListExtra.add(6, mSelectorDefault);
         mListExtra.add(7, mColorSubHeader);
 
+        List<Boolean> mListRemove = new ArrayList<>();
+        mListRemove.add(0, mRemoveAlpha);
+        mListRemove.add(1, mRemoveColorFilter);
+
         if (mHelpItem != null){
-            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mHelpItem, mNavigation.colorSelected, mNavigation.removeSelector), mRemoveAlpha, mListExtra);
+            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mHelpItem, mNavigation.colorSelected, mNavigation.removeSelector), mListRemove, mListExtra);
         }else {
-            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mNavigation), mRemoveAlpha, mListExtra);
+            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mNavigation), mListRemove, mListExtra);
         }
 
         mList.setAdapter(mNavigationAdapter);
@@ -296,10 +310,14 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mListExtra.add(6, mSelectorDefault);
         mListExtra.add(7, mColorSubHeader);
 
+        List<Boolean> mListRemove = new ArrayList<>();
+        mListRemove.add(0, mRemoveAlpha);
+        mListRemove.add(1, mRemoveColorFilter);
+
         if (mHelpItem != null){
-            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mHelpItem, mNavigation.colorSelected, mNavigation.removeSelector), mRemoveAlpha, mListExtra);
+            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mHelpItem, mNavigation.colorSelected, mNavigation.removeSelector), mListRemove, mListExtra);
         }else {
-            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mNavigation), mRemoveAlpha, mListExtra);
+            mNavigationAdapter = new NavigationLiveoAdapter(this, NavigationLiveoList.getNavigationAdapter(this, mNavigation), mListRemove, mListExtra);
         }
 
         setAdapter();
@@ -356,6 +374,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         this.mSelectorDefault = color;
         this.mList.setBackgroundResource(color);
         this.mFooterDrawer.setBackgroundResource(color);
+        this.mFooterSecondDrawer.setBackgroundResource(color);
         return this;
     }
 
@@ -365,6 +384,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      */
     public NavigationLiveo footerBackground(int color){
         this.mFooterDrawer.setBackgroundResource(color);
+        this.mFooterSecondDrawer.setBackgroundResource(color);
         return this;
     }
 
@@ -595,6 +615,33 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     };
 
     /**
+     * Information footer second list item
+     * @param title item footer name.
+     * @param icon item footer icon.
+     */
+    public NavigationLiveo footerSecondItem(String title, int icon){
+
+        if (title == null){
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
+        }
+
+        if (title.trim().equals("")){
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
+        }
+
+        mTitleSecondFooter.setText(title);
+
+        if (icon == 0){
+            mIconSecondFooter.setVisibility(View.GONE);
+        }else{
+            mIconSecondFooter.setImageResource(icon);
+        }
+
+        mFooterSecondDrawer.setVisibility(View.VISIBLE);
+        return this;
+    };
+
+    /**
      * Information footer list item
      * @param title item footer name.
      * @param icon item footer icon.
@@ -615,7 +662,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mTitleFooter.setText(title);
 
         if (colorName > 0){
-            mTitleFooter.setTextColor(getResources().getColor(colorName));
+            mTitleFooter.setTextColor(ContextCompat.getColor(this, colorName));
         }
 
         if (icon == 0){
@@ -624,7 +671,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
             mIconFooter.setImageResource(icon);
 
             if ( colorIcon > 0) {
-                mIconFooter.setColorFilter(getResources().getColor(colorIcon));
+                mIconFooter.setColorFilter(ContextCompat.getColor(this, colorIcon));
             }
         }
     };
@@ -649,7 +696,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mTitleFooter.setText(title);
 
         if (colorName > 0){
-            mTitleFooter.setTextColor(getResources().getColor(colorName));
+            mTitleFooter.setTextColor(ContextCompat.getColor(this, colorName));
         }
 
         if (icon == 0){
@@ -658,7 +705,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
             mIconFooter.setImageResource(icon);
 
             if ( colorIcon > 0) {
-                mIconFooter.setColorFilter(getResources().getColor(colorIcon));
+                mIconFooter.setColorFilter(ContextCompat.getColor(this, colorIcon));
             }
         }
         return this;
@@ -723,6 +770,35 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * Information footer list item
      * @param title item footer name.
      * @param icon item footer icon.
+     */
+    public NavigationLiveo footerSecondItem(int title, int icon){
+
+        if (title == 0){
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
+        }
+
+        mTitleSecondFooter.setText(getString(title));
+
+        if (icon == 0){
+            mIconSecondFooter.setVisibility(View.GONE);
+        }else{
+            mIconSecondFooter.setImageResource(icon);
+        }
+
+        if (mColorDefault > 0){
+            footerNameColor(mColorDefault);
+            footerIconColor(mColorDefault);
+        }
+
+        mFooterSecondDrawer.setVisibility(View.VISIBLE);
+
+        return this;
+    };
+
+    /**
+     * Information footer list item
+     * @param title item footer name.
+     * @param icon item footer icon.
      * @param colorName item footer name color.
      * @param colorIcon item footer icon color.
      * @deprecated
@@ -736,7 +812,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mTitleFooter.setText(title);
 
         if (colorName > 0) {
-            mTitleFooter.setTextColor(getResources().getColor(colorName));
+            mTitleFooter.setTextColor(ContextCompat.getColor(this, colorName));
         }
 
         if (icon == 0){
@@ -745,7 +821,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
             mIconFooter.setImageResource(icon);
 
             if ( colorIcon > 0) {
-                mIconFooter.setColorFilter(getResources().getColor(colorIcon));
+                mIconFooter.setColorFilter(ContextCompat.getColor(this, colorIcon));
             }
         }
     };
@@ -766,7 +842,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mTitleFooter.setText(title);
 
         if (colorName > 0){
-            mTitleFooter.setTextColor(getResources().getColor(colorName));
+            mTitleFooter.setTextColor(ContextCompat.getColor(this, colorName));
         }
 
         if (icon == 0){
@@ -775,9 +851,42 @@ public abstract class NavigationLiveo extends AppCompatActivity {
             mIconFooter.setImageResource(icon);
 
             if ( colorIcon > 0) {
-                mIconFooter.setColorFilter(getResources().getColor(colorIcon));
+                mIconFooter.setColorFilter(ContextCompat.getColor(this, colorIcon));
             }
         }
+        return this;
+    };
+
+    /**
+     * Information footer second list item
+     * @param title item footer name.
+     * @param icon item footer icon.
+     * @param colorName item footer name color.
+     * @param colorIcon item footer icon color.
+     */
+    public NavigationLiveo footerSecondItem(int title, int icon, int colorName, int colorIcon){
+
+        if (title == 0){
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
+        }
+
+        mTitleSecondFooter.setText(title);
+
+        if (colorName > 0){
+            mTitleSecondFooter.setTextColor(ContextCompat.getColor(this, colorName));
+        }
+
+        if (icon == 0){
+            mIconSecondFooter.setVisibility(View.GONE);
+        }else{
+            mIconSecondFooter.setImageResource(icon);
+
+            if ( colorIcon > 0) {
+                mIconSecondFooter.setColorFilter(ContextCompat.getColor(this, colorIcon));
+            }
+        }
+
+        mFooterSecondDrawer.setVisibility(View.VISIBLE);
         return this;
     };
 
@@ -796,7 +905,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mTitleFooter.setText(title);
 
         if (color > 0){
-            mTitleFooter.setTextColor(getResources().getColor(color));
+            mTitleFooter.setTextColor(ContextCompat.getColor(this, color));
         }
 
         if (icon == 0){
@@ -805,9 +914,41 @@ public abstract class NavigationLiveo extends AppCompatActivity {
             mIconFooter.setImageResource(icon);
 
             if ( color > 0) {
-                mIconFooter.setColorFilter(getResources().getColor(color));
+                mIconFooter.setColorFilter(ContextCompat.getColor(this, color));
             }
         }
+        return this;
+    };
+
+    /**
+     * Information footer second list item
+     * @param title item footer name.
+     * @param icon item footer icon.
+     * @param color item footer name and icon color.
+     */
+    public NavigationLiveo footerSecondItem(int title, int icon, int color){
+
+        if (title == 0){
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
+        }
+
+        mTitleSecondFooter.setText(title);
+
+        if (color > 0){
+            mTitleSecondFooter.setTextColor(ContextCompat.getColor(this, color));
+        }
+
+        if (icon == 0){
+            mIconSecondFooter.setVisibility(View.GONE);
+        }else{
+            mIconSecondFooter.setImageResource(icon);
+
+            if ( color > 0) {
+                mIconSecondFooter.setColorFilter(ContextCompat.getColor(this, color));
+            }
+        }
+
+        mFooterSecondDrawer.setVisibility(View.VISIBLE);
         return this;
     };
 
@@ -830,7 +971,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         mTitleFooter.setText(title);
 
         if (color > 0){
-            mTitleFooter.setTextColor(getResources().getColor(color));
+            mTitleFooter.setTextColor(ContextCompat.getColor(this, color));
         }
 
         if (icon == 0){
@@ -839,7 +980,41 @@ public abstract class NavigationLiveo extends AppCompatActivity {
             mIconFooter.setImageResource(icon);
 
             if ( color > 0) {
-                mIconFooter.setColorFilter(getResources().getColor(color));
+                mIconFooter.setColorFilter(ContextCompat.getColor(this, color));
+            }
+        }
+        return this;
+    };
+
+    /**
+     * Information footer second list item
+     * @param title item footer name.
+     * @param icon item footer icon.
+     * @param color item footer name and icon color.
+     */
+    public NavigationLiveo footerSecondItem(String title, int icon, int color){
+
+        if (title == null){
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
+        }
+
+        if (title.trim().equals("")){
+            throw new RuntimeException(getString(R.string.title_null_or_empty));
+        }
+
+        mTitleSecondFooter.setText(title);
+
+        if (color > 0){
+            mTitleSecondFooter.setTextColor(ContextCompat.getColor(this, color));
+        }
+
+        if (icon == 0){
+            mIconSecondFooter.setVisibility(View.GONE);
+        }else{
+            mIconSecondFooter.setImageResource(icon);
+
+            if ( color > 0) {
+                mIconSecondFooter.setColorFilter(ContextCompat.getColor(this, color));
             }
         }
         return this;
@@ -858,6 +1033,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      */
     public NavigationLiveo removeFooter(){
         this.mFooterDrawer.setVisibility(View.GONE);
+        this.mFooterSecondDrawer.setVisibility(View.GONE);
         return this;
     }
 
@@ -885,7 +1061,8 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @deprecated
      */
     public void setFooterNameColorNavigation(int colorId){
-        this.mTitleFooter.setTextColor(getResources().getColor(colorId));
+        this.mTitleFooter.setTextColor(ContextCompat.getColor(this, colorId));
+        this.mTitleFooter.setTextColor(ContextCompat.getColor(this, colorId));
     }
 
     /**
@@ -893,18 +1070,38 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @param colorId color id.
      */
     public NavigationLiveo footerNameColor(int colorId){
-        this.mTitleFooter.setTextColor(getResources().getColor(colorId));
+        this.mTitleFooter.setTextColor(ContextCompat.getColor(this, colorId));
         return this;
     }
+
+    /**
+     * Footer second name color
+     * @param colorId color id.
+     */
+    public NavigationLiveo footerSecondNameColor(int colorId){
+        this.mTitleSecondFooter.setTextColor(ContextCompat.getColor(this, colorId));
+        return this;
+    }
+
 
     /**
      * Footer icon color
      * @param colorId color id.
      */
     public NavigationLiveo footerIconColor(int colorId) {
-        this.mIconFooter.setColorFilter(getResources().getColor(colorId));
+        this.mIconFooter.setColorFilter(ContextCompat.getColor(this, colorId));
         return this;
     }
+
+    /**
+     * Footer second icon color
+     * @param colorId color id.
+     */
+    public NavigationLiveo footerSecondIconColor(int colorId) {
+        this.mIconSecondFooter.setColorFilter(ContextCompat.getColor(this, colorId));
+        return this;
+    }
+
 
     /**
      * Footer icon color
@@ -912,7 +1109,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      * @deprecated
      */
     public void setFooterIconColorNavigation(int colorId) {
-        this.mIconFooter.setColorFilter(getResources().getColor(colorId));
+        this.mIconFooter.setColorFilter(ContextCompat.getColor(this, colorId));
     }
 
     /**
@@ -1161,6 +1358,14 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     }
 
     /**
+     * Remove color filter icon item navigation
+     */
+    public NavigationLiveo removeColorFilter(){
+        this.mRemoveColorFilter = !mRemoveColorFilter;
+        return this;
+    }
+
+    /**
      * public void setElevation (float elevation)
      * Added in API level 21
      * Default value is 15
@@ -1282,6 +1487,11 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
     public NavigationLiveo setOnClickFooter(View.OnClickListener listener){
         this.mFooterDrawer.setOnClickListener(listener);
+        return this;
+    }
+
+    public NavigationLiveo setOnClickFooterSecond(View.OnClickListener listener){
+        this.mFooterSecondDrawer.setOnClickListener(listener);
         return this;
     }
 

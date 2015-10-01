@@ -18,6 +18,7 @@ package br.liveo.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,9 +46,10 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 	private final Context mcontext;
     private int mSelectorDefault = 0;
     private boolean mRemoveAlpha = false;
+    private boolean mRemoveColorFilter = false;
     private final List<NavigationLiveoItemAdapter> mList;
 	
-	public NavigationLiveoAdapter(Context context, List<NavigationLiveoItemAdapter> list, boolean removeAlpha, List<Integer> extra) {
+	public NavigationLiveoAdapter(Context context, List<NavigationLiveoItemAdapter> list, List<Boolean> extraRemove, List<Integer> extra) {
 		this.mList = list;		
 		this.mcontext = context;
         this.mNewSelector = extra.get(0);
@@ -58,7 +60,8 @@ public class NavigationLiveoAdapter extends BaseAdapter {
         this.mColorCounter = extra.get(5);
         this.mSelectorDefault = extra.get(6);
         this.mColorSubHeader = extra.get(7);
-        this.mRemoveAlpha = removeAlpha;
+        this.mRemoveAlpha = extraRemove.get(0);
+        this.mRemoveColorFilter = extraRemove.get(1);
 	}
 
 	@Override
@@ -206,11 +209,11 @@ public class NavigationLiveoAdapter extends BaseAdapter {
             }
 
             holder.title.setTextColor((!item.isHeader && item.checked && item.colorSelected > 0 ?
-                    mcontext.getResources().getColor(item.colorSelected) :
-                    mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
-                    mColorName > 0 ? mcontext.getResources().getColor(mColorName) :
-                    (item.isHeader && mColorSubHeader > 0) ? mcontext.getResources().getColor(mColorSubHeader) :
-                                    mcontext.getResources().getColor(R.color.nliveo_black)));
+                    ContextCompat.getColor(mcontext, item.colorSelected) :
+                    mColorDefault != 0 ? ContextCompat.getColor(mcontext, mColorDefault) :
+                    mColorName > 0 ? ContextCompat.getColor(mcontext, mColorName) :
+                    (item.isHeader && mColorSubHeader > 0) ? ContextCompat.getColor(mcontext, mColorSubHeader) :
+                                    ContextCompat.getColor(mcontext, R.color.nliveo_black)));
 		}
 
 		if (holder.counter != null) {
@@ -220,11 +223,11 @@ public class NavigationLiveoAdapter extends BaseAdapter {
                 holder.counter.setText((item.counter > 99) ? "99+" : item.counter + "");
 
                 holder.counter.setTextColor((!item.isHeader && item.checked && item.colorSelected > 0 ?
-                        mcontext.getResources().getColor(item.colorSelected) :
-                        mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
-                        mColorCounter > 0 ?
-                                mcontext.getResources().getColor(mColorCounter) :
-                                mcontext.getResources().getColor(R.color.nliveo_black)));
+                        ContextCompat.getColor(mcontext, item.colorSelected) :
+                        mColorDefault != 0 ? ContextCompat.getColor(mcontext, mColorDefault) :
+                                mColorCounter > 0 ?
+                                        ContextCompat.getColor(mcontext, mColorCounter) :
+                                        ContextCompat.getColor(mcontext, R.color.nliveo_black)));
 
             } else {
 				holder.counter.setVisibility(View.GONE);
@@ -241,11 +244,13 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 				holder.icon.setImageResource(item.icon);
                 setAlpha(holder.icon, (!item.isHeader && item.checked ? 1f : 0.54f));
 
-                holder.icon.setColorFilter((!item.isHeader && item.checked && item.colorSelected > 0 ?
-                        mcontext.getResources().getColor(item.colorSelected) :
-                        (mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
-                                mColorIcon > 0 ? mcontext.getResources().getColor(mColorIcon) :
-                                        mcontext.getResources().getColor(R.color.nliveo_black))));
+                if (!this.mRemoveColorFilter) {
+                    holder.icon.setColorFilter((!item.isHeader && item.checked && item.colorSelected > 0 ?
+                            ContextCompat.getColor(mcontext, item.colorSelected) :
+                            (mColorDefault != 0 ? ContextCompat.getColor(mcontext, mColorDefault) :
+                                    mColorIcon > 0 ? ContextCompat.getColor(mcontext, mColorIcon) :
+                                            ContextCompat.getColor(mcontext, R.color.nliveo_black))));
+                }
 			} else {
 				holder.icon.setVisibility(View.GONE);
 			}

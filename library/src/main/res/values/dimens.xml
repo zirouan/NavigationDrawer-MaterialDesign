@@ -17,7 +17,7 @@
 <resources>
 
     <!-- navigation_drawer.xml -->
-    <dimen name="drawer_layout_width">-.5dp</dimen>
+    <dimen name="drawer_layout_width">320dp</dimen>
 
     <!-- title item list -->
     <dimen name="default_textSize">14sp</dimen>

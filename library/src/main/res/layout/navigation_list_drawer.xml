@@ -78,5 +78,41 @@
                 android:layout_toRightOf="@+id/iconFooter"
                 android:layout_toEndOf="@+id/iconFooter" />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@+id/footerDrawer"
+            android:id="@+id/footerSecondDrawer"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:background="@color/nliveo_white"
+            android:layout_height="48dp">
+
+            <ImageView
+                android:id="@+id/iconSecondFooter"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:contentDescription="@string/clear" />
+
+            <TextView
+                android:id="@+id/titleSecondFooter"
+                fontPath="fonts/Roboto-Medium.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:textColor="#000000"
+                android:text="@string/clear"
+                android:textSize="@dimen/default_textSize"
+                android:layout_toRightOf="@+id/iconSecondFooter"
+                android:layout_toEndOf="@+id/iconSecondFooter" />
+        </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>
