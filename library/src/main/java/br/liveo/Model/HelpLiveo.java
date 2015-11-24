@@ -1,4 +1,4 @@
-package br.liveo.Model;
+package br.liveo.model;
 
 import java.util.ArrayList;
 import java.util.List;

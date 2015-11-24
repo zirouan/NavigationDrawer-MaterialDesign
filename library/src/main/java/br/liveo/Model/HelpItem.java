@@ -1,4 +1,4 @@
-package br.liveo.Model;
+package br.liveo.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -22,7 +22,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
-import br.liveo.Model.HelpLiveo;
+import br.liveo.model.HelpLiveo;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
 import br.liveo.navigationliveo.NavigationLiveo;

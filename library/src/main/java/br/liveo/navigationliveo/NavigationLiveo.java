@@ -42,8 +42,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.liveo.Model.HelpItem;
-import br.liveo.Model.Navigation;
+import br.liveo.model.HelpItem;
+import br.liveo.model.Navigation;
 import br.liveo.adapter.NavigationLiveoAdapter;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
