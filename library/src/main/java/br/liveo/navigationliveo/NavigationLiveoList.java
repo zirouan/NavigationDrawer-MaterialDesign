@@ -21,9 +21,9 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.liveo.adapter.NavigationLiveoItemAdapter;
 import br.liveo.model.HelpItem;
 import br.liveo.model.Navigation;
-import br.liveo.adapter.NavigationLiveoItemAdapter;
 
 public class NavigationLiveoList {
 

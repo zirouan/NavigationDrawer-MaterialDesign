@@ -28,7 +28,7 @@ How to use? Very simple! : D
 
 ```java
 dependencies {
-        compile 'br.com.liveo:navigationdrawer-material:2.3.6'
+        compile 'br.com.liveo:navigationdrawer-material:2.4'
 }
 ```
 ###<b>Maven</b>
@@ -37,7 +37,7 @@ dependencies {
 <dependency>
   <groupId>br.com.liveo</groupId>
   <artifactId>navigationdrawer-material</artifactId>
-  <version>2.3.6</version>
+  <version>2.4</version>
   <type>aar</type>
 </dependency>
 ```

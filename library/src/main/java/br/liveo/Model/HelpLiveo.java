@@ -77,6 +77,15 @@ public class HelpLiveo {
         this.listHelp.add(helpItem);
     }
 
+    public void addSubHeader(String name, int counter){
+        this.newHelpItem();
+        this.helpItem.setName(name);
+        this.helpItem.setCounter(counter);
+        this.helpItem.setIcon(NO_ICON);
+        this.helpItem.setHeader(IS_HEADER);
+        this.listHelp.add(helpItem);
+    }
+
     public void addSeparator(){
         this.newHelpItem();
         this.helpItem.setName(ONLY_SEPARATOR);

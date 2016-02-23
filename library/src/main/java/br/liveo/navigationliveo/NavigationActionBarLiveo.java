@@ -42,11 +42,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.liveo.model.HelpItem;
-import br.liveo.model.Navigation;
 import br.liveo.adapter.NavigationLiveoAdapter;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
+import br.liveo.model.HelpItem;
+import br.liveo.model.Navigation;
 
 public abstract class NavigationActionBarLiveo extends AppCompatActivity {
 

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package br.liveo.ndrawer.ui.activity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,9 +23,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
-import br.liveo.model.HelpLiveo;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
+import br.liveo.model.HelpLiveo;
 import br.liveo.navigationliveo.NavigationLiveo;
 import br.liveo.ndrawer.R;
 import br.liveo.ndrawer.ui.fragment.MainFragment;
@@ -74,6 +75,8 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 //.colorLineSeparator(R.color.nliveo_blue_colorPrimary)
 
                 .footerItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
+
+                //{optional} - Second footer
                 //.footerSecondItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
 
                 //{optional} - Header Customization
@@ -84,9 +87,13 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 //.footerIconColor(R.color.nliveo_blue_colorPrimary)
                 //.footerBackground(R.color.nliveo_white)
 
+                .removeColorFilter()
+
                 .setOnClickUser(onClickPhoto)
                 .setOnPrepareOptionsMenu(onPrepare)
                 .setOnClickFooter(onClickFooter)
+
+                //{optional} - Second footer
                 //.setOnClickFooterSecond(onClickFooter)
                 .build();
 

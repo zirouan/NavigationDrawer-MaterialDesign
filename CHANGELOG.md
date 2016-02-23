@@ -1,5 +1,35 @@
 #Change Log
 
+Version 2.4 *(23-02-2016)*
+----------------------------
+It requires 14+ API and android support v7 23.1.1 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    update gradle
+    add counter in a subheader.
+```
+
+
+Version 2.3.6 *(24-11-2015)*
+----------------------------
+It requires 14+ API and android support v7 23.0.1 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    update gradle
+    update library Google
+```
+
+Version 2.3.5 *(15-07-2015)*
+----------------------------
+It requires 14+ API and android support v7 22.2.0 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    update gradle
+```
+
 Version 2.3.4 *(15-07-2015)*
 ----------------------------
 It requires 14+ API and android support v7 22.2.0 (AppCompatActivity + Toolbar)
