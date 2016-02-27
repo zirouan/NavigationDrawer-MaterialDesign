@@ -24,4 +24,12 @@
     </style>
 
     <style name="Theme.nLiveo" parent="AppTheme.nLiveo" />
+
+    <style name="AppTheme.nLiveo.MaterialRippleLayout">
+        <item name="mrl_rippleAlpha">0.2</item>
+        <item name="mrl_rippleColor">@color/nliveo_divider</item>
+        <item name="mrl_rippleDelayClick">true</item>
+        <item name="mrl_rippleHover">true</item>
+        <item name="mrl_rippleOverlay">true</item>
+    </style>
 </resources>

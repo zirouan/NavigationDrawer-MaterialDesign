@@ -27,92 +27,107 @@
         android:id="@+id/list"
         android:layout_width="@dimen/drawer_layout_width"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
         android:layout_above="@+id/layoutFooter"
+        android:layout_gravity="start"
+        android:background="@color/nliveo_white"
         android:cacheColorHint="@color/nliveo_transparent"
         android:choiceMode="singleChoice"
-        android:fitsSystemWindows="true"
-        android:background="@color/nliveo_white"
         android:divider="@color/nliveo_transparent"
-        android:dividerHeight="0dp" />
+        android:dividerHeight="0dp"
+        android:fitsSystemWindows="true" />
 
     <RelativeLayout
         android:id="@+id/layoutFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_width="match_parent"
-        android:background="@color/nliveo_white"
-        android:layout_height="wrap_content">
+        android:background="@color/nliveo_white">
 
-        <RelativeLayout
-            android:id="@+id/footerDrawer"
+        <com.balysv.materialripple.MaterialRippleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/layoutFooterDrawer"
+            style="@style/AppTheme.nLiveo.MaterialRippleLayout"
             android:layout_width="match_parent"
-            android:background="@color/nliveo_white"
-            android:layout_height="48dp">
+            android:layout_height="wrap_content"
+            android:background="@color/transparent">
 
-            <ImageView
-                android:id="@+id/iconFooter"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:contentDescription="@string/clear" />
-
-            <TextView
-                android:id="@+id/titleFooter"
-                fontPath="fonts/Roboto-Medium.ttf"
+            <RelativeLayout
+                android:id="@+id/footerDrawer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:textColor="#000000"
-                android:text="@string/clear"
-                android:textSize="@dimen/default_textSize"
-                android:layout_toRightOf="@+id/iconFooter"
-                android:layout_toEndOf="@+id/iconFooter" />
-        </RelativeLayout>
+                android:layout_height="48dp"
+                android:background="@color/nliveo_white">
 
-        <RelativeLayout
-            android:layout_below="@+id/footerDrawer"
-            android:id="@+id/footerSecondDrawer"
+                <ImageView
+                    android:id="@+id/iconFooter"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:contentDescription="@string/clear" />
+
+                <TextView
+                    android:id="@+id/titleFooter"
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@+id/iconFooter"
+                    android:layout_toRightOf="@+id/iconFooter"
+                    android:text="@string/clear"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/default_textSize" />
+            </RelativeLayout>
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            style="@style/AppTheme.nLiveo.MaterialRippleLayout"
             android:layout_width="match_parent"
-            android:visibility="gone"
-            android:background="@color/nliveo_white"
-            android:layout_height="48dp">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutFooterDrawer"
+            android:background="@color/transparent">
 
-            <ImageView
-                android:id="@+id/iconSecondFooter"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:contentDescription="@string/clear" />
-
-            <TextView
-                android:id="@+id/titleSecondFooter"
-                fontPath="fonts/Roboto-Medium.ttf"
+            <RelativeLayout
+                android:id="@+id/footerSecondDrawer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:textColor="#000000"
-                android:text="@string/clear"
-                android:textSize="@dimen/default_textSize"
-                android:layout_toRightOf="@+id/iconSecondFooter"
-                android:layout_toEndOf="@+id/iconSecondFooter" />
-        </RelativeLayout>
+                android:layout_height="48dp"
+                android:background="@color/nliveo_white"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iconSecondFooter"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:contentDescription="@string/clear" />
+
+                <TextView
+                    android:id="@+id/titleSecondFooter"
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@+id/iconSecondFooter"
+                    android:layout_toRightOf="@+id/iconSecondFooter"
+                    android:text="@string/clear"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/default_textSize" />
+            </RelativeLayout>
+        </com.balysv.materialripple.MaterialRippleLayout>
     </RelativeLayout>
 </RelativeLayout>

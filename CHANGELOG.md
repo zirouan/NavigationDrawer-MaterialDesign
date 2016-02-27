@@ -1,5 +1,15 @@
 #Change Log
 
+Version 2.4.1 *(26-02-2016)*
+----------------------------
+It requires 14+ API and android support v7 23.2.0 (AppCompatActivity + Toolbar)
+
+* New functions
+```groovy
+    update support library
+    bug footer item
+```
+
 Version 2.4 *(23-02-2016)*
 ----------------------------
 It requires 14+ API and android support v7 23.1.1 (AppCompatActivity + Toolbar)

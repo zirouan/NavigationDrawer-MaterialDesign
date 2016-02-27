@@ -18,6 +18,7 @@
 	<color name="nliveo_white">#ffffff</color>
 	<color name="nliveo_gray">#e0e0e0</color>
     <color name="nliveo_black">#000000</color>
+    <color name="nliveo_divider">#80B6B6B6</color>
 	<color name="nliveo_black_light">#222222</color>
 	<color name="nliveo_transparent">#00000000</color>
 

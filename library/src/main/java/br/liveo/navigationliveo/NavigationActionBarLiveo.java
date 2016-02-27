@@ -130,7 +130,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
         mDrawerToggle = new ActionBarDrawerToggleCompat(this, mDrawerLayout, mToolbar);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         mTitleFooter = (TextView) this.findViewById(R.id.titleFooter);
         mIconFooter = (ImageView) this.findViewById(R.id.iconFooter);
@@ -239,13 +239,16 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
 
             int mPosition = (!mRemoveHeader || !mCustomHeader ? position - 1 : position);
 
-            if (position != 0 || (mRemoveHeader && mCustomHeader)) {
-                mOnItemClickLiveo.onItemClick(mPosition);
-                setCurrentPosition(mPosition);
-                setCheckedItemNavigation(mPosition, true);
-            }
+            if (!mHelpItem.get(mPosition).isHeader()) {
 
-	    	mDrawerLayout.closeDrawer(mRelativeDrawer);
+                if (position != 0 || (mRemoveHeader && mCustomHeader)) {
+                    mOnItemClickLiveo.onItemClick(mPosition);
+                    setCurrentPosition(mPosition);
+                    setCheckedItemNavigation(mPosition, true);
+                }
+
+                mDrawerLayout.closeDrawer(mRelativeDrawer);
+            }
         }
     }
 
@@ -718,7 +721,7 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
             mIconFooter.setImageResource(icon);
         }
 
-        if (mColorDefault > 0){
+        if (mColorDefault > 0) {
             footerNameColor(mColorDefault);
             footerIconColor(mColorDefault);
         }
@@ -772,9 +775,9 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
             mIconSecondFooter.setImageResource(icon);
         }
 
-        if (mColorDefault > 0){
-            footerNameColor(mColorDefault);
-            footerIconColor(mColorDefault);
+        if (mColorDefault > 0) {
+            footerSecondNameColor(mColorDefault);
+            footerSecondIconColor(mColorDefault);
         }
 
         mFooterSecondDrawer.setVisibility(View.VISIBLE);
@@ -1026,6 +1029,15 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
     }
 
     /**
+     * Footer second name color
+     * @param colorId color id.
+     */
+    public NavigationActionBarLiveo footerSecondNameColor(int colorId){
+        this.mTitleSecondFooter.setTextColor(ContextCompat.getColor(this, colorId));
+        return this;
+    }
+
+    /**
      * Footer icon color
      * @param colorId color id.
      */
@@ -1033,6 +1045,16 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
         this.mIconFooter.setColorFilter(ContextCompat.getColor(this, colorId));
         return this;
     }
+
+    /**
+     * Footer second icon color
+     * @param colorId color id.
+     */
+    public NavigationActionBarLiveo footerSecondIconColor(int colorId) {
+        this.mIconSecondFooter.setColorFilter(ContextCompat.getColor(this, colorId));
+        return this;
+    }
+
     /**
      * Footer icon color
      * @param colorId color id.

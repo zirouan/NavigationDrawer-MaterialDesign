@@ -26,6 +26,7 @@ import android.widget.Toast;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
 import br.liveo.model.HelpLiveo;
+import br.liveo.navigationliveo.NavigationActionBarLiveo;
 import br.liveo.navigationliveo.NavigationLiveo;
 import br.liveo.ndrawer.R;
 import br.liveo.ndrawer.ui.fragment.MainFragment;
@@ -65,15 +66,15 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 //{optional} - List Customization "If you remove these methods and the list will take his white standard color"
                 //.selectorCheck(R.drawable.selector_check) //Inform the background of the selected item color
                 //.colorItemDefault(R.color.nliveo_blue_colorPrimary) //Inform the standard color name, icon and counter
-                //.colorItemSelected(R.color.nliveo_purple_colorPrimary) //State the name of the color, icon and meter when it is selected
+                .colorItemSelected(R.color.nliveo_blue_colorPrimary) //State the name of the color, icon and meter when it is selected
                 //.backgroundList(R.color.nliveo_black_light) //Inform the list of background color
                 //.colorLineSeparator(R.color.nliveo_transparent) //Inform the color of the subheader line
 
                 //{optional} - SubHeader Customization
-                .colorItemSelected(R.color.nliveo_blue_colorPrimary)
-                .colorNameSubHeader(R.color.nliveo_blue_colorPrimary)
-                //.colorLineSeparator(R.color.nliveo_blue_colorPrimary)
+                //.colorNameSubHeader(R.color.nliveo_blue_colorPrimary)
+                //.colorLineSeparator(R.color.nliveo_green_colorPrimaryDark)
 
+                //.removeFooter()
                 .footerItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
 
                 //{optional} - Second footer
@@ -85,9 +86,14 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 //{optional} - Footer Customization
                 //.footerNameColor(R.color.nliveo_blue_colorPrimary)
                 //.footerIconColor(R.color.nliveo_blue_colorPrimary)
+
+                //.footerSecondNameColor(R.color.nliveo_blue_colorPrimary)
+                //.footerSecondIconColor(R.color.nliveo_blue_colorPrimary)
+
                 //.footerBackground(R.color.nliveo_white)
 
-                .removeColorFilter()
+                //{optional} - Remove color filter icon
+                //.removeColorFilter()
 
                 .setOnClickUser(onClickPhoto)
                 .setOnPrepareOptionsMenu(onPrepare)
