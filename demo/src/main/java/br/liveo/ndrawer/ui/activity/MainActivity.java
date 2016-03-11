@@ -26,7 +26,6 @@ import android.widget.Toast;
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
 import br.liveo.model.HelpLiveo;
-import br.liveo.navigationliveo.NavigationActionBarLiveo;
 import br.liveo.navigationliveo.NavigationLiveo;
 import br.liveo.ndrawer.R;
 import br.liveo.ndrawer.ui.fragment.MainFragment;
@@ -47,18 +46,18 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
 
         // Creating items navigation
         mHelpLiveo = new HelpLiveo();
-        mHelpLiveo.add(getString(R.string.inbox), R.mipmap.ic_inbox_black_24dp, 7);
+        mHelpLiveo.add(getString(R.string.inbox), R.drawable.ic_inbox_black_24dp, 7);
         mHelpLiveo.addSubHeader(getString(R.string.categories)); //Item subHeader
-        mHelpLiveo.add(getString(R.string.starred), R.mipmap.ic_star_black_24dp);
-        mHelpLiveo.add(getString(R.string.sent_mail), R.mipmap.ic_send_black_24dp);
-        mHelpLiveo.add(getString(R.string.drafts), R.mipmap.ic_drafts_black_24dp);
-        mHelpLiveo.addSeparator(); // Item separator
-        mHelpLiveo.add(getString(R.string.trash), R.mipmap.ic_delete_black_24dp);
-        mHelpLiveo.add(getString(R.string.spam), R.mipmap.ic_report_black_24dp, 120);
+        mHelpLiveo.add(getString(R.string.starred), R.drawable.ic_star_black_24dp);
+        mHelpLiveo.add(getString(R.string.sent_mail), R.drawable.ic_send_black_24dp);
+        mHelpLiveo.addNoCheck(getString(R.string.drafts), R.drawable.ic_drafts_black_24dp);
+        mHelpLiveo.addSeparator(); //Item separator
+        mHelpLiveo.add(getString(R.string.trash), R.drawable.ic_delete_black_24dp);
+        mHelpLiveo.add(getString(R.string.spam), R.drawable.ic_report_black_24dp, 120);
 
         //{optional} - Header Customization - method customHeader
-//        View mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
-//        ImageView imageView = (ImageView) mCustomHeader.findViewById(R.id.imageView);
+        //View mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
+        //ImageView imageView = (ImageView) mCustomHeader.findViewById(R.id.imageView);
 
         with(this).startingPosition(2) //Starting position in the list
                 .addAllHelpItem(mHelpLiveo.getHelp())
@@ -75,10 +74,10 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 //.colorLineSeparator(R.color.nliveo_green_colorPrimaryDark)
 
                 //.removeFooter()
-                .footerItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
+                .footerItem(R.string.settings, R.drawable.ic_settings_black_24dp)
 
                 //{optional} - Second footer
-                //.footerSecondItem(R.string.settings, R.mipmap.ic_settings_black_24dp)
+                //.footerSecondItem(R.string.settings, R.drawable.ic_settings_black_24dp)
 
                 //{optional} - Header Customization
                 //.customHeader(mCustomHeader)

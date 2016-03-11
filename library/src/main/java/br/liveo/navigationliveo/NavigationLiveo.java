@@ -76,6 +76,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
     private int mColorDefault = 0;
     private int mCurrentPosition = 1;
+    private int mCurrentCheckPosition = 1;
     private int mSelectorDefault = 0;
     private float mElevationToolBar = 15;
     private boolean mRemoveAlpha = false;
@@ -97,7 +98,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     private OnPrepareOptionsMenuLiveo mOnPrepareOptionsMenu;
 
     public static final String CURRENT_POSITION = "CURRENT_POSITION";
-
+    public static final String CURRENT_CHECK_POSITION = "CURRENT_CHEKC_POSITION";
     /**
      * onCreate(Bundle savedInstanceState).
      * @param savedInstanceState onCreate(Bundle savedInstanceState).
@@ -112,13 +113,14 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         if (savedInstanceState != null) {
             isSaveInstance = true;
             setCurrentPosition(savedInstanceState.getInt(CURRENT_POSITION));
+            setCurrentCheckPosition(savedInstanceState.getInt(CURRENT_CHECK_POSITION));
         }
 
         if (savedInstanceState == null) {
             mOnItemClickLiveo.onItemClick(mCurrentPosition);
         }
 
-        setCheckedItemNavigation(mCurrentPosition, true);
+        setCheckedItemNavigation(mCurrentCheckPosition, true);
 	}
 
     private void configureFindView(){
@@ -171,6 +173,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
 		outState.putInt(CURRENT_POSITION, mCurrentPosition);
+        outState.putInt(CURRENT_CHECK_POSITION, mCurrentCheckPosition);
 	}
 
 	@Override
@@ -241,12 +244,18 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
             int mPosition = (!mRemoveHeader || !mCustomHeader ? position - 1 : position);
 
-            if (!mHelpItem.get(mPosition).isHeader()) {
+            HelpItem helpItem = mHelpItem.get(mPosition);
+
+            if (!helpItem.isHeader()) {
 
                 if (position != 0 || (mRemoveHeader && mCustomHeader)) {
-                    mOnItemClickLiveo.onItemClick(mPosition);
                     setCurrentPosition(mPosition);
-                    setCheckedItemNavigation(mPosition, true);
+
+                    if (helpItem.isCheck()) {
+                        setCurrentCheckPosition(mPosition);
+                        setCheckedItemNavigation(mPosition, true);
+                    }
+                    mOnItemClickLiveo.onItemClick(mPosition);
                 }
 
                 mDrawerLayout.closeDrawer(mRelativeDrawer);
@@ -518,6 +527,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     public void setDefaultStartPositionNavigation(int position){
         if (!isSaveInstance) {
             this.mCurrentPosition = position;
+            this.mCurrentCheckPosition = position;
         }
     }
 
@@ -528,6 +538,7 @@ public abstract class NavigationLiveo extends AppCompatActivity {
     public NavigationLiveo startingPosition(int position){
         if (!isSaveInstance) {
             this.mCurrentPosition = position;
+            this.mCurrentCheckPosition = position;
         }
 
         return this;
@@ -546,6 +557,21 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      */
     public int getCurrentPosition(){
         return this.mCurrentPosition;
+    }
+
+    /**
+     * Position in the last clicked item list check
+     * @param position ...
+     */
+    private void setCurrentCheckPosition(int position){
+        this.mCurrentCheckPosition = position;
+    }
+
+    /**
+     * get position in the last clicked item list check
+     */
+    public int getCurrentCheckPosition(){
+        return this.mCurrentCheckPosition;
     }
 
     /*{  }*/
@@ -1456,6 +1482,13 @@ public abstract class NavigationLiveo extends AppCompatActivity {
      */
     public Toolbar getToolbar() {
         return this.mToolbar;
+    }
+
+    /**
+     * is drawer open
+     */
+    public boolean isDrawerOpen(){
+        return mDrawerLayout.isDrawerOpen(mRelativeDrawer);
     }
 
     /**
