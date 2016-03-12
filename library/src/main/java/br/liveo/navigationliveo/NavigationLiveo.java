@@ -244,10 +244,13 @@ public abstract class NavigationLiveo extends AppCompatActivity {
 
             int mPosition = (!mRemoveHeader || !mCustomHeader ? position - 1 : position);
 
+            if (mPosition == -1){
+                mDrawerLayout.closeDrawer(mRelativeDrawer);
+                return;
+            }
+
             HelpItem helpItem = mHelpItem.get(mPosition);
-
             if (!helpItem.isHeader()) {
-
                 if (position != 0 || (mRemoveHeader && mCustomHeader)) {
                     setCurrentPosition(mPosition);
 

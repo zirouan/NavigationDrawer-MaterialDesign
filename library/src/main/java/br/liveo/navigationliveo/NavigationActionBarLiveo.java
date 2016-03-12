@@ -242,8 +242,12 @@ public abstract class NavigationActionBarLiveo extends AppCompatActivity {
 
             int mPosition = (!mRemoveHeader || !mCustomHeader ? position - 1 : position);
 
-            HelpItem helpItem = mHelpItem.get(mPosition);
+            if (mPosition == -1){
+                mDrawerLayout.closeDrawer(mRelativeDrawer);
+                return;
+            }
 
+            HelpItem helpItem = mHelpItem.get(mPosition);
             if (!helpItem.isHeader()) {
                 if (position != 0 || (mRemoveHeader && mCustomHeader)) {
                     setCurrentPosition(mPosition);

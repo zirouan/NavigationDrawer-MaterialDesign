@@ -61,7 +61,6 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
 
         with(this).startingPosition(2) //Starting position in the list
                 .addAllHelpItem(mHelpLiveo.getHelp())
-
                 //{optional} - List Customization "If you remove these methods and the list will take his white standard color"
                 //.selectorCheck(R.drawable.selector_check) //Inform the background of the selected item color
                 //.colorItemDefault(R.color.nliveo_blue_colorPrimary) //Inform the standard color name, icon and counter
