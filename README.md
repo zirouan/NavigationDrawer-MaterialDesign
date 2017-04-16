@@ -1,12 +1,12 @@
-#Navigation drawer (library)
+# Navigation drawer (library)
 
 It requires 14+ API and android support v7  23.2.1 (AppCompatActivity + Toolbar)
 
-###Special thanks :D
+### Special thanks :D
 Jacob A. Moura for all his ideas, dedication, time and help.<br>
 You are part of this project.
 
-###Sample Application
+### Sample Application
 
 <a href="https://play.google.com/store/apps/details?id=br.liveo.navigationliveo" target="_blank">
   <img alt="Android app on Google Play"
@@ -17,21 +17,21 @@ You are part of this project.
 
 How to use? Very simple! : D
 
-#If you want, check versions before
+# If you want, check versions before
 
 <b>Change Log</b><br>
 <a href="https://github.com/rudsonlive/NavigationDrawer-MaterialDesign/blob/master/CHANGELOG.md" target="_blank">Log file</a>
 
-#How to add to your project
+# How to add to your project
 
-###<b>Gradle</b>
+### <b>Gradle</b>
 
 ```java
 dependencies {
         compile 'br.com.liveo:navigationdrawer-material:2.5.1'
 }
 ```
-###<b>Maven</b>
+### <b>Maven</b>
 
 ```xml
 <dependency>
@@ -84,13 +84,13 @@ note: colorPrimaryDark property theme "nLiveoDrawer" should receive a color with
     </application>
 ````
 
-#In your Activity...
+# In your Activity...
 
 <b>Create a class and it extends the NavigationLiveo and implement the br.liveo.interfaces.OnItemClickListener.</b>
 
 Ex: public class <a href="https://github.com/rudsonlive/NavigationDrawer-MaterialDesign/blob/master/demo/src/main/java/br/liveo/ndrawer/ui/activity/MainActivity.java" target="_blank">MainActivity</a> extends NavigationLiveo implements OnItemClickListener {
 
-###Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
+### Do not use the method "onCreate" and "setContentView" of your Activity, you will use the method "onInt"
 
 <b>In the method "onInt" inform the items on your list</b>
 
@@ -176,7 +176,7 @@ Footer onClick - Inform the listener in .setOnClickFooter(onClickFooter) method 
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_01.png">
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_02.png"> 
 
-###<b>NavigationActionBarLiveo</b><br>
+### <b>NavigationActionBarLiveo</b><br>
 To use extends the NavigationActionBarLiveo <br>
 <img src="https://raw.githubusercontent.com/rudsonlive/NavigationDrawer-MaterialDesign/master/Screenshot/Screenshot_03.png">
 
@@ -186,7 +186,7 @@ To remove the header, use the method ".removeHeader()"<br>
 <br>
 <b>Your application uses this library? You can promote it here! Just send your application that will be happy to disclose..</b> <br>
 
-#Developed By<br>
+# Developed By<br>
 Name: Rudson Lima<br> 
 E-mail: rudsonlive@gmail.com<br>
 Subject: Navigation Drawer - Material Design
@@ -194,7 +194,7 @@ Subject: Navigation Drawer - Material Design
 
 <b>When using the design please remove all images and strings referring to Live-O. Thank you: D <br></b>
 
-#License
+# License
 ```
   Copyright 2015 Rudson Lima
  

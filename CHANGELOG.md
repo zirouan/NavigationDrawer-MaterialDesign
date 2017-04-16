@@ -1,4 +1,4 @@
-#Change Log
+# Change Log
 Version 2.5.1 *(12-03-2016)*
 ----------------------------
 It requires 14+ API and android support v7 23.2.1 (AppCompatActivity + Toolbar)
